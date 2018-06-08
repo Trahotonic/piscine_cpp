@@ -1,6 +1,6 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(std::string name)
+FragTrap::FragTrap(std::string const name)
 {
 	_hitPoints = 100;
 	_maxHitPoints = 100;
@@ -44,77 +44,6 @@ FragTrap	&FragTrap::operator=(FragTrap const & src)
 FragTrap::~FragTrap(void)
 {
 	std::cout << "FR4G-TP " << this->_name << " destroyed\n";
-}
-
-void	FragTrap::rangedAttack(std::string const & target)
-{
-	if (this->_hitPoints == 0)
-	{
-		std::cout << "FR4G-TP " << this->_name
-			<< " is dead and cannot attack\n";
-		return ;
-	}
-	std::cout << "FR4G-TP " << this->_name
-		<< "attacks " << target << " at range, causing "
-		<< this->_rangedAttackDamage << " points of damage!\n";
-}
-
-void	FragTrap::meleeAttack(std::string const & target)
-{
-	if (this->_hitPoints == 0)
-	{
-		std::cout << "FR4G-TP " << this->_name
-			<< " is dead and cannot attack\n";
-		return ;
-	}
-
-	std::cout << "FR4G-TP " << this->_name
-		<< "attacks " << target << " in close combat, causing "
-		<< this->_meleeAttackDamage << " points of damage!\n";
-
-}
-
-void	FragTrap::takeDamage(unsigned int amount)
-{
-	if (this->_hitPoints == 0)
-	{
-		std::cout << "FR4G-TP " << this->_name
-			<< " is already dead\n";
-		return ;
-	}
-
-	if ((int)amount < this->_armorDamageReduction)
-		amount = 0;
-	else
-		amount -= this->_armorDamageReduction;
-	if ((int)amount > this->_hitPoints)
-		amount = this->_hitPoints;
-
-	std::cout << "FR4G-TP " << this->_name
-		<< " is attacked by enemies and \e[31mloses "
-		<< amount << " HP!\e[0m\n";
-	this->_hitPoints -= amount;
-	if (this->_hitPoints == 0)
-	{
-		delete (this);
-	}
-}
-
-void	FragTrap::beRepaired(unsigned int amount)
-{
-	if (this->_hitPoints == 0)
-	{
-		std::cout << "FR4G-TP " << this->_name
-			<< " is already dead and cannot be repaired\n";
-		return ;
-	}
-	if ((int)amount + this->_hitPoints + this->_maxHitPoints)
-		amount = this->_maxHitPoints - this->_hitPoints;
-
-	std::cout << "FR4G-TP " << this->_name
-		<< " gets repaired and \e[92mrestores "
-		<< amount << " HP!\e[0m\n";
-	this->_hitPoints += amount;
 }
 
 void	FragTrap::vaulthunter_dot_exe(std::string const & target)

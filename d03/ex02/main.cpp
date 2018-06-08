@@ -1,4 +1,5 @@
 #include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 
 void	displayInfo(FragTrap const & src)
 {
@@ -31,8 +32,14 @@ int	main(void)
 	johnny.vaulthunter_dot_exe("Russians");
 	johnny.vaulthunter_dot_exe("Feminists");
 	johnny.vaulthunter_dot_exe("LP");
+
+	ScavTrap &bob = *new ScavTrap("Bob");
+
+	bob.challengeNewcomer("Punk ass bitch");
 	std::cout << "Battle is finished\n";
 	if (johnny._hitPoints != 0)
 		delete &johnny;
+	if (bob._hitPoints != 0)
+		delete &bob;
 	return (0);
 }

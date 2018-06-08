@@ -1,10 +1,10 @@
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
 # include <iostream>
 # include <random>
 
-class	FragTrap
+class	ScavTrap
 {
 public:
 	int		_hitPoints;
@@ -17,18 +17,19 @@ public:
 	int		_rangedAttackDamage;
 	int		_armorDamageReduction;
 
-	FragTrap(std::string name);
-	FragTrap(FragTrap const & src);
+	ScavTrap(std::string name);
+	ScavTrap(ScavTrap const & src);
 
-	FragTrap	&operator=(FragTrap const & src);
+	ScavTrap	&operator=(ScavTrap const & src);
 
-	~FragTrap(void);
+	~ScavTrap(void);
 
 	void	rangedAttack(std::string const & target);
 	void	meleeAttack(std::string const & target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
-	void	vaulthunter_dot_exe(std::string const & target);
+	void	challengeNewcomer(std::string const & newcomer);
 };
 
 #endif
+

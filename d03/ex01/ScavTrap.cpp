@@ -1,32 +1,32 @@
-#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 
-FragTrap::FragTrap(std::string name)
+ScavTrap::ScavTrap(std::string name)
 {
 	_hitPoints = 100;
 	_maxHitPoints = 100;
-	_energyPoints = 100;
-	_maxEnergyPoints = 100;
+	_energyPoints = 50;
+	_maxEnergyPoints = 50;
 	_level = 1;
 	_name = name;
-	_meleeAttackDamage = 30;
-	_rangedAttackDamage = 20;
-	_armorDamageReduction = 5;
+	_meleeAttackDamage = 20;
+	_rangedAttackDamage = 15;
+	_armorDamageReduction = 3;
 
 	srand(time(0));
 	std::string const greetings[] = {
-	"\"This time it'll be awesome, I promise!\"\n",
-	"\"Let's get this party started!\"\n",
-	"\"Look out everybody! Things are about to get awesome!\"\n"
+	"\"Hello there!\"\n",
+	"\"Greetings!\"\n",
+	"\"Nice to meet you!\"\n"
 	};
-	std::cout << "FR4G-TP " << name << ": " << greetings[rand() % 3];
+	std::cout << "ScavTrap " << name << ": " << greetings[rand() % 3];
 }
 
-FragTrap::FragTrap(FragTrap const & src)
+ScavTrap::ScavTrap(ScavTrap const & src)
 {
 	*this = src;
 }
 
-FragTrap	&FragTrap::operator=(FragTrap const & src)
+ScavTrap	&ScavTrap::operator=(ScavTrap const & src)
 {
 	this->_hitPoints = src._hitPoints;
 	this->_maxHitPoints = src._maxHitPoints;
@@ -41,44 +41,44 @@ FragTrap	&FragTrap::operator=(FragTrap const & src)
 	return (*this);
 }
 
-FragTrap::~FragTrap(void)
+ScavTrap::~ScavTrap(void)
 {
-	std::cout << "FR4G-TP " << this->_name << " destroyed\n";
+	std::cout << "ScavTrap " << this->_name << " destroyed\n";
 }
 
-void	FragTrap::rangedAttack(std::string const & target)
+void	ScavTrap::rangedAttack(std::string const & target)
 {
 	if (this->_hitPoints == 0)
 	{
-		std::cout << "FR4G-TP " << this->_name
+		std::cout << "ScavTrap " << this->_name
 			<< " is dead and cannot attack\n";
 		return ;
 	}
-	std::cout << "FR4G-TP " << this->_name
+	std::cout << "ScavTrap " << this->_name
 		<< "attacks " << target << " at range, causing "
 		<< this->_rangedAttackDamage << " points of damage!\n";
 }
 
-void	FragTrap::meleeAttack(std::string const & target)
+void	ScavTrap::meleeAttack(std::string const & target)
 {
 	if (this->_hitPoints == 0)
 	{
-		std::cout << "FR4G-TP " << this->_name
+		std::cout << "ScavTrap " << this->_name
 			<< " is dead and cannot attack\n";
 		return ;
 	}
 
-	std::cout << "FR4G-TP " << this->_name
+	std::cout << "ScavTrap " << this->_name
 		<< "attacks " << target << " in close combat, causing "
 		<< this->_meleeAttackDamage << " points of damage!\n";
 
 }
 
-void	FragTrap::takeDamage(unsigned int amount)
+void	ScavTrap::takeDamage(unsigned int amount)
 {
 	if (this->_hitPoints == 0)
 	{
-		std::cout << "FR4G-TP " << this->_name
+		std::cout << "ScavTrap	" << this->_name
 			<< " is already dead\n";
 		return ;
 	}
@@ -90,7 +90,7 @@ void	FragTrap::takeDamage(unsigned int amount)
 	if ((int)amount > this->_hitPoints)
 		amount = this->_hitPoints;
 
-	std::cout << "FR4G-TP " << this->_name
+	std::cout << "ScavTrap " << this->_name
 		<< " is attacked by enemies and \e[31mloses "
 		<< amount << " HP!\e[0m\n";
 	this->_hitPoints -= amount;
@@ -100,46 +100,44 @@ void	FragTrap::takeDamage(unsigned int amount)
 	}
 }
 
-void	FragTrap::beRepaired(unsigned int amount)
+void	ScavTrap::beRepaired(unsigned int amount)
 {
 	if (this->_hitPoints == 0)
 	{
-		std::cout << "FR4G-TP " << this->_name
+		std::cout << "ScavTrap " << this->_name
 			<< " is already dead and cannot be repaired\n";
 		return ;
 	}
 	if ((int)amount + this->_hitPoints + this->_maxHitPoints)
 		amount = this->_maxHitPoints - this->_hitPoints;
 
-	std::cout << "FR4G-TP " << this->_name
+	std::cout << "ScavTrap " << this->_name
 		<< " gets repaired and \e[92mrestores "
 		<< amount << " HP!\e[0m\n";
 	this->_hitPoints += amount;
 }
 
-void	FragTrap::vaulthunter_dot_exe(std::string const & target)
+void	ScavTrap::challengeNewcomer(std::string const & newcomer)
 {
-	std::string const attacks[] = {
-	"Oil fart",
-	"Self explosion",
-	"Dab to death",
-	"Serious converstion about enviroment",
-	"Game of Thrones spoilers",
-	"Segmenation fault",
-	"Hardcore guitar solo",
-	"Pepe memes"
+	std::string const challenges[] = {
+	"You have to make me a peanut butter sandwich using only your mind",
+	"You need to divide by zero",
+	"Touch yourself while riding a bicycle",
+	"Never give me up",
+	"Buy me icecream",
+	"Give me a reason to live",
+	"Take me to the moon",
+	"Sleep for next 10 hours"
 	};
 
 	if (this->_energyPoints < 25)
 	{
-		std::cout << "FR4G-TP " << this->_name
+		std::cout << "ScavTrap " << this->_name
 				<< " cannot perform any special attacks due to a lack of energy\n";
 		return ;
 	}
-	int index = rand() % 8;
-	std::cout << "FR4G-TP " << this->_name
-			<< " performs \e[93m" << attacks[index] << "\e[0m on "
-			<< target << " and deals " << rand() % 30 + 45
-			<< " damage\n";
+	std::cout << "ScavTrap " << this->_name
+			<< ": \"Hey " << newcomer << "! \e[93m" << challenges[rand() % 8] << "\e[0m.\"\n";
 	this->_energyPoints -= 25;
 }
+
