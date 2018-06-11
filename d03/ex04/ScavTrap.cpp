@@ -1,17 +1,22 @@
 #include "ScavTrap.hpp"
 #include "ClapTrap.hpp"
 
-ScavTrap::ScavTrap(std::string const name)
+ScavTrap::ScavTrap(void)
 {
-	_hitPoints = 100;
-	_maxHitPoints = 100;
-	_energyPoints = 50;
-	_maxEnergyPoints = 50;
-	_level = 1;
+	_hitPoints = 0;
+	_maxHitPoints = 0;
+	_energyPoints = 0;
+	_maxEnergyPoints = 0;
+	_level = 0;
+	_name = "default";
+	_meleeAttackDamage = 0;
+	_rangedAttackDamage = 0;
+	_armorDamageReduction = 0;
+}
+
+ScavTrap::ScavTrap(std::string const name) : ClapTrap(100, 100, 50, 50, 1, 20, 15, 3)
+{
 	_name = name;
-	_meleeAttackDamage = 20;
-	_rangedAttackDamage = 15;
-	_armorDamageReduction = 3;
 
 	srand(time(0));
 	std::string const greetings[] = {

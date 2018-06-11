@@ -75,6 +75,11 @@ int ClapTrap::getArmorDamageReduction(void) const
 	return _armorDamageReduction;
 }
 
+void ClapTrap::setEnergyPoints(unsigned int points)
+{
+	_energyPoints = points;
+}
+
 void	ClapTrap::rangedAttack(std::string const & target)
 {
 	if (this->_hitPoints == 0)

@@ -1,0 +1,26 @@
+#include "AWeapon.hpp"
+
+AWeapon::AWeapon(void) :
+        _name("Default weapon"), _apCost(0), _damage(0)
+{}
+
+AWeapon::AWeapon(AWeapon const &src)
+{
+    *this = src;
+}
+
+AWeapon::AWeapon(const std::string &name, int apcost, int damage) :
+        _name(name), _apCost(apcost), _damage(damage)
+{
+}
+
+AWeapon::~AWeapon(void)
+{}
+
+AWeapon& AWeapon::operator=(AWeapon const &src)
+{
+    this->_name = src._name;
+    this->_damage = src._damage;
+    this->_apCost = src._apCost;
+    return (*this);
+}

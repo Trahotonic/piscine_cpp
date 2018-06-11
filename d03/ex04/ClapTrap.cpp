@@ -2,6 +2,31 @@
 
 ClapTrap::ClapTrap(void)
 {
+	_hitPoints = 0;
+	_maxHitPoints = 0;
+	_energyPoints = 0;
+	_maxEnergyPoints = 0;
+	_level = 0;
+	_name = "default";
+	_meleeAttackDamage = 0;
+	_rangedAttackDamage = 0;
+	_armorDamageReduction = 0;
+	std::cout << "Default claptrap constructor called\n";
+}
+
+ClapTrap::ClapTrap(unsigned int hitPoints, unsigned int maxHitPoints, unsigned int energyPoints,
+				   unsigned int maxEnergyPoints, unsigned int level, unsigned int meleeAttackDamage,
+				   unsigned int rangedAttackDamage, unsigned int armorDamageReduction)
+{
+	this->_hitPoints = hitPoints;
+	this->_maxHitPoints = maxHitPoints;
+	this->_energyPoints = energyPoints;
+	this->_maxEnergyPoints = maxEnergyPoints;
+	this->_level = level;
+	this->_name = "default";
+	this->_meleeAttackDamage = meleeAttackDamage;
+	this->_rangedAttackDamage = rangedAttackDamage;
+	this->_armorDamageReduction = armorDamageReduction;
 	std::cout << "ClapTrap is created\n";
 }
 
@@ -73,6 +98,11 @@ int ClapTrap::getRangedAttackDamage(void) const
 int ClapTrap::getArmorDamageReduction(void) const
 {
 	return _armorDamageReduction;
+}
+
+void ClapTrap::setEnergyPoints(unsigned int points)
+{
+	_energyPoints = points;
 }
 
 void	ClapTrap::rangedAttack(std::string const & target)

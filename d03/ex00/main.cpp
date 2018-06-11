@@ -18,13 +18,7 @@ int	main(void)
 {
 	FragTrap &johnny = *new FragTrap("Johnny");
 
-	johnny.takeDamage(30);
-	displayInfo(johnny);
-	johnny.beRepaired(30);
-	displayInfo(johnny);
-	johnny.takeDamage(10);
-	displayInfo(johnny);
-	johnny.beRepaired(55);
+	johnny.takeDamage(110);
 	displayInfo(johnny);
 	johnny.vaulthunter_dot_exe("Bocal");
 	johnny.vaulthunter_dot_exe("Haters");

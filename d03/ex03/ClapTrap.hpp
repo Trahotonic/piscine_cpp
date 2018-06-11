@@ -38,6 +38,7 @@ public:
 	int		getMeleeAttackDamage(void) const;
 	int		getRangedAttackDamage(void) const;
 	int		getArmorDamageReduction(void) const;
+	void	setEnergyPoints(unsigned int points);
 };
 
 #endif

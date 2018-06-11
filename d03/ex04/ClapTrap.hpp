@@ -19,11 +19,14 @@ protected:
 
 public:
 	ClapTrap(void);
+	ClapTrap(unsigned int hitPoints, unsigned int maxHitPoints, unsigned int energyPoints,
+			 unsigned int maxEnergyPoints, unsigned int level, unsigned int meleeAttackDamage,
+			 unsigned int rangedAttackDamage, unsigned int armorDamageReduction);
 	ClapTrap(ClapTrap const & src);
 
 	ClapTrap	&operator=(ClapTrap const & src);
 
-	~ClapTrap(void);
+	virtual ~ClapTrap(void);
 
 	void	rangedAttack(std::string const & target);
 	void	meleeAttack(std::string const & target);
@@ -38,6 +41,7 @@ public:
 	int		getMeleeAttackDamage(void) const;
 	int		getRangedAttackDamage(void) const;
 	int		getArmorDamageReduction(void) const;
+	void	setEnergyPoints(unsigned int points);
 };
 
 #endif

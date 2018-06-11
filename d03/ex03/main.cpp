@@ -1,7 +1,8 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
+#include "NinjaTrap.hpp"
 
-void	displayInfo(FragTrap const & src)
+void	displayInfo(ClapTrap const & src)
 {
 	if (src.getHitPoints() == 0)
 	{
@@ -37,11 +38,16 @@ int	main(void)
 	ScavTrap &bob = *new ScavTrap("Bob");
 
 	bob.challengeNewcomer("Punk ass bitch");
+
+	NinjaTrap &satori = *new NinjaTrap("Satori");
+
+	satori.ninjaShoebox(johnny);
+	satori.ninjaShoebox(bob);
+
 	std::cout << "Battle is finished\n";
 	if (johnny.getHitPoints() != 0)
 		delete &johnny;
 	if (bob.getHitPoints() != 0)
 		delete &bob;
-	std::cout << std::endl;
 	return (0);
 }
