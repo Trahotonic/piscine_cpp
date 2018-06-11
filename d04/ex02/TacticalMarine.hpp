@@ -1,0 +1,8 @@
+//
+// Created by Roman KYSLYY on 6/11/18.
+//
+
+#ifndef GIT_CPP_TACTICALMARINE_HPP
+#define GIT_CPP_TACTICALMARINE_HPP
+
+#endif //GIT_CPP_TACTICALMARINE_HPP

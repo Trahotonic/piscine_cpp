@@ -48,4 +48,3 @@ void Enemy::takeDamage(int amount)
 		delete this;
     }
 }
-
