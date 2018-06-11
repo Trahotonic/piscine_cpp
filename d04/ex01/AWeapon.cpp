@@ -24,3 +24,18 @@ AWeapon& AWeapon::operator=(AWeapon const &src)
     this->_apCost = src._apCost;
     return (*this);
 }
+
+std::string AWeapon::getName(void) const
+{
+	return this->_name;
+}
+
+int AWeapon::getDamage(void) const
+{
+	return this->_damage;
+}
+
+int AWeapon::getAPCost(void) const
+{
+	return this->_apCost;
+}

@@ -33,10 +33,19 @@ std::string Enemy::getType(void) const
 
 void Enemy::takeDamage(int amount)
 {
+	if (this->_HP == 0)
+	{
+		std::cout << this->_type << " is already dead\n";
+		return ;
+	}
     if (amount <= 0)
         return ;
     if (amount > this->getHP())
         amount = this->getHP();
     this->_HP -= amount;
+    if (this->_HP == 0)
+    {
+		delete this;
+    }
 }
 
