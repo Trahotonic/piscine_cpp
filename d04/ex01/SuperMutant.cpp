@@ -12,6 +12,7 @@ SuperMutant::~SuperMutant(void)
 
 SuperMutant::SuperMutant(SuperMutant const &src) : Enemy(170, "Super Mutant")
 {
+    (void)src;
     std::cout << "Gaaah. Me want smash heads !\n";
 }
 

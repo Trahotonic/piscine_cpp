@@ -21,13 +21,14 @@ TacticalMarine::TacticalMarine(TacticalMarine const &src)
 
 TacticalMarine& TacticalMarine::operator=(TacticalMarine const &src)
 {
+	(void)src;
 	return *this;
 }
 
 ISpaceMarine* TacticalMarine::clone(void) const
 {
-	const TacticalMarine *ret = this;
-	return ret;
+	ISpaceMarine *newMarine = new TacticalMarine(*this);
+	return newMarine;
 }
 
 void TacticalMarine::battleCry(void) const
@@ -44,4 +45,3 @@ void TacticalMarine::rangedAttack(void) const
 {
 	std::cout << "* attacks with bolter *\n";
 }
-

@@ -10,6 +10,18 @@ Squad::Squad(void)
 	this->marines = NULL;
 }
 
+Squad::~Squad(void)
+{
+	t_container *ptr = this->marines;
+
+	while (ptr)
+	{
+		delete ptr->marine;
+		delete ptr;
+		ptr = ptr->next;
+	}
+}
+
 int Squad::getCount(void) const
 {
 	return this->unitCount;
@@ -17,7 +29,7 @@ int Squad::getCount(void) const
 
 int Squad::push(ISpaceMarine *newMarine)
 {
-	if (!this->marines)
+	if (this->marines == NULL)
 	{
 		this->marines = new t_container;
 		this->marines->marine = newMarine;
@@ -45,7 +57,10 @@ ISpaceMarine* Squad::getUnit(int index) const
 	n = 0;
 	ptr = this->marines;
 	while (ptr && n < index)
+	{
+		ptr = ptr->next;
 		n++;
+	}
 	if (!ptr)
 		return NULL;
 	return ptr->marine;

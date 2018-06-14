@@ -15,6 +15,7 @@ private:
 	t_container	*marines;
 public:
 	Squad(void);
+	~Squad(void);
 
 	int				getCount(void) const;
 	ISpaceMarine	*getUnit(int) const;

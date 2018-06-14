@@ -10,7 +10,6 @@ int main(void)
 
 	std::cout << *zaz;
 
-	Enemy *b = new RadScorpion();
 	Enemy *s = new SuperMutant();
 
 	AWeapon *pr = new PlasmaRifle();

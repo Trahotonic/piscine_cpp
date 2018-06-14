@@ -11,6 +11,10 @@ class AssauntTerminator : public ISpaceMarine
 {
 public:
 	AssauntTerminator(void);
+	AssauntTerminator(AssauntTerminator const & src);
+
+	AssauntTerminator	&operator=(AssauntTerminator const & src);
+
 	~AssauntTerminator(void);
 
 	ISpaceMarine	*clone(void) const;

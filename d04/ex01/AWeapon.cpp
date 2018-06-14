@@ -1,7 +1,7 @@
 #include "AWeapon.hpp"
 
 AWeapon::AWeapon(void) :
-        _name("Default weapon"), _apCost(0), _damage(0)
+        _name("Default weapon"), _damage(0), _apCost(0)
 {}
 
 AWeapon::AWeapon(AWeapon const &src)
@@ -10,7 +10,7 @@ AWeapon::AWeapon(AWeapon const &src)
 }
 
 AWeapon::AWeapon(const std::string &name, int apcost, int damage) :
-        _name(name), _apCost(apcost), _damage(damage)
+        _name(name), _damage(damage), _apCost(apcost)
 {
 }
 

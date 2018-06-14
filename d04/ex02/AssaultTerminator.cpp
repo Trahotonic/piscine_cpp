@@ -14,10 +14,21 @@ AssauntTerminator::~AssauntTerminator(void)
 	std::cout << "I`ll be back\n";
 }
 
+AssauntTerminator::AssauntTerminator(AssauntTerminator const &src)
+{
+	*this = src;
+}
+
+AssauntTerminator& AssauntTerminator::operator=(AssauntTerminator const &src)
+{
+	(void)src;
+	return *this;
+}
+
 ISpaceMarine* AssauntTerminator::clone(void) const
 {
-	ISpaceMarine *ret = this;
-	return ret;
+	ISpaceMarine *newMarine = new AssauntTerminator(*this);
+	return newMarine;
 }
 
 void AssauntTerminator::meleeAttack(void) const

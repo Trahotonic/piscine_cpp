@@ -12,6 +12,7 @@ RadScorpion::~RadScorpion(void)
 
 RadScorpion::RadScorpion(RadScorpion const &src) : Enemy(80, "RadScorpion")
 {
+    (void)src;
     std::cout << "* click click click *\n";
 }
 
