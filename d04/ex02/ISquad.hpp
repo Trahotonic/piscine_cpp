@@ -15,9 +15,6 @@ typedef struct			s_container
 
 class ISquad
 {
-private:
-	int			unitCount;
-	t_container	*marines;
 public:
 	virtual ~ISquad(void) {}
 	virtual int getCount() const = 0;

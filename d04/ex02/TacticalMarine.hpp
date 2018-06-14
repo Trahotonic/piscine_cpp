@@ -11,6 +11,10 @@ class TacticalMarine : public ISpaceMarine
 {
 public:
 	TacticalMarine(void);
+	TacticalMarine(TacticalMarine const & src);
+
+	TacticalMarine	&operator=(TacticalMarine const & src);
+
 	~TacticalMarine(void);
 
 	ISpaceMarine	*clone(void) const;

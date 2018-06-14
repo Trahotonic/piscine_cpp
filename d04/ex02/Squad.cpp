@@ -34,6 +34,7 @@ int Squad::push(ISpaceMarine *newMarine)
 		ptr->next->next = NULL;
 	}
 	this->unitCount++;
+	return this->unitCount;
 }
 
 ISpaceMarine* Squad::getUnit(int index) const
