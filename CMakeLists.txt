@@ -78,4 +78,4 @@ add_executable(git_cpp
         d04/ex01/RadScorpion.cpp
         d04/ex01/RadScorpion.hpp
         d04/ex01/SuperMutant.cpp
-        d04/ex01/SuperMutant.hpp d04/ex02/Squad.cpp d04/ex02/Squad.hpp d04/ex02/TacticalMarine.cpp d04/ex02/TacticalMarine.hpp d04/ex02/AssaultTerminator.cpp d04/ex02/AssaultTerminator.hpp d04/ex02/ISpaceMarine.hpp d04/ex02/ISquad.hpp d04/ex02/main.cpp)
+        d04/ex01/SuperMutant.hpp d04/ex02/Squad.cpp d04/ex02/Squad.hpp d04/ex02/TacticalMarine.cpp d04/ex02/TacticalMarine.hpp d04/ex02/AssaultTerminator.cpp d04/ex02/AssaultTerminator.hpp d04/ex02/ISpaceMarine.hpp d04/ex02/ISquad.hpp d04/ex02/main.cpp d04/ex03/AMateria.cpp d04/ex03/AMateria.hpp d04/ex03/Cure.cpp d04/ex03/Cure.hpp d04/ex03/Ice.cpp d04/ex03/Ice.hpp d04/ex03/Character.cpp d04/ex03/Character.hpp d04/ex03/MateriaSource.cpp d04/ex03/MateriaSource.hpp d04/ex03/ICharacter.hpp d04/ex03/IMateriaSource.hpp)
