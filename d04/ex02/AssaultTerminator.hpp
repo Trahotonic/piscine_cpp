@@ -5,4 +5,18 @@
 #ifndef GIT_CPP_ASSAULTTERMINATOR_HPP
 #define GIT_CPP_ASSAULTTERMINATOR_HPP
 
+# include "ISpaceMarine.hpp"
+
+class AssauntTerminator : public ISpaceMarine
+{
+public:
+	AssauntTerminator(void);
+	~AssauntTerminator(void);
+
+	ISpaceMarine	*clone(void) const;
+	void			battleCry(void) const;
+	void			rangedAttack(void) const;
+	void 			meleeAttack(void) const;
+};
+
 #endif //GIT_CPP_ASSAULTTERMINATOR_HPP

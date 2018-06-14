@@ -5,6 +5,8 @@
 #ifndef GIT_CPP_ISPACEMARINE_HPP
 #define GIT_CPP_ISPACEMARINE_HPP
 
+# include <iostream>
+
 class ISpaceMarine
 {
 public:

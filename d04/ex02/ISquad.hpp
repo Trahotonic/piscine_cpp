@@ -7,8 +7,17 @@
 
 # include "ISpaceMarine.hpp"
 
+typedef struct			s_container
+{
+	ISpaceMarine		*marine;
+	struct s_container	*next;
+}						t_container;
+
 class ISquad
 {
+private:
+	int			unitCount;
+	t_container	*marines;
 public:
 	virtual ~ISquad(void) {}
 	virtual int getCount() const = 0;
