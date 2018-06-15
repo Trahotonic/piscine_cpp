@@ -12,10 +12,12 @@
 class AMateria
 {
 private:
-	unsigned int xp_;
+	unsigned int	xp_;
+	std::string		type_;
 public:
 	AMateria(void);
 	AMateria(std::string const & type);
+	AMateria(AMateria const & src);
 
 	AMateria	&operator=(AMateria const & src);
 

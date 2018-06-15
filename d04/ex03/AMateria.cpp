@@ -4,6 +4,20 @@
 
 #include "AMateria.hpp"
 
-AMateria::AMateria(void) : xp_(0)
+AMateria::AMateria(void) : xp_(0), type_("default")
 {
+}
+
+AMateria::AMateria(AMateria const &src)
+{
+    *this = src;
+}
+
+AMateria::AMateria(std::string const &type) : xp_(0), type_("default")
+{
+}
+
+AMateria& AMateria::operator=(AMateria const &src)
+{
+    
 }

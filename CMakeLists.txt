@@ -4,6 +4,17 @@ project(git_cpp)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(git_cpp
+        d00/ex00/Makefile
+        d00/ex00/megaphone.cpp
+        d00/ex01/Contact.class.cpp
+        d00/ex01/Contact.class.hpp
+        d00/ex01/contactForm.cpp
+        d00/ex01/contactSearch.cpp
+        d00/ex01/Makefile
+        d00/ex01/map.cpp
+        d00/ex02/Account.class.cpp
+        d00/ex02/Account.class.hpp
+        d00/ex02/tests.cpp
         d01/ex06/HumanA.cpp
         d01/ex06/HumanA.hpp
         d01/ex06/HumanB.cpp
