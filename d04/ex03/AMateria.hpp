@@ -21,7 +21,7 @@ public:
 
 	AMateria	&operator=(AMateria const & src);
 
-	~AMateria(void);
+	virtual ~AMateria(void);
 
 	std::string	const & getType(void) const;
 	unsigned int getXP(void) const;

@@ -25,4 +25,5 @@ AMateria* MateriaSource::createMateria(std::string const &type)
     {
         return (materias[n]->clone());
     }
+    return NULL;
 }

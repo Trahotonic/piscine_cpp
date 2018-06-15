@@ -7,10 +7,10 @@
 
 # include <iostream>
 
+class AMateria;
+
 class ICharacter
 {
-private:
-	AMateria	*inventory[4];
 public:
 	virtual ~ICharacter() {}
 	virtual std::string const	&getName(void) const = 0;
