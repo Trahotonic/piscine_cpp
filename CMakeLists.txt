@@ -4,13 +4,11 @@ project(git_cpp)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(git_cpp
-        d00/ex00/Makefile
         d00/ex00/megaphone.cpp
         d00/ex01/Contact.class.cpp
         d00/ex01/Contact.class.hpp
         d00/ex01/contactForm.cpp
         d00/ex01/contactSearch.cpp
-        d00/ex01/Makefile
         d00/ex01/map.cpp
         d00/ex02/Account.class.cpp
         d00/ex02/Account.class.hpp
@@ -86,5 +84,39 @@ add_executable(git_cpp
         d04/ex01/RadScorpion.cpp
         d04/ex01/RadScorpion.hpp
         d04/ex01/SuperMutant.cpp
-        d04/ex01/SuperMutant.hpp d04/ex02/Squad.cpp d04/ex02/Squad.hpp d04/ex02/TacticalMarine.cpp d04/ex02/TacticalMarine.hpp d04/ex02/AssaultTerminator.cpp d04/ex02/AssaultTerminator.hpp d04/ex02/ISpaceMarine.hpp d04/ex02/ISquad.hpp d04/ex02/main.cpp d04/ex03/AMateria.cpp d04/ex03/AMateria.hpp d04/ex03/Cure.cpp d04/ex03/Cure.hpp d04/ex03/Ice.cpp d04/ex03/Ice.hpp d04/ex03/Character.cpp d04/ex03/Character.hpp d04/ex03/MateriaSource.cpp d04/ex03/MateriaSource.hpp d04/ex03/ICharacter.hpp d04/ex03/IMateriaSource.hpp
-        d04/ex03/main.cpp)
+        d04/ex01/SuperMutant.hpp
+        d04/ex02/AssaultTerminator.cpp
+        d04/ex02/AssaultTerminator.hpp
+        d04/ex02/ISpaceMarine.hpp
+        d04/ex02/ISquad.hpp
+        d04/ex02/main.cpp
+        d04/ex02/Squad.cpp
+        d04/ex02/Squad.hpp
+        d04/ex02/TacticalMarine.cpp
+        d04/ex02/TacticalMarine.hpp
+        d04/ex03/AMateria.cpp
+        d04/ex03/AMateria.hpp
+        d04/ex03/Character.cpp
+        d04/ex03/Character.hpp
+        d04/ex03/Cure.cpp
+        d04/ex03/Cure.hpp
+        d04/ex03/Ice.cpp
+        d04/ex03/Ice.hpp
+        d04/ex03/ICharacter.hpp
+        d04/ex03/IMateriaSource.hpp
+        d04/ex03/main.cpp
+        d04/ex03/MateriaSource.cpp
+        d04/ex03/MateriaSource.hpp
+        d04/ex04/DeepCoreMiner.cpp
+        d04/ex04/DeepCoreMiner.hpp
+        d04/ex04/AsteroKreog.cpp
+        d04/ex04/AsteroKreog.hpp
+        d04/ex04/IAsteroid.hpp
+        d04/ex04/IMiningLaser.hpp
+        d04/ex04/KoalaSteroid.cpp
+        d04/ex04/KoalaSteroid.hpp
+        d04/ex04/main.cpp
+        d04/ex04/MiningBarge.cpp
+        d04/ex04/MiningBarge.hpp
+        d04/ex04/StripMiner.cpp
+        d04/ex04/StripMiner.hpp)
