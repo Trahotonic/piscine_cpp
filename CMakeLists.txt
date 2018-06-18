@@ -4,7 +4,6 @@ project(git_cpp)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(git_cpp
-        d00/ex00/megaphone.cpp
         d00/ex01/Contact.class.cpp
         d00/ex01/Contact.class.hpp
         d00/ex01/contactForm.cpp
@@ -28,6 +27,17 @@ add_executable(git_cpp
         d01/ex09/Logger.hpp
         d01/ex09/main.cpp
         d01/ex10/main.cpp
+        d02/ex00/Fixed.class.cpp
+        d02/ex00/Fixed.class.hpp
+        d02/ex00/main.cpp
+        d02/ex01/Fixed.class.cpp
+        d02/ex01/Fixed.class.hpp
+        d02/ex01/main.cpp
+        d02/ex02/Fixed.class.cpp
+        d02/ex02/Fixed.class.hpp
+        d02/ex02/main.cpp
+        d02/ex04/Fixed.class.cpp
+        d02/ex04/Fixed.class.hpp
         d03/ex00/FragTrap.cpp
         d03/ex00/FragTrap.hpp
         d03/ex00/main.cpp
@@ -119,4 +129,4 @@ add_executable(git_cpp
         d04/ex04/MiningBarge.cpp
         d04/ex04/MiningBarge.hpp
         d04/ex04/StripMiner.cpp
-        d04/ex04/StripMiner.hpp)
+        d04/ex04/StripMiner.hpp d02/ex04/calc.cpp d02/ex04/evalDeepest.cpp)

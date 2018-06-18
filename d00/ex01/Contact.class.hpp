@@ -1,13 +1,19 @@
-//
-// Created by Roman Kyslyy on 5/27/18.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.class.hpp                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rkyslyy <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/18 18:33:57 by rkyslyy           #+#    #+#             */
+/*   Updated: 2018/06/18 18:33:59 by rkyslyy          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef CONTACT_CLASS_HPP
 #define CONTACT_CLASS_HPP
 
-# include <list>
 # include <iostream>
-# include <cstring>
 
 class   Contact
 {

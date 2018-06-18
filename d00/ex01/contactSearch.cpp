@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   contactSearch.cpp                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rkyslyy <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/18 18:34:24 by rkyslyy           #+#    #+#             */
+/*   Updated: 2018/06/18 18:34:26 by rkyslyy          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Contact.class.hpp"
 
 void    doFirstName(Contact *it)
@@ -117,12 +129,11 @@ void    displayContacts(Contact **contact_list)
         std::cout << std::endl << "___________________________________________" << std::endl;
     }
     std::cout << "\nPlease enter index of contact you`re searching for: ";
-    std::cin >> input;
+    getline(std::cin, input);
     while (indexInvalid(input))
     {
-        input.clear();
         std::cout << "\nPlease enter valid and existing index: ";
-        std::cin >> input;
+        getline(std::cin, input);
     }
     it = 0;
     n = 1;
