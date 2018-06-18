@@ -4,6 +4,7 @@ project(git_cpp)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(git_cpp
+        d00/ex00/megaphone.cpp
         d00/ex01/Contact.class.cpp
         d00/ex01/Contact.class.hpp
         d00/ex01/contactForm.cpp
@@ -12,6 +13,26 @@ add_executable(git_cpp
         d00/ex02/Account.class.cpp
         d00/ex02/Account.class.hpp
         d00/ex02/tests.cpp
+        d01/ex00/main.cpp
+        d01/ex00/Pony.class.cpp
+        d01/ex00/Pony.class.hpp
+        d01/ex01/ex01.cpp
+        d01/ex02/main.cpp
+        d01/ex02/Zombie.cpp
+        d01/ex02/Zombie.hpp
+        d01/ex02/ZombieEvent.cpp
+        d01/ex02/ZombieEvent.hpp
+        d01/ex03/main.cpp
+        d01/ex03/Zombie.cpp
+        d01/ex03/Zombie.hpp
+        d01/ex03/ZombieHorde.cpp
+        d01/ex03/ZombieHorde.hpp
+        d01/ex04/ex04.cpp
+        d01/ex05/Brain.class.cpp
+        d01/ex05/Brain.class.hpp
+        d01/ex05/Human.class.cpp
+        d01/ex05/Human.class.hpp
+        d01/ex05/main.cpp
         d01/ex06/HumanA.cpp
         d01/ex06/HumanA.hpp
         d01/ex06/HumanB.cpp
@@ -27,17 +48,7 @@ add_executable(git_cpp
         d01/ex09/Logger.hpp
         d01/ex09/main.cpp
         d01/ex10/main.cpp
-        d02/ex00/Fixed.class.cpp
-        d02/ex00/Fixed.class.hpp
-        d02/ex00/main.cpp
-        d02/ex01/Fixed.class.cpp
-        d02/ex01/Fixed.class.hpp
-        d02/ex01/main.cpp
-        d02/ex02/Fixed.class.cpp
-        d02/ex02/Fixed.class.hpp
-        d02/ex02/main.cpp
-        d02/ex04/Fixed.class.cpp
-        d02/ex04/Fixed.class.hpp
+        d02
         d03/ex00/FragTrap.cpp
         d03/ex00/FragTrap.hpp
         d03/ex00/main.cpp
@@ -129,4 +140,5 @@ add_executable(git_cpp
         d04/ex04/MiningBarge.cpp
         d04/ex04/MiningBarge.hpp
         d04/ex04/StripMiner.cpp
-        d04/ex04/StripMiner.hpp d02/ex04/calc.cpp d02/ex04/evalDeepest.cpp)
+        d04/ex04/StripMiner.hpp
+        rush00)

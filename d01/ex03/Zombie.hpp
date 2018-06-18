@@ -1,0 +1,20 @@
+#ifndef PISCINE_CPP_ZOMBIE_HPP
+#define PISCINE_CPP_ZOMBIE_HPP
+
+# include <iostream>
+
+class   Zombie
+{
+private:
+    std::string _name;
+    std::string _type;
+
+public:
+    Zombie(std::string name, std::string type);
+    Zombie(void);
+    ~Zombie(void);
+
+    void        announce(void);
+};
+
+#endif //PISCINE_CPP_ZOMBIE_HPP
