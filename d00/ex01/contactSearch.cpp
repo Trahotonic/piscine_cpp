@@ -85,7 +85,8 @@ int     indexInvalid(std::string string)
             return (1);
         n++;
     }
-    if (std::stoi(string) > Contact::getObjCount())
+    if (std::stoi(string) > Contact::getObjCount() ||
+            std::stoi(string) <= 0)
         return (1);
     return (0);
 }

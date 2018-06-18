@@ -2,13 +2,11 @@
 
 Contact::Contact()
 {
-    std::cout << "Constructed\n";
     Contact::objCount += 1;
 }
 
 Contact::~Contact()
 {
-    std::cout << "Destructed\n";
     Contact::objCount -= 1;
 }
 
