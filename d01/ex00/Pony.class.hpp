@@ -1,5 +1,5 @@
-#ifndef PISCINE_CPP_PONY_CLASS_HPP
-#define PISCINE_CPP_PONY_CLASS_HPP
+#ifndef PONY_CLASS_HPP
+#define PONY_CLASS_HPP
 
 class   Pony
 {
@@ -15,4 +15,4 @@ public:
     void        ft_show_off(void);
 };
 
-#endif //PISCINE_CPP_PONY_CLASS_HPP
+#endif

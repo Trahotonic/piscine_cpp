@@ -1,6 +1,6 @@
-//
-// Created by Roman Kyslyy on 5/31/18.
-//
+#ifndef ZOMBIEHORDE_HPP
+#define ZOMBIEHORDE_HPP
+
 
 #include "Zombie.hpp"
 
@@ -16,8 +16,5 @@ private:
         Zombie  *horde;
         int     horde_size;
 };
-
-#ifndef PISCINE_CPP_ZOMBIEHORDE_HPP
-#define PISCINE_CPP_ZOMBIEHORDE_HPP
 
 #endif //PISCINE_CPP_ZOMBIEHORDE_HPP

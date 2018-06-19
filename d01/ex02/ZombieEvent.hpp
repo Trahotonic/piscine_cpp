@@ -1,5 +1,5 @@
-#ifndef PISCINE_CPP_ZOMBIEEVENT_HPP
-#define PISCINE_CPP_ZOMBIEEVENT_HPP
+#ifndef ZOMBIEEVENT_HPP
+#define ZOMBIEEVENT_HPP
 
 class   ZombieEvent
 {
@@ -14,4 +14,4 @@ public:
     Zombie  *newZombie(std::string name);
 };
 
-#endif //PISCINE_CPP_ZOMBIEEVENT_HPP
+#endif

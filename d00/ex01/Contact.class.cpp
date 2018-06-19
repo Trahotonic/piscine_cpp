@@ -14,17 +14,10 @@
 
 Contact::Contact()
 {
-    Contact::objCount += 1;
 }
 
 Contact::~Contact()
 {
-    Contact::objCount -= 1;
-}
-
-int     Contact::getObjCount(void)
-{
-    return (Contact::objCount);
 }
 
 void    Contact::setFirstName(std::string string)
@@ -136,5 +129,3 @@ std::string Contact::getDarkestSecret(void)
 {
     return (this->darkest_secret);
 }
-
-int     Contact::objCount = 0;

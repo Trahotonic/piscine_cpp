@@ -1,5 +1,5 @@
-#ifndef PISCINE_CPP_ZOMBIE_HPP
-#define PISCINE_CPP_ZOMBIE_HPP
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
 
 # include <iostream>
 
@@ -17,4 +17,4 @@ public:
     void        announce(void);
 };
 
-#endif //PISCINE_CPP_ZOMBIE_HPP
+#endif

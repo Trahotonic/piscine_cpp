@@ -21,7 +21,6 @@ public:
     Contact(void);
     ~Contact(void);
 
-    static int  getObjCount(void);
     void        setFirstName(std::string string);
     void        setLastName(std::string string);
     void        setNickName(std::string string);
@@ -56,10 +55,9 @@ private:
     std::string favourite_meal;
     std::string underwear_color;
     std::string darkest_secret;
-    static int  objCount;
 };
 
-void    addContact(Contact **contact_list);
-void    displayContacts(Contact **contact_list);
+void    addContact(Contact *contact_list, int total);
+void    displayContacts(Contact *contact_list, int total);
 
 #endif
