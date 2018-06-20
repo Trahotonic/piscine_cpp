@@ -40,13 +40,14 @@ public:
 	Fixed   operator/(Fixed const & src);
 	Fixed   &operator++();
 	Fixed   &operator++(int);
+	Fixed   &operator--();
+	Fixed   &operator--(int);
+	static Fixed &min(Fixed & a, Fixed & b);
+	static Fixed const 	& min(Fixed const & a, Fixed const & b);
+	static Fixed &max(Fixed & a, Fixed & b);
+	static Fixed const 	& max(Fixed const & a, Fixed const & b);
 
 };
-
-Fixed		&min(Fixed & one, Fixed & two);
-Fixed		&max(Fixed & one, Fixed & two);
-const Fixed	&min(Fixed const & one, Fixed const & two);
-const Fixed	&max(Fixed const & one, Fixed const & two);
 
 std::ostream	&operator<<(std::ostream & o, Fixed const & src);
 

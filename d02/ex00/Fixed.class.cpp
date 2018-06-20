@@ -23,7 +23,9 @@ Fixed& Fixed::operator=(Fixed const & src)
 }
 
 Fixed::~Fixed()
-{}
+{
+	std::cout << "Destructor called\n";
+}
 
 int Fixed::getRawBits() const
 {
