@@ -1,5 +1,10 @@
 #include "FragTrap.hpp"
 
+FragTrap::FragTrap() : ClapTrap()
+{
+	std::cout << "Default FragTrap created\n";
+}
+
 FragTrap::FragTrap(std::string const name)
 {
 	_hitPoints = 100;

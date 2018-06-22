@@ -53,52 +53,52 @@ void Fixed::setRawBits(int const raw)
 	this->_rawValue = raw;
 }
 
-bool Fixed::operator>(Fixed const &src)
+bool Fixed::operator>(Fixed const &src) const
 {
 	return this->toFloat() > src.toFloat();
 }
 
-bool Fixed::operator<(Fixed const &src)
+bool Fixed::operator<(Fixed const &src) const
 {
 	return this->toFloat() < src.toFloat();
 }
 
-bool Fixed::operator>=(Fixed const &src)
+bool Fixed::operator>=(Fixed const &src) const
 {
 	return this->toFloat() >= src.toFloat();
 }
 
-bool Fixed::operator<=(Fixed const &src)
+bool Fixed::operator<=(Fixed const &src) const
 {
 	return this->toFloat() <= src.toFloat();
 }
 
-bool Fixed::operator==(Fixed const &src)
+bool Fixed::operator==(Fixed const &src) const
 {
 	return this->toFloat() == src.toFloat();
 }
 
-bool Fixed::operator!=(Fixed const &src)
+bool Fixed::operator!=(Fixed const &src) const
 {
 	return this->toFloat() != src.toFloat();
 }
 
-Fixed Fixed::operator+(Fixed const &src)
+Fixed Fixed::operator+(Fixed const &src) const
 {
 	return Fixed(this->toFloat() + src.toFloat());
 }
 
-Fixed Fixed::operator-(Fixed const &src)
+Fixed Fixed::operator-(Fixed const &src) const
 {
 	return Fixed(this->toFloat() - src.toFloat());
 }
 
-Fixed Fixed::operator*(Fixed const &src)
+Fixed Fixed::operator*(Fixed const &src) const
 {
 	return Fixed(this->toFloat() * src.toFloat());
 }
 
-Fixed Fixed::operator/(Fixed const &src)
+Fixed Fixed::operator/(Fixed const &src) const
 {
 	return Fixed(this->toFloat() / src.toFloat());
 }
@@ -129,24 +129,32 @@ Fixed& Fixed::operator--(int)
 	return ret;
 }
 
-Fixed &Fixed::min(Fixed & a, Fixed & b)
+Fixed &Fixed::min(Fixed & one, Fixed & two)
 {
-	return (a.toFloat() < b.toFloat()) ? a : b;
+	if (one.toFloat() < two.toFloat())
+		return one;
+	return two;
 }
 
-Fixed const 	&Fixed::min(Fixed const & a, Fixed const & b)
+Fixed &Fixed::max(Fixed & one, Fixed & two)
 {
-	return (a.toFloat() < b.toFloat()) ? a : b;
+	if (one.toFloat() > two.toFloat())
+		return one;
+	return two;
 }
 
-Fixed &Fixed::max(Fixed & a, Fixed & b)
+Fixed const 	&Fixed::min(Fixed const & one, Fixed const & two)
 {
-	return (a.toFloat() > b.toFloat()) ? a : b;
+	if (one.toFloat() < two.toFloat())
+		return one;
+	return two;
 }
 
-Fixed const 	&Fixed::max(Fixed const & a, Fixed const & b)
+Fixed const 	&Fixed::max(Fixed const & one, Fixed const & two)
 {
-	return (a.toFloat() > b.toFloat()) ? a : b;
+	if (one.toFloat() > two.toFloat())
+		return one;
+	return two;
 }
 
 std::ostream	&operator<<(std::ostream & o, Fixed const & src)

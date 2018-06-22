@@ -28,24 +28,24 @@ public:
 	int		toInt(void) const;
 	float 	toFloat(void) const;
 
-	bool	operator>(Fixed const & src);
-	bool    operator<(Fixed const & src);
-	bool    operator>=(Fixed const & src);
-	bool    operator<=(Fixed const & src);
-	bool    operator==(Fixed const & src);
-	bool    operator!=(Fixed const & src);
-	Fixed   operator+(Fixed const & src);
-	Fixed   operator-(Fixed const & src);
-	Fixed   operator*(Fixed const & src);
-	Fixed   operator/(Fixed const & src);
+	bool	operator>(Fixed const & src) const;
+	bool    operator<(Fixed const & src) const;
+	bool    operator>=(Fixed const & src) const;
+	bool    operator<=(Fixed const & src) const;
+	bool    operator==(Fixed const & src) const;
+	bool    operator!=(Fixed const & src) const;
+	Fixed   operator+(Fixed const & src) const;
+	Fixed   operator-(Fixed const & src) const;
+	Fixed   operator*(Fixed const & src) const;
+	Fixed   operator/(Fixed const & src) const;
 	Fixed   &operator++();
 	Fixed   &operator++(int);
 	Fixed   &operator--();
 	Fixed   &operator--(int);
-	static Fixed &min(Fixed & a, Fixed & b);
-	static Fixed const 	& min(Fixed const & a, Fixed const & b);
-	static Fixed &max(Fixed & a, Fixed & b);
-	static Fixed const 	& max(Fixed const & a, Fixed const & b);
+	static Fixed	&min(Fixed & one, Fixed & two);
+	static Fixed	&max(Fixed & one, Fixed & two);
+	static Fixed const	&min(Fixed const & one, Fixed const & two);
+	static Fixed const	&max(Fixed const & one, Fixed const & two);
 
 };
 

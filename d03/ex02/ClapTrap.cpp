@@ -2,6 +2,15 @@
 
 ClapTrap::ClapTrap(void)
 {
+	_hitPoints = 0;
+	_maxHitPoints = 0;
+	_energyPoints = 0;
+	_maxEnergyPoints = 0;
+	_level = 0;
+	_name = "default";
+	_meleeAttackDamage = 0;
+	_rangedAttackDamage = 0;
+	_armorDamageReduction = 0;
 	std::cout << "ClapTrap is created\n";
 }
 
@@ -28,6 +37,20 @@ ClapTrap	&ClapTrap::operator=(ClapTrap const & src)
 ClapTrap::~ClapTrap(void)
 {
 	std::cout << "ClapTrap " <<  this->_name << " destroyed\n";
+}
+
+void	ClapTrap::displayInfo(void)
+{
+	if (_hitPoints == 0)
+	{
+		std::cout << "FR4G-TP " << _name
+				  << " is dead\n";
+		return ;
+	}
+	std::cout << "FR4G-TP " << _name
+			  << " (level " << _level << ")"
+			  << " has " << _hitPoints
+			  << "/" << _maxHitPoints << " HP\n";
 }
 
 int ClapTrap::getHitPoints(void) const

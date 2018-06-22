@@ -6,28 +6,21 @@
 
 int main(void)
 {
-	Character *zaz = new Character("zaz");
-
+	Character* zaz = new Character("zaz");
 	std::cout << *zaz;
-
-	Enemy *s = new SuperMutant();
-
-	AWeapon *pr = new PlasmaRifle();
-	AWeapon *pf = new PowerFist();
-
+	Enemy* b = new RadScorpion();
+	AWeapon* pr = new PlasmaRifle();
+	AWeapon* pf = new PowerFist();
 	zaz->equip(pr);
 	std::cout << *zaz;
 	zaz->equip(pf);
-
-	zaz->attack(s);
+	zaz->attack(b);
 	std::cout << *zaz;
-	zaz->attack(s);
+	zaz->equip(pr);
 	std::cout << *zaz;
-	zaz->attack(s);
+	zaz->attack(b);
 	std::cout << *zaz;
-	zaz->attack(s);
+	zaz->attack(b);
 	std::cout << *zaz;
-	zaz->attack(s);
-	std::cout << *zaz;
-    return (0);
+	return 0;
 }

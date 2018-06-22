@@ -1,6 +1,5 @@
 #include <fstream>
 #include <iostream>
-#include <sys/types.h>
 #include <sys/stat.h>
 
 int main(int argc, char **argv)
@@ -18,14 +17,13 @@ int main(int argc, char **argv)
 			{
 				if ( st.st_mode & S_IFDIR )
 				{
-					std::cout << "cato9tails: " << argv[n] << ": Is directory\n";
+					std::cout << "cato9tails: " << argv[n] << ": Is a directory\n";
 					n += 1;
 					continue ;
 				}
 			}
 			std::ifstream ifs(argv[n]);
-			std::cout << ifs << std::endl;
-			if (ifs == 0)
+			if (ifs == NULL)
 			{
 				std::cout << "cato9tails: " << argv[n] << ": No such file or directory\n";
 				n += 1;

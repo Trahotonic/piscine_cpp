@@ -16,7 +16,7 @@ Pony::Pony(std::string name, std::string color, std::string age, std::string tri
 
 Pony::~Pony(void)
 {
-    std::cout << "Pony " << this->_name << " died" << std::endl;
+    std::cout << "Pony " << this->_name << " died\n\n";
 }
 
 void Pony::ft_show_off(void)
@@ -24,6 +24,5 @@ void Pony::ft_show_off(void)
     std::cout << "Hello\nMy name is " << this->_name << std::endl
               << "I am " << this->_color << " and " << this->_age
               << " years old" << std:: endl
-              << "I learned a cool trick: " << this->_trick << std::endl
-              << std::endl;
+              << "I learned a cool trick: " << this->_trick << std::endl;
 }

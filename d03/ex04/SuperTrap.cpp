@@ -1,5 +1,10 @@
 #include "SuperTrap.hpp"
 
+SuperTrap::SuperTrap(void) : ClapTrap()
+{
+    std::cout << "Default SuperTrap created\n";
+}
+
 SuperTrap::SuperTrap(std::string const name) : ClapTrap()
 {
     _hitPoints = 100;

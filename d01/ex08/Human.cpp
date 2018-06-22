@@ -29,12 +29,8 @@ void Human::action(const std::string &action_name, const std::string &target)
 		&Human::intimidatingShout
 	};
 	int n = 0;
-	while (n < 3)
-	{
-		if (action_name == actions[n])
-			break ;
-		n += 1;
-	}
+	while (n < 3 && action_name != actions[n])
+		n++;
 	if (n == 3)
 	{
 		std::cout << "Class Human does not contain method \"" << action_name << "\"\n";

@@ -19,9 +19,6 @@ protected:
 
 public:
 	ClapTrap(void);
-	ClapTrap(unsigned int hitPoints, unsigned int maxHitPoints, unsigned int energyPoints,
-			 unsigned int maxEnergyPoints, unsigned int level, unsigned int meleeAttackDamage,
-			 unsigned int rangedAttackDamage, unsigned int armorDamageReduction);
 	ClapTrap(ClapTrap const & src);
 
 	ClapTrap	&operator=(ClapTrap const & src);

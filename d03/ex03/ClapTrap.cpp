@@ -2,6 +2,15 @@
 
 ClapTrap::ClapTrap(void)
 {
+	_hitPoints = 0;
+	_maxHitPoints = 0;
+	_energyPoints = 0;
+	_maxEnergyPoints = 0;
+	_level = 0;
+	_name = "default";
+	_meleeAttackDamage = 0;
+	_rangedAttackDamage = 0;
+	_armorDamageReduction = 0;
 	std::cout << "ClapTrap is created\n";
 }
 
@@ -30,27 +39,41 @@ ClapTrap::~ClapTrap(void)
 	std::cout << "ClapTrap " <<  this->_name << " destroyed\n";
 }
 
-int ClapTrap::getHitPoints(void) const
+void	ClapTrap::displayInfo(void)
+{
+	if (_hitPoints == 0)
+	{
+		std::cout << "FR4G-TP " << _name
+				  << " is dead\n";
+		return ;
+	}
+	std::cout << "FR4G-TP " << _name
+			  << " (level " << _level << ")"
+			  << " has " << _hitPoints
+			  << "/" << _maxHitPoints << " HP\n";
+}
+
+int ClapTrap::getHP(void) const
 {
 	return _hitPoints;
 }
 
-int ClapTrap::getMaxHitPoints(void) const
+int ClapTrap::getMHP(void) const
 {
 	return _maxHitPoints;
 }
 
-int ClapTrap::getEnergyPoints(void) const
+int ClapTrap::getEP(void) const
 {
 	return _energyPoints;
 }
 
-int ClapTrap::getMaxEnergyPoints(void) const
+int ClapTrap::getMEP(void) const
 {
 	return _maxEnergyPoints;
 }
 
-int ClapTrap::getLevel(void) const
+int ClapTrap::getLVL(void) const
 {
 	return _level;
 }
@@ -60,17 +83,17 @@ std::string ClapTrap::getName(void) const
 	return _name;
 }
 
-int ClapTrap::getMeleeAttackDamage(void) const
+int ClapTrap::getMAD(void) const
 {
 	return _meleeAttackDamage;
 }
 
-int ClapTrap::getRangedAttackDamage(void) const
+int ClapTrap::getRAD(void) const
 {
 	return _rangedAttackDamage;
 }
 
-int ClapTrap::getArmorDamageReduction(void) const
+int ClapTrap::getADR(void) const
 {
 	return _armorDamageReduction;
 }

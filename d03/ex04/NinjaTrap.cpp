@@ -1,21 +1,21 @@
 #include "NinjaTrap.hpp"
 
-NinjaTrap::NinjaTrap(void)
+NinjaTrap::NinjaTrap(void) : ClapTrap()
 {
-    _hitPoints = 0;
-    _maxHitPoints = 0;
-    _energyPoints = 0;
-    _maxEnergyPoints = 0;
-    _level = 0;
-    _name = "default";
-    _meleeAttackDamage = 0;
-    _rangedAttackDamage = 0;
-    _armorDamageReduction = 0;
+    std::cout << "Default NinjaTrap created\n";
 }
 
-NinjaTrap::NinjaTrap(const std::string name) : ClapTrap(60, 60, 120, 120, 1, 60, 5, 0)
+NinjaTrap::NinjaTrap(const std::string name)
 {
+    _hitPoints = 60;
+	_maxHitPoints = 60;
+	_energyPoints = 120;
+	_maxEnergyPoints = 120;
+	_level = 1;
     _name = name;
+	_meleeAttackDamage = 60;
+	_rangedAttackDamage = 5;
+	_armorDamageReduction = 0;
 
     srand(time(0));
     std::string const greetings[] = {

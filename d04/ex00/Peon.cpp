@@ -29,5 +29,5 @@ Peon::~Peon(void)
 
 void Peon::getPolymorphed(void) const
 {
-    std::cout << _name << " has been turned into a little pony!\n";
+    std::cout << _name << " has been turned into a pink pony !\n";
 }

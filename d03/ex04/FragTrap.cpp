@@ -1,21 +1,21 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(void)
+FragTrap::FragTrap(void) : ClapTrap()
 {
-	_hitPoints = 0;
-	_maxHitPoints = 0;
-	_energyPoints = 0;
-	_maxEnergyPoints = 0;
-	_level = 0;
-	_name = "default";
-	_meleeAttackDamage = 0;
-	_rangedAttackDamage = 0;
-	_armorDamageReduction = 0;
+	std::cout << "Default FragTrap created\n";
 }
 
-FragTrap::FragTrap(std::string const name) : ClapTrap(100, 100, 100, 100, 1, 30, 20, 5)
+FragTrap::FragTrap(std::string const name)
 {
+	_hitPoints = 100;
+	_maxHitPoints = 100;
+	_energyPoints = 100;
+	_maxEnergyPoints = 100;
+	_level = 1;
 	_name = name;
+	_meleeAttackDamage = 30;
+	_rangedAttackDamage = 20;
+	_armorDamageReduction = 5;
 
 	srand(time(0));
 	std::string const greetings[] = {
@@ -71,7 +71,7 @@ void	FragTrap::vaulthunter_dot_exe(std::string const & target)
 		return ;
 	}
 	int index = rand() % 8;
-	std::cout << "FR4G-TP " << this->_name
+	std::cout << this->_name
 			<< " performs \e[93m" << attacks[index] << "\e[0m on "
 			<< target << " and deals " << rand() % 30 + 45
 			<< " damage\n";

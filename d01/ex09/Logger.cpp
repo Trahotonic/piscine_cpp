@@ -30,7 +30,7 @@ void Logger::logToConsole(std::string string)
 
 void Logger::logToFile(std::string string)
 {
-	std::ofstream ofs (_file, std::ofstream::out);
+	std::ofstream ofs (_file, std::ofstream::app);
 
 	ofs << makeLogEntry(string);
 	ofs.close();
@@ -48,12 +48,8 @@ void Logger::log(const std::string &dest, const std::string &message)
 			&Logger::logToFile
 	};
 	int n = 0;
-	while (n < 2)
-	{
-		if (methods[n] == dest)
-			break ;
-		n += 1;
-	}
+	while (n < 2 && methods[n] != dest)
+		n++;
 	if (n == 2)
 	{
 		std::cout << "Class Logger does not contain method \"" << dest << "\"\n";

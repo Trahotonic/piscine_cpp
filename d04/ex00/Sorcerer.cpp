@@ -2,12 +2,12 @@
 
 Sorcerer::Sorcerer(std::string name, std::string title) : _name(name), _title(title)
 {
-    std::cout << name << ", " << title << ", is born!\n";
+    std::cout << name << ", " << title << ", is born !\n";
 }
 
 Sorcerer::Sorcerer(void) : _name("default name"), _title("default title")
 {
-    std::cout << _name << ", " << _title << ", is born!\n";
+    std::cout << _name << ", " << _title << ", is born !\n";
 }
 
 Sorcerer::Sorcerer(Sorcerer const &src)
@@ -24,13 +24,13 @@ Sorcerer& Sorcerer::operator=(Sorcerer const &src)
 
 std::ostream &operator<<(std::ostream &o, Sorcerer &src)
 {
-    o << "I am " << src.getName() << ", " << src.getTitle() << ", and i like ponies!\n";
+    o << "I am " << src.getName() << ", " << src.getTitle() << ", and i like ponies !\n";
     return (o);
 }
 
 Sorcerer::~Sorcerer(void)
 {
-    std::cout << _name << ", " << _title << ", is dead! Consequences will never be the same\n";
+    std::cout << _name << ", " << _title << ", is dead! Consequences will never be the same !\n";
 }
 
 std::string Sorcerer::getName(void) const

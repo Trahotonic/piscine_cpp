@@ -1,5 +1,9 @@
 #include "ScavTrap.hpp"
-#include "ClapTrap.hpp"
+
+ScavTrap::ScavTrap(void) : ClapTrap()
+{
+	std::cout << "Default ScavTrap created\n";
+}
 
 ScavTrap::ScavTrap(std::string const name)
 {

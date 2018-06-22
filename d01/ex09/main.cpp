@@ -4,6 +4,6 @@ int main(void)
 {
 	Logger logger("file.txt");
 
-	logger.log("logToConsole", "Hello World");
+	logger.log("logToFile", "Hello World");
 	return (0);
 }

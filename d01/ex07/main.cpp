@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 	std::string     search = argv[2];
 	std::string     replace = argv[3];
 
-	if (ifs == 0)
+	if (ifs == NULL)
 	{
 		std::cout << "Input file does not exist\nExit now\n";
 		return (1);
@@ -24,6 +24,11 @@ int main(int argc, char **argv)
 	{
 		total += line;
 		total += "\n";
+	}
+	if (!search.length() || !replace.length())
+	{
+		std::cout << total;
+		return (0);
 	}
 	size_t index = 0;
 	while (true)

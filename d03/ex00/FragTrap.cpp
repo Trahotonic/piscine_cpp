@@ -1,5 +1,20 @@
 #include "FragTrap.hpp"
 
+FragTrap::FragTrap(void)
+{
+	_hitPoints = 0;
+	_maxHitPoints = 0;
+	_energyPoints = 0;
+	_maxEnergyPoints = 0;
+	_level = 0;
+	_name = "defaultName";
+	_meleeAttackDamage = 0;
+	_rangedAttackDamage = 0;
+	_armorDamageReduction = 0;
+
+	std::cout << "Hello. I am default FragTrap\n";
+}
+
 FragTrap::FragTrap(std::string name)
 {
 	_hitPoints = 100;
@@ -142,4 +157,63 @@ void	FragTrap::vaulthunter_dot_exe(std::string const & target)
 			<< target << " and deals " << rand() % 30 + 45
 			<< " damage\n";
 	this->_energyPoints -= 25;
+}
+
+void	FragTrap::displayInfo(void)
+{
+	if (_hitPoints == 0)
+	{
+		std::cout << "FR4G-TP " << _name
+				  << " is dead\n";
+		return ;
+	}
+	std::cout << "FR4G-TP " << _name
+			  << " (level " << _level << ")"
+			  << " has " << _hitPoints
+			  << "/" << _maxHitPoints << " HP\n";
+}
+
+int FragTrap::getHP() const
+{
+	return _hitPoints;
+}
+
+int FragTrap::getMHP() const
+{
+	return _maxHitPoints;
+}
+
+int FragTrap::getEP() const
+{
+	return _energyPoints;
+}
+
+int FragTrap::getMEP() const
+{
+	return _maxEnergyPoints;
+}
+
+int FragTrap::getLVL() const
+{
+	return _level;
+}
+
+std::string FragTrap::getName() const
+{
+	return _name;
+}
+
+int FragTrap::getMAT() const
+{
+	return _meleeAttackDamage;
+}
+
+int FragTrap::getRAT() const
+{
+	return _rangedAttackDamage;
+}
+
+int FragTrap::getADR() const
+{
+	return _armorDamageReduction;
 }

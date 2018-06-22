@@ -1,32 +1,18 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
-void	displayInfo(FragTrap const & src)
-{
-	if (src._hitPoints == 0)
-	{
-		std::cout << "FR4G-TP " << src._name
-			<< " is dead\n";
-		return ;
-	}
-	std::cout << "FR4G-TP " << src._name
-		<< " (level " << src._level << ")"
-		<< " has " << src._hitPoints
-		<< "/" << src._maxHitPoints << " HP\n";
-}
-
 int	main(void)
 {
 	FragTrap &johnny = *new FragTrap("Johnny");
 
 	johnny.takeDamage(30);
-	displayInfo(johnny);
+	johnny.displayInfo();
 	johnny.beRepaired(30);
-	displayInfo(johnny);
+	johnny.displayInfo();
 	johnny.takeDamage(10);
-	displayInfo(johnny);
+	johnny.displayInfo();
 	johnny.beRepaired(55);
-	displayInfo(johnny);
+	johnny.displayInfo();
 	johnny.vaulthunter_dot_exe("Bocal");
 	johnny.vaulthunter_dot_exe("Haters");
 	johnny.vaulthunter_dot_exe("Russians");
@@ -37,9 +23,9 @@ int	main(void)
 
 	bob.challengeNewcomer("Punk ass bitch");
 	std::cout << "Battle is finished\n";
-	if (johnny._hitPoints != 0)
+	if (johnny.getHP() != 0)
 		delete &johnny;
-	if (bob._hitPoints != 0)
+	if (bob.getHP() != 0)
 		delete &bob;
 	return (0);
 }

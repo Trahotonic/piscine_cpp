@@ -1,5 +1,10 @@
 #include "NinjaTrap.hpp"
 
+NinjaTrap::NinjaTrap(void) : ClapTrap()
+{
+    std::cout << "Default NinjaTrap created\n";
+}
+
 NinjaTrap::NinjaTrap(const std::string name)
 {
     _hitPoints = 60;
@@ -67,11 +72,11 @@ void NinjaTrap::ninjaShoebox(ScavTrap & src)
     }
 
     unsigned int steal = rand() % 5 + 10;
-    if (steal > src.getEnergyPoints())
-        steal = src.getEnergyPoints();
+    if ((int)steal > src.getEP())
+        steal = src.getEP();
     std::cout << this->_name << " appeared in front of " << src.getName()
               << " and stole " << steal << " energy from him!\n";
-    src.setEnergyPoints(src.getEnergyPoints() - steal);
+    src.setEnergyPoints(src.getEP() - steal);
     this->_energyPoints -= 25;
 }
 
@@ -85,10 +90,10 @@ void NinjaTrap::ninjaShoebox(NinjaTrap &src)
     {
         int gain1 = 35;
         int gain2 = 35;
-        if (gain1 + this->getEnergyPoints() > this->getMaxEnergyPoints())
-            gain1 = this->getMaxEnergyPoints() - this->getEnergyPoints();
-        if (gain2 + src.getEnergyPoints() > src.getMaxEnergyPoints())
-            gain2 = src.getMaxEnergyPoints() - src.getEnergyPoints();
+        if (gain1 + this->getEP() > this->getMEP())
+            gain1 = this->getMEP() - this->getEP();
+        if (gain2 + src.getEP() > src.getMEP())
+            gain2 = src.getMEP() - src.getEP();
         std::cout << "During dual meditation " << this->getName()
                   << " and " << src.getName() << " refilled "
                   << gain1 << " and " << gain2 << " energy points respectively\n";

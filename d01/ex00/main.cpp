@@ -1,6 +1,7 @@
-#include "Pony.class.cpp"
+#include "Pony.class.hpp"
 
-void    ponyOnTheHeap(std::string name, std::string color, std::string age, std::string trick)
+void    ponyOnTheHeap(std::string name, std::string color,
+					  std::string age, std::string trick)
 {
     Pony    *pony = new Pony(name, color, age, trick);
 
@@ -8,7 +9,8 @@ void    ponyOnTheHeap(std::string name, std::string color, std::string age, std:
     delete pony;
 }
 
-void    ponyOnTheStack(std::string name, std::string color, std::string age, std::string trick)
+void    ponyOnTheStack(std::string name, std::string color,
+					   std::string age, std::string trick)
 {
     Pony    pony(name, color, age, trick);
 
@@ -17,16 +19,23 @@ void    ponyOnTheStack(std::string name, std::string color, std::string age, std
 
 int main(void)
 {
-    std::string heap_name = "John";
-    std::string heap_color = "brown";
-    std::string heap_age = "34";
-    std::string heap_trick = "gambling";
-    std::string stack_name = "James";
-    std::string stack_color = "white";
-    std::string stack_age = "50";
-    std::string stack_trick = "alcoholism";
+    std::string heapAttributes[] = {
+			"John",
+			"Brown",
+			"32",
+			"gambling"
+	};
 
-    ponyOnTheStack(heap_name, heap_color, heap_age, heap_trick);
-    ponyOnTheStack(stack_name, stack_color, stack_age, stack_trick);
+	std::string	stackAttributes[] = {
+			"James",
+			"white",
+			"50",
+			"alcoholism"
+	};
+
+    ponyOnTheHeap(heapAttributes[0], heapAttributes[1],
+				   heapAttributes[2], heapAttributes[3]);
+    ponyOnTheStack(stackAttributes[0], stackAttributes[1],
+				   stackAttributes[2], stackAttributes[3]);
     return (0);
 }

@@ -11,22 +11,6 @@ ClapTrap::ClapTrap(void)
 	_meleeAttackDamage = 0;
 	_rangedAttackDamage = 0;
 	_armorDamageReduction = 0;
-	std::cout << "Default claptrap constructor called\n";
-}
-
-ClapTrap::ClapTrap(unsigned int hitPoints, unsigned int maxHitPoints, unsigned int energyPoints,
-				   unsigned int maxEnergyPoints, unsigned int level, unsigned int meleeAttackDamage,
-				   unsigned int rangedAttackDamage, unsigned int armorDamageReduction)
-{
-	this->_hitPoints = hitPoints;
-	this->_maxHitPoints = maxHitPoints;
-	this->_energyPoints = energyPoints;
-	this->_maxEnergyPoints = maxEnergyPoints;
-	this->_level = level;
-	this->_name = "default";
-	this->_meleeAttackDamage = meleeAttackDamage;
-	this->_rangedAttackDamage = rangedAttackDamage;
-	this->_armorDamageReduction = armorDamageReduction;
 	std::cout << "ClapTrap is created\n";
 }
 

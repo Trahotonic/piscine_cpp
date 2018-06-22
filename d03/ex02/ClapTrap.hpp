@@ -29,6 +29,9 @@ public:
 	void	meleeAttack(std::string const & target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
+
+	void	displayInfo(void);
+	
 	int		getHitPoints(void) const;
 	int		getMaxHitPoints(void) const;
 	int		getEnergyPoints(void) const;

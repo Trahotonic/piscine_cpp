@@ -12,6 +12,7 @@
 class NinjaTrap : public ClapTrap
 {
 public:
+	NinjaTrap(void);
     NinjaTrap(std::string const name);
     NinjaTrap(NinjaTrap const & src);
 

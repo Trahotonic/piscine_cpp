@@ -29,15 +29,18 @@ public:
 	void	meleeAttack(std::string const & target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
-	int		getHitPoints(void) const;
-	int		getMaxHitPoints(void) const;
-	int		getEnergyPoints(void) const;
-	int		getMaxEnergyPoints(void) const;
-	int		getLevel(void) const;
+
+	void	displayInfo(void);
+
+	int		getHP(void) const;
+	int		getMHP(void) const;
+	int		getEP(void) const;
+	int		getMEP(void) const;
+	int		getLVL(void) const;
 	std::string	getName(void) const;
-	int		getMeleeAttackDamage(void) const;
-	int		getRangedAttackDamage(void) const;
-	int		getArmorDamageReduction(void) const;
+	int		getMAD(void) const;
+	int		getRAD(void) const;
+	int		getADR(void) const;
 	void	setEnergyPoints(unsigned int points);
 };
 

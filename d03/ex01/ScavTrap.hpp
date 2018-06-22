@@ -6,7 +6,7 @@
 
 class	ScavTrap
 {
-public:
+private:
 	int		_hitPoints;
 	int		_maxHitPoints;
 	int		_energyPoints;
@@ -16,7 +16,8 @@ public:
 	int		_meleeAttackDamage;
 	int		_rangedAttackDamage;
 	int		_armorDamageReduction;
-
+public:
+	ScavTrap(void);
 	ScavTrap(std::string name);
 	ScavTrap(ScavTrap const & src);
 
@@ -29,6 +30,18 @@ public:
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 	void	challengeNewcomer(std::string const & newcomer);
+
+	void	displayInfo(void);
+
+	int 	getHP(void) const;
+	int 	getMHP(void) const;
+	int 	getEP(void) const;
+	int 	getMEP(void) const;
+	int 	getLVL(void) const;
+	std::string 	getName(void) const;
+	int 	getMAT(void) const;
+	int 	getRAT(void) const;
+	int 	getADR(void) const;
 };
 
 #endif

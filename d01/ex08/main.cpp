@@ -4,6 +4,6 @@ int main(void)
 {
 	Human human;
 
-	human.action("meleeAttackasd", "Goblin");
+	human.action("intimidatingShout", "Goblin");
 	return (0);
 }

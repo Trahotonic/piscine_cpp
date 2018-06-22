@@ -1,5 +1,20 @@
 #include "ScavTrap.hpp"
 
+ScavTrap::ScavTrap(void)
+{
+	_hitPoints = 0;
+	_maxHitPoints = 0;
+	_energyPoints = 0;
+	_maxEnergyPoints = 0;
+	_level = 0;
+	_name = "defaultName";
+	_meleeAttackDamage = 0;
+	_rangedAttackDamage = 5;
+	_armorDamageReduction = 0;
+
+	std::cout << "Hello. I am default ScavTrap\n";
+}
+
 ScavTrap::ScavTrap(std::string name)
 {
 	_hitPoints = 100;
@@ -140,4 +155,64 @@ void	ScavTrap::challengeNewcomer(std::string const & newcomer)
 			<< ": \"Hey " << newcomer << "! \e[93m" << challenges[rand() % 8] << "\e[0m.\"\n";
 	this->_energyPoints -= 25;
 }
+
+void	ScavTrap::displayInfo(void)
+{
+	if (_hitPoints == 0)
+	{
+		std::cout << "FR4G-TP " << _name
+				  << " is dead\n";
+		return ;
+	}
+	std::cout << "FR4G-TP " << _name
+			  << " (level " << _level << ")"
+			  << " has " << _hitPoints
+			  << "/" << _maxHitPoints << " HP\n";
+}
+
+int ScavTrap::getHP() const
+{
+	return _hitPoints;
+}
+
+int ScavTrap::getMHP() const
+{
+	return _maxHitPoints;
+}
+
+int ScavTrap::getEP() const
+{
+	return _energyPoints;
+}
+
+int ScavTrap::getMEP() const
+{
+	return _maxEnergyPoints;
+}
+
+int ScavTrap::getLVL() const
+{
+	return _level;
+}
+
+std::string ScavTrap::getName() const
+{
+	return _name;
+}
+
+int ScavTrap::getMAT() const
+{
+	return _meleeAttackDamage;
+}
+
+int ScavTrap::getRAT() const
+{
+	return _rangedAttackDamage;
+}
+
+int ScavTrap::getADR() const
+{
+	return _armorDamageReduction;
+}
+
 
