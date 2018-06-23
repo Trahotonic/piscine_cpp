@@ -8,8 +8,13 @@
 #include <time.h>
 #include <iostream>
 #include <random>
+#include "Ship.class.hpp"
+
 
 class Drop;
+class Ship;
+
+typedef struct		s_shots t_shots;
 
 typedef struct      s_drops
 {
@@ -24,9 +29,10 @@ private:
     int _x;
     int _color;
     static int _totalDrops;
+	int _coolDown;
 public:
     Drop(void);
-    Drop(int maxX, int maxY);
+    Drop(int maxX);
     Drop(Drop const & src);
 
     Drop    &operator=(Drop const & src);
@@ -37,12 +43,16 @@ public:
     int     getY(void) const ;
     int     getColor(void) const;
     int     getTotalDrops(void) const;
+	int 	getCoolDown(void);
     void    setX(int);
     void    setY(int);
     void    setColor(int);
+	void	setCoolDown(int n);
+	void	shoot(t_shots ** shots);
 };
 
-void    decrementX(t_drops*);
-void    makeFresh(t_drops*, int maxX, int maxY, int maxDrops, unsigned char i, unsigned char *timeout);
+void    decrementX(t_drops*, t_shots**, Ship & ship);
+void    makeFresh(t_drops**, int maxX, int maxY,
+				  unsigned char i, unsigned char *timeout);
 
 #endif //GIT_CPP_DROP_CLASS_HPP

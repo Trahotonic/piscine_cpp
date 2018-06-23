@@ -2,20 +2,23 @@
 // Created by Roman Kyslyy on 6/18/18.
 //
 
+#include <ncurses.h>
 #include "Drop.class.hpp"
+#include "Ship.class.hpp"
+#include "Shot.class.hpp"
 
-Drop::Drop() : _y(0), _x(0), _color(0)
+Drop::Drop() : _y(0), _x(0), _color(0), _coolDown(23)
 {
     Drop::_totalDrops++;
 }
 
-Drop::Drop(int maxX, int maxY)
+Drop::Drop(int maxX)
 {
     Drop::_totalDrops++;
     srand(time(0));
 
     _x = maxX - 3;
-    _y = rand() % maxY;
+	_y = (getmaxy(stdscr) / 4 + 2) + (rand() % ((getmaxy(stdscr) / 2) - 4));
     if (_y < 2)
         _y = 2;
     _color = (rand() % 4) + 2;
@@ -60,6 +63,11 @@ int Drop::getTotalDrops() const
     return _totalDrops;
 }
 
+int Drop::getCoolDown()
+{
+	return _coolDown;
+}
+
 void Drop::setY(int y)
 {
     this->_y = y;
@@ -75,50 +83,102 @@ void Drop::setColor(int color)
     _color = color;
 }
 
-void    decrementX(t_drops * drops)
+void Drop::setCoolDown(int n)
 {
-    for (t_drops *ptr = drops; ptr ; ptr = ptr->next)
-        ptr->drop->setX(ptr->drop->getX() - 1);
+	_coolDown = n;
 }
 
-void    makeFresh(t_drops * drops, int maxX, int maxY, int maxDrops, unsigned char i, unsigned char *timeout)
+void    decrementX(t_drops * drops, t_shots ** shots, Ship & ship)
 {
-    i = 0;
-    for (t_drops *ptr = drops; ptr; ptr = ptr->next)
+    for (t_drops *ptr = drops; ptr ; ptr = ptr->next)
+	{
+		if (ptr->drop->getCoolDown() == 0)
+		{
+			ptr->drop->shoot(shots);
+			ptr->drop->setCoolDown(23);
+		}
+		ptr->drop->setCoolDown(ptr->drop->getCoolDown() - 1);
+		ptr->drop->setX(ptr->drop->getX() - 1);
+		if (ptr->drop->getX() <= ship.getX()
+			&& ptr->drop->getY() == ship.getY())
+		{
+			ship.set_health(ship.get_hitPoints() - 1);
+		}
+	}
+}
+
+void    makeFresh(t_drops ** drops, int maxX, int maxY,
+				  unsigned char i, unsigned char *timeout)
+{
+	(void)maxY;
+	if (i % 20 == 0 && *timeout == 0)
+	{
+		t_drops *tmp = *drops;
+		if (!tmp)
+		{
+			tmp = new t_drops;
+			tmp->drop = new Drop(maxX);
+			tmp->next = NULL;
+		}
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new t_drops;
+		tmp->next->drop = new Drop(maxX);
+		tmp->next->next = NULL;
+	}
+    for (t_drops *ptr = *drops; ptr; ptr = ptr->next)
     {
-        if (ptr->drop->getX() <= 0 && ptr->drop->getTotalDrops() > maxDrops)
-        {
-            if (ptr != drops)
-            {
-                t_drops *tmp = drops;
-                while (tmp->next != ptr)
-                    tmp = tmp->next;
-                t_drops *tmp2 = tmp->next;
-                tmp->next = tmp->next->next;
-                delete tmp2->drop;
-                delete tmp2;
-            }
-            return ;
-        }
-        if (ptr->drop->getX() == 0)
-        {
-            ptr->drop->setX(maxX - 3);
-            ptr->drop->setY(rand() % maxY);
-            if (ptr->drop->getY() < 2)
-                ptr->drop->setY(2);
-            ptr->drop->setColor(rand() % 5 + 1);
-        }
-        if (ptr->drop->getTotalDrops() < maxDrops && i % 20 == 0 && *timeout == 0)
-        {
-            t_drops *tmp = drops;
-            while (tmp->next)
-                tmp = tmp->next;
-            tmp->next = new t_drops;
-            tmp->next->drop = new Drop(maxX, maxY);
-            tmp->next->next = NULL;
-            *timeout = 100;
-        }
+		if (ptr->drop->getX() == 0)
+		{
+			if (ptr == *drops)
+			{
+				t_drops *tmp = ptr;
+				*drops = ptr->next;
+				delete tmp->drop;
+				delete tmp;
+			}
+			else
+			{
+				for (t_drops *ptr2 = *drops; ptr2->next != ptr; ptr = ptr->next)
+				{
+					t_drops *del = ptr2->next;
+					ptr2->next = ptr2->next->next;
+					delete del->drop;
+					delete del;
+				}
+			}
+		}
     }
+
+}
+
+void Drop::shoot(t_shots **shots)
+{
+	t_shots *buff = *shots;
+	if (!*shots)
+	{
+		*shots = new t_shots;
+		t_shots *buff = *shots;
+		buff->shot = new Shot(*this);
+		buff->next = NULL;
+		*shots = buff;
+	}
+	else if (!buff->shot)
+	{
+		buff->shot = new Shot(*this);
+		buff->next = NULL;
+	}
+	else
+	{
+		t_shots *buff = *shots;
+
+		while (buff->next)
+			buff = buff->next;
+
+		buff->next = new t_shots;
+		buff->next->shot = new Shot(*this);
+		buff->next->next = NULL;
+	}
 }
 
 int Drop::_totalDrops = 0;

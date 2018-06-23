@@ -6,11 +6,15 @@
 #define GIT_CPP_SHIP_CLASS_HPP
 
 #include <ncurses.h>
+#include "Shot.class.hpp"
+
+typedef struct s_shots t_shots;
 
 class Ship
 {
 private:
 	unsigned int	_hitPoints;
+	unsigned int	_score;
 	int				_x;
 	int				_y;
 public:
@@ -26,8 +30,18 @@ public:
 	void	setX(int);
 	void	setY(int);
 
+	unsigned int get_score() const;
+	unsigned int get_hitPoints() const;
+	void	set_score(unsigned int score);
+	void	set_health(unsigned int health);
+
+	std::string get_str_hit_points() const;
+	std::string	get_str_score() const;
+
 	Ship    operator++(void);
 	Ship    operator--(void);
+
+	void	shoot(t_shots ** shots);
 };
 
 #endif //GIT_CPP_SHIP_CLASS_HPP
