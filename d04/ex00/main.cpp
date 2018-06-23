@@ -3,7 +3,7 @@
 
 int main(void)
 {
-    Sorcerer robert("Robert", "the Magnificent");
+    Sorcerer robert;
     Victim jim("Jimmy");
     Peon joe("Joe");
     std::cout << robert << jim << joe;

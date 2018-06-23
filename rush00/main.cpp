@@ -1,6 +1,7 @@
 #include <ncurses.h>
 #include <iostream>
 #include "Drop.class.hpp"
+#include "Ship.class.hpp"
 
 #if defined(_WIN32) || defined(_WIN64)
 #include <windows.h>
@@ -30,9 +31,10 @@ int main()
     drops->next = NULL;
     int maxDrops;
     curs_set(0);
+	Ship	*ship = new Ship;
     while ( true )
     {
-        maxDrops  = getmaxx(stdscr) / 20;
+        maxDrops = getmaxx(stdscr) / 20;
         c = getch();
         if (c == 113)
             break ;
@@ -40,13 +42,19 @@ int main()
         printw("Press 'Q' to exit");
         printw("\n%d", maxDrops);
         printw("\n\n%d", drops->drop->getTotalDrops());
+        printw("\n\n\n%d", c);
         decrementX(drops);
+		if (c == 115)
+			ship->setY(ship->getY() + 1);
+		if (c == 119)
+			ship->setY(ship->getY() - 1);
         for (t_drops *ptr = drops; ptr; ptr = ptr->next)
         {
             attron(COLOR_PAIR(ptr->drop->getColor()));
             mvwprintw(stdscr, ptr->drop->getY(), ptr->drop->getX(), "<<<");
             attroff(COLOR_PAIR(ptr->drop->getColor()));
         }
+		mvwprintw(stdscr, ship->getY(), ship->getX(), ">");
         makeFresh(drops, getmaxx(stdscr), getmaxy(stdscr), maxDrops, i, &timeout);
         refresh();
         if (timeout)
