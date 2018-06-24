@@ -77,13 +77,14 @@ void	refreshShots(t_shots **shots)
 	}
 }
 
-void	refreshShotsBack(t_shots **shots, Ship & ship)
+void	refreshShotsBack(t_shots **shots, Ship & ship, bool multiplayer)
 {
 	t_shots	*check = *shots;
 	if (!check || !check->shot)
 		return ;
-	for (t_shots *ptr = *shots; ptr; ptr = ptr->next)
-		ptr->shot->setX(ptr->shot->getX() - 2);
+	if (!multiplayer)
+		for (t_shots *ptr = *shots; ptr; ptr = ptr->next)
+			ptr->shot->setX(ptr->shot->getX() - 2);
 	for (t_shots *ptr = *shots; ptr; ptr = ptr->next)
 	{
 		if (ptr->shot->getX() <= 0)

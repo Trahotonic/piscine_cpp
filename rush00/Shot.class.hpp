@@ -34,7 +34,7 @@ public:
 };
 
 void	refreshShots(t_shots **shots);
-void	refreshShotsBack(t_shots **shots, Ship & ship);
+void	refreshShotsBack(t_shots **shots, Ship & ship, bool multiplayer);
 void	checkCollision(t_shots**, t_drops **, Ship & ship);
 
 #endif //GIT_CPP_SHOT_CLASS_HPP

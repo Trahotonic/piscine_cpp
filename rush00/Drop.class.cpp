@@ -8,7 +8,7 @@
 #include "Ship.class.hpp"
 #include "Shot.class.hpp"
 
-Drop::Drop() : _color(0), _coolDown(rand() % 10 + 1)
+Drop::Drop() : _color(0), _coolDown(20)
 {
 	_x = 0;
 	_y = 0;
@@ -70,14 +70,18 @@ void Drop::setCoolDown(int n)
 	_coolDown = n;
 }
 
-void    decrementX(t_drops ** drops, t_shots ** shots, Ship & ship, Ship * ship2, unsigned int time)
+void    decrementX(t_drops ** drops, t_shots ** shots, Ship & ship, Ship * ship2)
 {
+	int n;
     for (t_drops *ptr = *drops; ptr ; ptr = ptr->next)
 	{
-		if (ptr->drop->getCoolDown() == (int)time)
+		n = rand() % 3000;
+		if (ptr->drop->getCoolDown() <= 0 && n >= 2000 && n <= 2200)
 		{
+			ptr->drop->setCoolDown(20);
 			ptr->drop->shoot(shots);
 		}
+		ptr->drop->setCoolDown(ptr->drop->getCoolDown() - 1);
 		ptr->drop->setX(ptr->drop->getX() - 1);
 		if (ship.get_hitPoints())
 		{

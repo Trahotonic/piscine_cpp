@@ -135,7 +135,24 @@ int main()
 			t2 = clock() / (CLOCKS_PER_SEC / speed);
 			c = getch();
 			if (c == 113)
-				break ;
+			{
+				clear();
+				while (true)
+				{
+					std::string total = "Total " + ship->get_str_score();
+					attron(COLOR_PAIR(1));
+					mvwprintw(stdscr, getmaxy(stdscr) / 2, getmaxx(stdscr) / 2 - 5, "GAME OVER");
+					attroff(COLOR_PAIR(1));
+					mvwprintw(stdscr, getmaxy(stdscr) / 2 + 1, getmaxx(stdscr) / 2 - total.length() / 2 - 1, total.c_str());
+					refresh();
+					c = getch();
+					if (c == 113)
+					{
+						endwin();
+						return 0;
+					}
+				}
+			}
 			clear();
 			printw("Press 'Q' to exit");
 			std::stringstream out;
@@ -206,7 +223,7 @@ int main()
 				mvwprintw(stdscr, getmaxy(stdscr) / 4, j, "_");
 			for (int x = 0; x < getmaxx(stdscr); ++x)
 				mvwprintw(stdscr, (getmaxy(stdscr) / 2 + getmaxy(stdscr) / 4), x, "_");
-			decrementX(&drops, &e_shots, *ship, ship2, i);
+			decrementX(&drops, &e_shots, *ship, ship2);
 			if (c == 115)
 			{
 				if (ship->getY() + 1 < (getmaxy(stdscr) / 2 + getmaxy(stdscr) / 4))
@@ -276,19 +293,19 @@ int main()
 				}
 			}
 			refreshShots(&shots);
-			refreshShotsBack(&e_shots, *ship);
+			refreshShotsBack(&e_shots, *ship, false);
 			checkCollision(&shots, &drops, *ship);
 			if (multiplayer)
 			{
-				refreshShotsBack(&e_shots, *ship2);
+				refreshShotsBack(&e_shots, *ship2, true);
 				checkCollision(&shots, &drops, *ship2);
 			}
 			refresh();
-			if (speed < 60)
-			{
-				if (i % 100 == 0)
-					speed++;
-			}
+//			if (speed < 60)
+//			{
+//				if (i % 100 == 0)
+//					speed++;
+//			}
 			if (timeout)
 				--timeout;
 //			msleep(speed);
