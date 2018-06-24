@@ -21,6 +21,7 @@ int main()
 {
 	srand(time(0));
     initscr();
+	curs_set(0);
     nodelay(stdscr, true);
 	keypad(stdscr, true);
     use_default_colors();
@@ -31,14 +32,38 @@ int main()
     init_pair(4, COLOR_YELLOW, -1);
     init_pair(5, COLOR_GREEN, -1);
     unsigned char i = 0;
-	unsigned int	speed = 30;
+	unsigned int	speed = 10;
     int c;
     unsigned char timeout = 30;
-
+	int color;
+	clock_t t1, t2;
+	t2 = 0;
+	while (true)
+	{
+		t1 = clock() / (CLOCKS_PER_SEC / speed);
+		if (t1 <= t2)
+			continue;
+		t2 = clock() / (CLOCKS_PER_SEC / speed);
+		clear();
+		int col = rand() % 5;
+		attron(COLOR_PAIR(col));
+		mvwprintw(stdscr, getmaxy(stdscr) / 2, getmaxx(stdscr) / 2 - 9, "Press Space to play");
+		attroff(COLOR_PAIR(col));
+		mvwprintw(stdscr, 0, 0, "Press 'Q' to quit");
+		c = getch();
+		if (c == 32)
+			break ;
+		if (c == 113)
+		{
+			endwin();
+			return 0;
+		}
+		refresh();
+	}
+	speed = 30;
     t_drops *drops = new t_drops;
     drops->drop = new Drop(getmaxx(stdscr));
     drops->next = NULL;
-    curs_set(0);
 	Ship	*ship = new Ship;
 	t_shots *shots = new t_shots;
 	shots->shot = NULL;
@@ -46,8 +71,6 @@ int main()
 	t_shots *e_shots = new t_shots;
 	e_shots->shot = NULL;
 	e_shots->next = NULL;
-	clock_t t1, t2;
-	t2 = 0;
     while ( true )
     {
 		t1 = clock() / (CLOCKS_PER_SEC / speed);
@@ -65,7 +88,16 @@ int main()
 			std::string speed_str = s + "%";
 
 			mvwprintw(stdscr, 0, getmaxx(stdscr) / 2, ship->get_str_score().c_str());
-			mvwprintw(stdscr, 1, getmaxx(stdscr) / 2, ship->get_str_hit_points().c_str());
+			if (ship->get_hitPoints() >= 15)
+				color = 5;
+			else if (ship->get_hitPoints() >= 8)
+				color = 4;
+			else
+				color = 1;
+			attron(COLOR_PAIR(color));
+			for (unsigned int k = 0; k < ship->get_hitPoints(); ++k)
+				mvwprintw(stdscr, 1, getmaxx(stdscr) / 2, ship->get_str_hit_points().c_str());
+			attroff(COLOR_PAIR(color));
 			if (speed == 20)
 			{
 				mvwprintw(stdscr, 2, getmaxx(stdscr) / 2, "MAXIMUM SPEED");
@@ -114,14 +146,18 @@ int main()
 				while (true)
 				{
 					clear();
-					mvwprintw(stdscr, getmaxy(stdscr) / 2 ,getmaxx(stdscr) / 2, "GAME OVER");
+					std::string total = "Total " + ship->get_str_score();
+					attron(COLOR_PAIR(1));
+					mvwprintw(stdscr, getmaxy(stdscr) / 2 ,getmaxx(stdscr) / 2 - 5, "GAME OVER");
+					attroff(COLOR_PAIR(1));
+					mvwprintw(stdscr, getmaxy(stdscr) / 2 + 1 ,getmaxx(stdscr) / 2 - total.length() / 2 - 1, total.c_str());
 					refresh();
 					c = getch();
 					if (c == 113)
 					{
 						endwin();
 						system("leaks ft_retro");
-						exit(1);
+						return 0;
 					}
 				}
 			}

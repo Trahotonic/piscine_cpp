@@ -86,7 +86,7 @@ void	refreshShotsBack(t_shots **shots, Ship & ship)
 		ptr->shot->setX(ptr->shot->getX() - 2);
 	for (t_shots *ptr = *shots; ptr; ptr = ptr->next)
 	{
-		if (ptr->shot->getX() == 0)
+		if (ptr->shot->getX() <= 0)
 		{
 			if (ptr == *shots)
 			{

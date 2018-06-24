@@ -106,6 +106,7 @@ void    decrementX(t_drops ** drops, t_shots ** shots, Ship & ship)
 					delete del;
 				}
 			}
+			continue;
 		}
 	}
 }
