@@ -73,6 +73,8 @@ void Drop::setCoolDown(int n)
 void    decrementX(t_drops ** drops, t_shots ** shots, Ship & ship, Ship * ship2)
 {
 	int n;
+	if (!*drops)
+		return ;
     for (t_drops *ptr = *drops; ptr ; ptr = ptr->next)
 	{
 		n = rand() % 3000;
@@ -82,7 +84,8 @@ void    decrementX(t_drops ** drops, t_shots ** shots, Ship & ship, Ship * ship2
 			ptr->drop->shoot(shots);
 		}
 		ptr->drop->setCoolDown(ptr->drop->getCoolDown() - 1);
-		ptr->drop->setX(ptr->drop->getX() - 1);
+		if (ptr->drop->getX() >= 0)
+			ptr->drop->setX(ptr->drop->getX() - 1);
 		if (ship.get_hitPoints())
 		{
 			if ((ptr->drop->getX() <= ship.getX() + 3
@@ -152,11 +155,13 @@ void    makeFresh(t_drops ** drops, int maxX, int maxY,
 {
 	(void)maxY;
 	t_drops *tmp;
+	maxX = getmaxx(stdscr);
+	maxY = getmaxy(stdscr);
 	if (!*drops)
 	{
 		*drops = new t_drops;
 		tmp = *drops;
-		tmp->drop = new Drop(maxX);
+		tmp->drop = new Drop(getmaxx(stdscr));
 		tmp->next = NULL;
 		return ;
 	}
@@ -166,18 +171,18 @@ void    makeFresh(t_drops ** drops, int maxX, int maxY,
 		if (!tmp)
 		{
 			tmp = new t_drops;
-			tmp->drop = new Drop(maxX);
+			tmp->drop = new Drop(getmaxx(stdscr));
 			tmp->next = NULL;
 		}
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = new t_drops;
-		tmp->next->drop = new Drop(maxX);
+		tmp->next->drop = new Drop(getmaxx(stdscr));
 		tmp->next->next = NULL;
 	}
     for (t_drops *ptr = *drops; ptr; ptr = ptr->next)
     {
-		if (ptr->drop->getX() == 0)
+		if (ptr->drop->getX() <= 0)
 		{
 			if (ptr == *drops)
 			{
@@ -228,6 +233,7 @@ void Drop::shoot(t_shots **shots)
 		buff->next->shot = new Shot(*this);
 		buff->next->next = NULL;
 	}
+	system("afplay -v 0.5 ./sounds/shoot_sound.mp3 &");
 }
 
 int Drop::_totalDrops = 0;

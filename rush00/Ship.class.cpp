@@ -73,6 +73,7 @@ void Ship::shoot(t_shots **shots)
 		buff->next->shot = new Shot(*this);
 		buff->next->next = NULL;
 	}
+	system("afplay -v 0.5 ./sounds/blaster-firing.mp3 &");
 }
 
 int Ship::get_score() const {

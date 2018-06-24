@@ -8,6 +8,19 @@
 #include "Ship.class.hpp"
 #include "Shot.class.hpp"
 
+void	print_game_over()
+{
+	int col = rand() % 5;
+	attron(COLOR_PAIR(col));
+	mvwprintw(stdscr, 4 , getmaxx(stdscr) / 2 - 52, "  _______      ___     .___  ___.  _______               ______   ____    ____  _______ .______      ");
+	mvwprintw(stdscr, 5 , getmaxx(stdscr) / 2 - 52, " /  _____|    /   \\    |   \\/   | |   ____|             /  __   \\ \\   \\  /   / |   ____||   _  \\     ");
+	mvwprintw(stdscr, 6 , getmaxx(stdscr) / 2 - 52, "|  |  __     /  ^  \\   |  \\  /  | |  |__               |  |  |  |  \\   \\/   /  |  |__   |  |_)  |    ");
+	mvwprintw(stdscr, 7 , getmaxx(stdscr) / 2 - 52, "|  | |_ |   /  /_ \\ \\  |  |\\/|  | |   __|              |  |  |  |   \\      /   |   __|  |      /    ");
+	mvwprintw(stdscr, 8 , getmaxx(stdscr) / 2 - 52, "|  |__| |  /  _____  \\ |  |  |  | |  |____             |  `--'  |    \\    /    |  |____ |  |\\\\ ----.");
+	mvwprintw(stdscr, 9 , getmaxx(stdscr) / 2 - 52, " \\______| /__/     \\__\\|__|  |__| |_______|             \\______/      \\__/     |_______|| _|`._____|");
+	attroff(COLOR_PAIR(col));
+}
+
 int main()
 {
 	srand(time(0));
@@ -38,6 +51,7 @@ int main()
 	};
 	clock_t t1, t2;
 	t2 = 0;
+	system("afplay ./sounds/star-wars-cantina-song.mp3 &");
 	while (true)
 	{
 		t1 = clock() / (CLOCKS_PER_SEC / speed);
@@ -104,6 +118,7 @@ int main()
 		}
 		if (c == 113)
 		{
+			system("killall afplay");
 			endwin();
 			return 0;
 		}
@@ -127,11 +142,18 @@ int main()
 	t_shots *e_shots = new t_shots;
 	e_shots->shot = NULL;
 	e_shots->next = NULL;
+	int	maxX = getmaxx(stdscr);
+	int freeze = 0;
     while ( true )
     {
 		t1 = clock() / (CLOCKS_PER_SEC / speed);
 		if (t1 > t2)
 		{
+			if (maxX != getmaxx(stdscr))
+			{
+				freeze = 60;
+				maxX = getmaxx(stdscr);
+			}
 			t2 = clock() / (CLOCKS_PER_SEC / speed);
 			c = getch();
 			if (c == 113)
@@ -139,24 +161,26 @@ int main()
 				clear();
 				while (true)
 				{
+					clear();
 					std::string total = "Total " + ship->get_str_score();
 					attron(COLOR_PAIR(1));
-					mvwprintw(stdscr, getmaxy(stdscr) / 2, getmaxx(stdscr) / 2 - 5, "GAME OVER");
+					print_game_over();
 					attroff(COLOR_PAIR(1));
 					mvwprintw(stdscr, getmaxy(stdscr) / 2 + 1, getmaxx(stdscr) / 2 - total.length() / 2 - 1, total.c_str());
 					refresh();
 					c = getch();
 					if (c == 113)
 					{
+						system("killall afplay");
 						endwin();
 						return 0;
 					}
 				}
 			}
 			clear();
-			printw("Press 'Q' to exit");
+			printw("Press 'Q' to exit, %d", freeze);
 			std::stringstream out;
-			out << (int)(((float)(50 - speed) / 50) * 100);
+			out << (int)(((float)(speed) / 60) * 100);
 			std::string s = "Speed: " + out.str();
 			std::string speed_str = s + "%";
 			mvwprintw(stdscr, 0, getmaxx(stdscr) / 2, ship->get_str_score().c_str());
@@ -214,7 +238,7 @@ int main()
 					attroff(COLOR_PAIR(color));
 				}
 			}
-			if (speed == 20)
+			if (speed == 70)
 				mvwprintw(stdscr, 3, getmaxx(stdscr) / 2, "MAXIMUM SPEED");
 			else
 				mvwprintw(stdscr, 3, getmaxx(stdscr) / 2, speed_str.c_str());
@@ -226,22 +250,22 @@ int main()
 			decrementX(&drops, &e_shots, *ship, ship2);
 			if (c == 115)
 			{
-				if (ship->getY() + 1 < (getmaxy(stdscr) / 2 + getmaxy(stdscr) / 4))
+				if (ship->getY() + 2 < (getmaxy(stdscr) / 2 + getmaxy(stdscr) / 4))
 					ship->setY(ship->getY() + 1);
 			}
 			if (c == 119)
 			{
-				if (ship->getY() - 1 > getmaxy(stdscr) / 4)
+				if (ship->getY() - 2 > getmaxy(stdscr) / 4)
 					ship->setY(ship->getY() - 1);
 			}
 			if (ship2 && c == KEY_DOWN)
 			{
-				if (ship2->getY() + 1 < (getmaxy(stdscr) / 2 + getmaxy(stdscr) / 4))
+				if (ship2->getY() + 2 < (getmaxy(stdscr) / 2 + getmaxy(stdscr) / 4))
 					ship2->setY(ship2->getY() + 1);
 			}
 			if (ship2 && c == KEY_UP)
 			{
-				if (ship2->getY() - 1 > getmaxy(stdscr) / 4)
+				if (ship2->getY() - 2 > getmaxy(stdscr) / 4)
 					ship2->setY(ship2->getY() - 1);
 			}
 			if (c == 32)
@@ -272,23 +296,55 @@ int main()
 				mvwprintw(stdscr, ship2->getY(), ship2->getX(), "-ooo");
 				mvwprintw(stdscr, ship2->getY() + 1, ship2->getX(), "--");
 			}
-			makeFresh(&drops, getmaxx(stdscr), getmaxy(stdscr), i, &timeout);
-			if (ship->get_hitPoints() == 0 && ship2 && ship2->get_hitPoints() == 0)
+			if (freeze <= 0)
+				makeFresh(&drops, getmaxx(stdscr), getmaxy(stdscr), i, &timeout);
+			if (multiplayer)
 			{
-				clear();
-				while (true)
+				if (ship->get_hitPoints() == 0 && ship2 && ship2->get_hitPoints() == 0)
 				{
-					std::string total = "Total " + ship->get_str_score();
-					attron(COLOR_PAIR(1));
-					mvwprintw(stdscr, getmaxy(stdscr) / 2, getmaxx(stdscr) / 2 - 5, "GAME OVER");
-					attroff(COLOR_PAIR(1));
-					mvwprintw(stdscr, getmaxy(stdscr) / 2 + 1, getmaxx(stdscr) / 2 - total.length() / 2 - 1, total.c_str());
-					refresh();
-					c = getch();
-					if (c == 113)
+					clear();
+					while (true)
 					{
-						endwin();
-						return 0;
+						clear();
+						std::string total = "Total " + ship->get_str_score();
+						col = rand() % 5;
+						attron(COLOR_PAIR(col));
+						print_game_over();
+						attroff(COLOR_PAIR(col));
+						mvwprintw(stdscr, getmaxy(stdscr) / 2 + 1, getmaxx(stdscr) / 2 - total.length() / 2 - 1, total.c_str());
+						refresh();
+						c = getch();
+						if (c == 113)
+						{
+							system("killall afplay");
+							endwin();
+							return 0;
+						}
+					}
+				}
+			}
+			else
+			{
+				if (ship->get_hitPoints() == 0)
+				{
+					clear();
+					while (true)
+					{
+						clear();
+						std::string total = "Total " + ship->get_str_score();
+						col = rand() % 5;
+						attron(COLOR_PAIR(col));
+						print_game_over();
+						attroff(COLOR_PAIR(col));
+						mvwprintw(stdscr, getmaxy(stdscr) / 2 + 1, getmaxx(stdscr) / 2 - total.length() / 2 - 1, total.c_str());
+						refresh();
+						c = getch();
+						if (c == 113)
+						{
+							system("killall afplay");
+							endwin();
+							return 0;
+						}
 					}
 				}
 			}
@@ -301,17 +357,12 @@ int main()
 				checkCollision(&shots, &drops, *ship2);
 			}
 			refresh();
-//			if (speed < 60)
-//			{
-//				if (i % 100 == 0)
-//					speed++;
-//			}
+
 			if (timeout)
 				--timeout;
-//			msleep(speed);
 			i++;
+			if (freeze)
+				freeze--;
 		}
     }
-    endwin();
-    return 0;
 }
