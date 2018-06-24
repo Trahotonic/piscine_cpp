@@ -111,7 +111,8 @@ void	refreshShotsBack(t_shots **shots, Ship & ship)
 				return ;
 			}
 		}
-		if (ptr->shot->getY() == ship.getY() && (ptr->shot->getX() == ship.getX() || ptr->shot->getX() + 1 == ship.getX()))
+		if (ptr->shot->getY() == ship.getY() &&
+			(ptr->shot->getX() == ship.getX() || ptr->shot->getX() + 1 == ship.getX()))
 		{
 			ship.set_health(ship.get_hitPoints() - 1);
 		}

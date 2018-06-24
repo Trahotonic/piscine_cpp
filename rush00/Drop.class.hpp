@@ -46,7 +46,7 @@ public:
 	void	shoot(t_shots ** shots);
 };
 
-void    decrementX(t_drops*, t_shots**, Ship & ship);
+void    decrementX(t_drops**, t_shots**, Ship & ship);
 void    makeFresh(t_drops**, int maxX, int maxY,
 				  unsigned char i, unsigned char *timeout);
 

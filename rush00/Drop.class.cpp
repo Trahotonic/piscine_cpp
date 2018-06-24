@@ -70,9 +70,9 @@ void Drop::setCoolDown(int n)
 	_coolDown = n;
 }
 
-void    decrementX(t_drops * drops, t_shots ** shots, Ship & ship)
+void    decrementX(t_drops ** drops, t_shots ** shots, Ship & ship)
 {
-    for (t_drops *ptr = drops; ptr ; ptr = ptr->next)
+    for (t_drops *ptr = *drops; ptr ; ptr = ptr->next)
 	{
 		if (ptr->drop->getCoolDown() <= 0)
 		{
@@ -85,6 +85,23 @@ void    decrementX(t_drops * drops, t_shots ** shots, Ship & ship)
 			&& ptr->drop->getY() == ship.getY())
 		{
 			ship.set_health(ship.get_hitPoints() - 1);
+			if (ptr == *drops)
+			{
+				t_drops *tmp = ptr;
+				*drops = ptr->next;
+				delete tmp->drop;
+				delete tmp;
+			}
+			else
+			{
+				for (t_drops *ptr2 = *drops; ptr2->next != ptr; ptr = ptr->next)
+				{
+					t_drops *del = ptr2->next;
+					ptr2->next = ptr2->next->next;
+					delete del->drop;
+					delete del;
+				}
+			}
 		}
 	}
 }

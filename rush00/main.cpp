@@ -73,7 +73,7 @@ int main()
 			mvwprintw(stdscr, getmaxy(stdscr) / 4, j, "_");
 		for (int x = 0; x < getmaxx(stdscr); ++x)
 			mvwprintw(stdscr, (getmaxy(stdscr) / 2 + getmaxy(stdscr) / 4), x, "_");
-        decrementX(drops, &e_shots, *ship);
+        decrementX(&drops, &e_shots, *ship);
 		if (c == 115 || c == KEY_DOWN)
 		{
 			if (ship->getY() + 1 < (getmaxy(stdscr) / 2 + getmaxy(stdscr) / 4))
@@ -113,6 +113,7 @@ int main()
 				c = getch();
 				if (c == 113)
 				{
+					endwin();
 					system("leaks ft_retro");
 					exit(1);
 				}
@@ -121,8 +122,6 @@ int main()
 		refreshShots(&shots);
 		refreshShotsBack(&e_shots, *ship);
 		checkCollision(&shots, &drops, *ship);
-//		checkDropBulletCollision(&e_shots, &drops, *ship);
-//		checkShipBulletCollision(&shots, &drops, *ship);
         refresh();
 		if (speed > 20)
 		{
