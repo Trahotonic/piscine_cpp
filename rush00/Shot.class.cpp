@@ -15,7 +15,7 @@ Shot::Shot(Shot const &src)
 	*this = src;
 }
 
-Shot::Shot(Ship const &src) : _x(1), _y(src.getY())
+Shot::Shot(Ship const &src) : _x(5), _y(src.getY())
 {
 }
 

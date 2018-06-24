@@ -1,5 +1,6 @@
 #include <ncurses.h>
 #include <iostream>
+#include <cstdlib>
 #include "Drop.class.hpp"
 #include "Ship.class.hpp"
 #include "Shot.class.hpp"
@@ -16,8 +17,10 @@
 
 int main()
 {
+	srand(time(0));
     initscr();
     nodelay(stdscr, true);
+	keypad(stdscr, true);
     use_default_colors();
     start_color();
     init_pair(1, COLOR_RED, -1);
@@ -71,12 +74,12 @@ int main()
 		for (int x = 0; x < getmaxx(stdscr); ++x)
 			mvwprintw(stdscr, (getmaxy(stdscr) / 2 + getmaxy(stdscr) / 4), x, "_");
         decrementX(drops, &e_shots, *ship);
-		if (c == 115)
+		if (c == 115 || c == KEY_DOWN)
 		{
 			if (ship->getY() + 1 < (getmaxy(stdscr) / 2 + getmaxy(stdscr) / 4))
 				ship->setY(ship->getY() + 1);
 		}
-		if (c == 119)
+		if (c == 119 || c == KEY_UP)
 		{
 			if (ship->getY() - 1 > getmaxy(stdscr) / 4)
 				ship->setY(ship->getY() - 1);
@@ -96,7 +99,9 @@ int main()
 		if (e_shots && e_shots->shot)
 			for (t_shots *ptr = e_shots; ptr; ptr = ptr->next)
 				mvwprintw(stdscr, ptr->shot->getY(), ptr->shot->getX(), "*");
-		mvwprintw(stdscr, ship->getY(), ship->getX(), ">");
+		mvwprintw(stdscr, ship->getY() - 1, ship->getX(), ":O\\");
+		mvwprintw(stdscr, ship->getY(), ship->getX(), ":>>>");
+		mvwprintw(stdscr, ship->getY() + 1, ship->getX(), ":O/");
         makeFresh(&drops, getmaxx(stdscr), getmaxy(stdscr), i, &timeout);
 		if (ship->get_hitPoints() == 0)
 		{

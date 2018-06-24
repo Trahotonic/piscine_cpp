@@ -3,6 +3,7 @@
 //
 
 #include <ncurses.h>
+#include <cstdlib>
 #include "Drop.class.hpp"
 #include "Ship.class.hpp"
 #include "Shot.class.hpp"
@@ -15,7 +16,6 @@ Drop::Drop() : _y(0), _x(0), _color(0), _coolDown(23)
 Drop::Drop(int maxX)
 {
     Drop::_totalDrops++;
-    srand(time(0));
 
     _x = maxX - 3;
 	_y = (getmaxy(stdscr) / 4 + 2) + (rand() % ((getmaxy(stdscr) / 2) - 4));
@@ -92,10 +92,10 @@ void    decrementX(t_drops * drops, t_shots ** shots, Ship & ship)
 {
     for (t_drops *ptr = drops; ptr ; ptr = ptr->next)
 	{
-		if (ptr->drop->getCoolDown() == 0)
+		if (ptr->drop->getCoolDown() <= 0)
 		{
 			ptr->drop->shoot(shots);
-			ptr->drop->setCoolDown(23);
+			ptr->drop->setCoolDown(30);
 		}
 		ptr->drop->setCoolDown(ptr->drop->getCoolDown() - 1);
 		ptr->drop->setX(ptr->drop->getX() - 1);
