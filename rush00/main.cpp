@@ -12,13 +12,35 @@ void	print_game_over()
 {
 	int col = rand() % 5;
 	attron(COLOR_PAIR(col));
-	mvwprintw(stdscr, 4 , getmaxx(stdscr) / 2 - 52, "  _______      ___     .___  ___.  _______               ______   ____    ____  _______ .______      ");
-	mvwprintw(stdscr, 5 , getmaxx(stdscr) / 2 - 52, " /  _____|    /   \\    |   \\/   | |   ____|             /  __   \\ \\   \\  /   / |   ____||   _  \\     ");
-	mvwprintw(stdscr, 6 , getmaxx(stdscr) / 2 - 52, "|  |  __     /  ^  \\   |  \\  /  | |  |__               |  |  |  |  \\   \\/   /  |  |__   |  |_)  |    ");
-	mvwprintw(stdscr, 7 , getmaxx(stdscr) / 2 - 52, "|  | |_ |   /  /_ \\ \\  |  |\\/|  | |   __|              |  |  |  |   \\      /   |   __|  |      /    ");
-	mvwprintw(stdscr, 8 , getmaxx(stdscr) / 2 - 52, "|  |__| |  /  _____  \\ |  |  |  | |  |____             |  `--'  |    \\    /    |  |____ |  |\\\\ ----.");
-	mvwprintw(stdscr, 9 , getmaxx(stdscr) / 2 - 52, " \\______| /__/     \\__\\|__|  |__| |_______|             \\______/      \\__/     |_______|| _|`._____|");
+	mvwprintw(stdscr, 4 , getmaxx(stdscr) / 2 - 50, "  _______      ___     .___  ___.  _______           ______   ____    ____  _______ .______      ");
+	mvwprintw(stdscr, 5 , getmaxx(stdscr) / 2 - 50, " /  _____|    /   \\    |   \\/   | |   ____|         /  __   \\ \\   \\  /   / |   ____||   _  \\     ");
+	mvwprintw(stdscr, 6 , getmaxx(stdscr) / 2 - 50, "|  |  __     /  ^  \\   |  \\  /  | |  |__           |  |  |  |  \\   \\/   /  |  |__   |  |_)  |    ");
+	mvwprintw(stdscr, 7 , getmaxx(stdscr) / 2 - 50, "|  | |_ |   /  /_ \\ \\  |  |\\/|  | |   __|          |  |  |  |   \\      /   |   __|  |      /    ");
+	mvwprintw(stdscr, 8 , getmaxx(stdscr) / 2 - 50, "|  |__| |  /  _____  \\ |  |  |  | |  |____         |  `--'  |    \\    /    |  |____ |  |\\\\ ----.");
+	mvwprintw(stdscr, 9 , getmaxx(stdscr) / 2 - 50, " \\______| /__/     \\__\\|__|  |__| |_______|         \\______/      \\__/     |_______|| _|`._____|");
 	attroff(COLOR_PAIR(col));
+}
+
+void	print_start_game()
+{
+	int col = rand() % 5;
+	attron(COLOR_PAIR(col));
+	mvwprintw(stdscr, 4 , getmaxx(stdscr) / 2 - 27, "  ______   _______     _        ______  ________  ");
+	mvwprintw(stdscr, 5 , getmaxx(stdscr) / 2 - 27, ".' ____ \\ |_   __ \\   / \\     .' ___  ||_   __  | ");
+	mvwprintw(stdscr, 6 , getmaxx(stdscr) / 2 - 27, "| (___ \\_|  | |__) | / _ \\   / .'   \\_|  | |_ \\_| ");
+	mvwprintw(stdscr, 7 , getmaxx(stdscr) / 2 - 27, " _.____`.   |  ___/ / ___ \\  | |         |  _| _  ");
+	mvwprintw(stdscr, 8 , getmaxx(stdscr) / 2 - 27, "| \\____) | _| |_  _/ /   \\ \\_\\ `.___.'\\ _| |__/ | ");
+	mvwprintw(stdscr, 9 , getmaxx(stdscr) / 2 - 27, " \\______.'|_____||____| |____|`.____ .'|________| ");
+	mvwprintw(stdscr, 10 , getmaxx(stdscr) / 2 - 27, "                                                  ");
+	mvwprintw(stdscr, 11 , getmaxx(stdscr) / 2 - 60, "      _       ______   ____   ____  ________  ____  _____  _________  _____  _____  _______     ________   ______   ");
+	mvwprintw(stdscr, 12 , getmaxx(stdscr) / 2 - 60, "     / \\     |_   _ `.|_  _| |_  _||_   __  ||_   \\|_   _||  _   _  ||_   _||_   _||_   __ \\   |_   __  |.' ____ \\  ");
+	mvwprintw(stdscr, 13 , getmaxx(stdscr) / 2 - 60, "    / _ \\      | | `. \\ \\ \\   / /    | |_ \\_|  |   \\ | |  |_/ | | \\_|  | |    | |    | |__) |    | |_ \\_|| (___ \\_| ");
+	mvwprintw(stdscr, 14 , getmaxx(stdscr) / 2 - 60, "   / ___ \\     | |  | |  \\ \\ / /     |  _| _   | |\\ \\| |      | |      | '    ' |    |  __ /     |  _| _  _.____`.  ");
+	mvwprintw(stdscr, 15 , getmaxx(stdscr) / 2 - 60, " _/ /   \\ \\_  _| |_.' /   \\ ' /     _| |__/ | _| |_\\   |_    _| |_      \\ \\__/ /    _| |  \\ \\_  _| |__/ || \\____) | ");
+	mvwprintw(stdscr, 16 , getmaxx(stdscr) / 2 - 60, "|____| |____||______.'     \\_/     |________||_____|\\____|  |_____|      `.__.'    |____| |___||________| \\______.' ");
+	mvwprintw(stdscr, 17 , getmaxx(stdscr) / 2 - 60, "                                                                                                                    ");
+
+
 }
 
 int main()
@@ -62,6 +84,7 @@ int main()
 		c = getch();
 		col = rand() % 5;
 		attron(COLOR_PAIR(col));
+		print_start_game();
 		mvwprintw(stdscr, getmaxy(stdscr) / 2, getmaxx(stdscr) / 2 - 9, "Press Space to play");
 		attroff(COLOR_PAIR(col));
 		if (c == 109 && multiplayer == false)
@@ -105,7 +128,7 @@ int main()
 			if (menu == 2 && j == 2)
 				attroff(COLOR_PAIR(col));
 		}
-		mvwprintw(stdscr, 0, 0, "Press 'Q' to quit");
+		mvwprintw(stdscr, 0, 0, "Press 'Q' to quit\nPress 'M' to toggle multiplayer");
 		if (c == 32)
 		{
 			if (menu == 0)
@@ -142,21 +165,16 @@ int main()
 	t_shots *e_shots = new t_shots;
 	e_shots->shot = NULL;
 	e_shots->next = NULL;
-	int	maxX = getmaxx(stdscr);
-	int freeze = 0;
+	int	maxX, maxY;
+	getmaxyx(stdscr, maxY, maxX);
     while ( true )
     {
 		t1 = clock() / (CLOCKS_PER_SEC / speed);
 		if (t1 > t2)
 		{
-			if (maxX != getmaxx(stdscr))
-			{
-				freeze = 60;
-				maxX = getmaxx(stdscr);
-			}
 			t2 = clock() / (CLOCKS_PER_SEC / speed);
 			c = getch();
-			if (c == 113)
+			if (c == 113 || getmaxx(stdscr) != maxX || getmaxy(stdscr) != maxY)
 			{
 				clear();
 				while (true)
@@ -166,6 +184,12 @@ int main()
 					attron(COLOR_PAIR(1));
 					print_game_over();
 					attroff(COLOR_PAIR(1));
+					if (getmaxx(stdscr) != maxX || getmaxy(stdscr) != maxY)
+					{
+						attron(COLOR_PAIR(1));
+						mvwprintw(stdscr, 14, getmaxx(stdscr) / 2 - 22, "Shouldn't have changed terminal size ^_^");
+						attroff(COLOR_PAIR(1));
+					}
 					mvwprintw(stdscr, getmaxy(stdscr) / 2 + 1, getmaxx(stdscr) / 2 - total.length() / 2 - 1, total.c_str());
 					refresh();
 					c = getch();
@@ -178,7 +202,10 @@ int main()
 				}
 			}
 			clear();
-			printw("Press 'Q' to exit, %d", freeze);
+			printw("Press 'Q' to exit");
+			attron(COLOR_PAIR(1));
+			mvwprintw(stdscr, 1, 0, "PLEASE DO NOT RESIZE TERMINAL ^_^");
+			attroff(COLOR_PAIR(1));
 			std::stringstream out;
 			out << (int)(((float)(speed) / 60) * 100);
 			std::string s = "Speed: " + out.str();
@@ -296,11 +323,10 @@ int main()
 				mvwprintw(stdscr, ship2->getY(), ship2->getX(), "-ooo");
 				mvwprintw(stdscr, ship2->getY() + 1, ship2->getX(), "--");
 			}
-			if (freeze <= 0)
-				makeFresh(&drops, getmaxx(stdscr), getmaxy(stdscr), i, &timeout);
+			makeFresh(&drops, getmaxx(stdscr), getmaxy(stdscr), i, &timeout);
 			if (multiplayer)
 			{
-				if (ship->get_hitPoints() == 0 && ship2 && ship2->get_hitPoints() == 0)
+				if ((ship->get_hitPoints() <= 0 && ship2 && ship2->get_hitPoints() <= 0) || getmaxx(stdscr) != maxX || getmaxy(stdscr) != maxY)
 				{
 					clear();
 					while (true)
@@ -311,6 +337,12 @@ int main()
 						attron(COLOR_PAIR(col));
 						print_game_over();
 						attroff(COLOR_PAIR(col));
+						if (getmaxx(stdscr) != maxX || getmaxy(stdscr) != maxY)
+						{
+							attron(COLOR_PAIR(1));
+							mvwprintw(stdscr, 14, getmaxx(stdscr) / 2 - 22, "Shouldn't have changed terminal size ^_^");
+							attroff(COLOR_PAIR(1));
+						}
 						mvwprintw(stdscr, getmaxy(stdscr) / 2 + 1, getmaxx(stdscr) / 2 - total.length() / 2 - 1, total.c_str());
 						refresh();
 						c = getch();
@@ -325,7 +357,7 @@ int main()
 			}
 			else
 			{
-				if (ship->get_hitPoints() == 0)
+				if (ship->get_hitPoints() == 0 || getmaxx(stdscr) != maxX || getmaxy(stdscr) != maxY)
 				{
 					clear();
 					while (true)
@@ -336,6 +368,12 @@ int main()
 						attron(COLOR_PAIR(col));
 						print_game_over();
 						attroff(COLOR_PAIR(col));
+						if (getmaxx(stdscr) != maxX || getmaxy(stdscr) != maxY)
+						{
+							attron(COLOR_PAIR(1));
+							mvwprintw(stdscr, 14, getmaxx(stdscr) / 2 - 22, "Shouldn't have changed terminal size ^_^");
+							attroff(COLOR_PAIR(1));
+						}
 						mvwprintw(stdscr, getmaxy(stdscr) / 2 + 1, getmaxx(stdscr) / 2 - total.length() / 2 - 1, total.c_str());
 						refresh();
 						c = getch();
@@ -361,8 +399,6 @@ int main()
 			if (timeout)
 				--timeout;
 			i++;
-			if (freeze)
-				freeze--;
 		}
     }
 }

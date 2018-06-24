@@ -83,7 +83,8 @@ void    decrementX(t_drops ** drops, t_shots ** shots, Ship & ship, Ship * ship2
 			ptr->drop->setCoolDown(20);
 			ptr->drop->shoot(shots);
 		}
-		ptr->drop->setCoolDown(ptr->drop->getCoolDown() - 1);
+		if (ptr->drop->getCoolDown() <= 0)
+			ptr->drop->setCoolDown(ptr->drop->getCoolDown() - 1);
 		if (ptr->drop->getX() >= 0)
 			ptr->drop->setX(ptr->drop->getX() - 1);
 		if (ship.get_hitPoints())

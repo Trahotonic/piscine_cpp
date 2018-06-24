@@ -49,6 +49,8 @@ Ship Ship::operator--()
 void Ship::shoot(t_shots **shots)
 {
 	t_shots *buff = *shots;
+	if (_hitPoints <= 0)
+		return ;
 	if (!*shots)
 	{
 		*shots = new t_shots;
