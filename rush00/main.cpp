@@ -142,7 +142,6 @@ int main()
 			out << (int)(((float)(50 - speed) / 50) * 100);
 			std::string s = "Speed: " + out.str();
 			std::string speed_str = s + "%";
-
 			mvwprintw(stdscr, 0, getmaxx(stdscr) / 2, ship->get_str_score().c_str());
 			if (!multiplayer)
 			{
@@ -207,7 +206,7 @@ int main()
 				mvwprintw(stdscr, getmaxy(stdscr) / 4, j, "_");
 			for (int x = 0; x < getmaxx(stdscr); ++x)
 				mvwprintw(stdscr, (getmaxy(stdscr) / 2 + getmaxy(stdscr) / 4), x, "_");
-			decrementX(&drops, &e_shots, *ship, ship2);
+			decrementX(&drops, &e_shots, *ship, ship2, i);
 			if (c == 115)
 			{
 				if (ship->getY() + 1 < (getmaxy(stdscr) / 2 + getmaxy(stdscr) / 4))
@@ -230,7 +229,7 @@ int main()
 			}
 			if (c == 32)
 				ship->shoot(&shots);
-			if (c == '\n')
+			if (ship2 && c == '\n')
 				ship2->shoot(&shots);
 			for (t_drops *ptr = drops; ptr; ptr = ptr->next)
 			{
@@ -264,9 +263,9 @@ int main()
 				{
 					std::string total = "Total " + ship->get_str_score();
 					attron(COLOR_PAIR(1));
-					mvwprintw(stdscr, getmaxy(stdscr) / 2 ,getmaxx(stdscr) / 2 - 5, "GAME OVER");
+					mvwprintw(stdscr, getmaxy(stdscr) / 2, getmaxx(stdscr) / 2 - 5, "GAME OVER");
 					attroff(COLOR_PAIR(1));
-					mvwprintw(stdscr, getmaxy(stdscr) / 2 + 1 ,getmaxx(stdscr) / 2 - total.length() / 2 - 1, total.c_str());
+					mvwprintw(stdscr, getmaxy(stdscr) / 2 + 1, getmaxx(stdscr) / 2 - total.length() / 2 - 1, total.c_str());
 					refresh();
 					c = getch();
 					if (c == 113)

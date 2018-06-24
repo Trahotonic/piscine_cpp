@@ -8,7 +8,7 @@
 #include "Ship.class.hpp"
 #include "Shot.class.hpp"
 
-Drop::Drop() : _color(0), _coolDown(23)
+Drop::Drop() : _color(0), _coolDown(rand() % 10 + 1)
 {
 	_x = 0;
 	_y = 0;
@@ -70,16 +70,14 @@ void Drop::setCoolDown(int n)
 	_coolDown = n;
 }
 
-void    decrementX(t_drops ** drops, t_shots ** shots, Ship & ship, Ship * ship2)
+void    decrementX(t_drops ** drops, t_shots ** shots, Ship & ship, Ship * ship2, unsigned int time)
 {
     for (t_drops *ptr = *drops; ptr ; ptr = ptr->next)
 	{
-		if (ptr->drop->getCoolDown() <= 0)
+		if (ptr->drop->getCoolDown() == (int)time)
 		{
 			ptr->drop->shoot(shots);
-			ptr->drop->setCoolDown(30);
 		}
-		ptr->drop->setCoolDown(ptr->drop->getCoolDown() - 1);
 		ptr->drop->setX(ptr->drop->getX() - 1);
 		if (ship.get_hitPoints())
 		{
@@ -149,9 +147,18 @@ void    makeFresh(t_drops ** drops, int maxX, int maxY,
 				  unsigned char i, unsigned char *timeout)
 {
 	(void)maxY;
+	t_drops *tmp;
+	if (!*drops)
+	{
+		*drops = new t_drops;
+		tmp = *drops;
+		tmp->drop = new Drop(maxX);
+		tmp->next = NULL;
+		return ;
+	}
 	if (i % 20 == 0 && *timeout <= 0)
 	{
-		t_drops *tmp = *drops;
+		tmp = *drops;
 		if (!tmp)
 		{
 			tmp = new t_drops;
