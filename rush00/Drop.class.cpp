@@ -114,7 +114,7 @@ void    makeFresh(t_drops ** drops, int maxX, int maxY,
 				  unsigned char i, unsigned char *timeout)
 {
 	(void)maxY;
-	if (i % 20 == 0 && *timeout == 0)
+	if (i % 20 == 0 && *timeout <= 0)
 	{
 		t_drops *tmp = *drops;
 		if (!tmp)

@@ -111,10 +111,36 @@ void	refreshShotsBack(t_shots **shots, Ship & ship)
 				return ;
 			}
 		}
-		if (ptr->shot->getY() == ship.getY() &&
-			(ptr->shot->getX() <= ship.getX() + 2))
+		if ((ptr->shot->getY() == ship.getY() &&
+			(ptr->shot->getX() <= ship.getX() + 3)) ||
+				((ptr->shot->getY() == ship.getY() - 1 &&
+				 (ptr->shot->getX() <= ship.getX() + 3))) ||
+				(((ptr->shot->getY() == ship.getY() + 1 &&
+				  (ptr->shot->getX() <= ship.getX() + 3)))))
 		{
 			ship.set_health(ship.get_hitPoints() - 1);
+			if (ptr == *shots)
+			{
+				t_shots *tmp = ptr;
+				*shots = ptr->next;
+				delete tmp->shot;
+				delete tmp;
+				return ;
+			}
+			else
+			{
+				t_shots *ptr2 = *shots;
+				while (ptr2->next != ptr && ptr2->next)
+					ptr2 = ptr2->next;
+				t_shots *del = ptr2->next;
+				if (ptr2->next->next)
+					ptr2->next = ptr2->next->next;
+				else
+					ptr2->next = NULL;
+				delete del->shot;
+				delete del;
+				return ;
+			}
 		}
 	}
 }

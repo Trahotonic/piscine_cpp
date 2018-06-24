@@ -31,7 +31,7 @@ int main()
     init_pair(4, COLOR_YELLOW, -1);
     init_pair(5, COLOR_GREEN, -1);
     unsigned char i = 0;
-	unsigned int	speed = 50;
+	unsigned int	speed = 30;
     int c;
     unsigned char timeout = 30;
 
@@ -50,17 +50,15 @@ int main()
 	t2 = 0;
     while ( true )
     {
-		t1 = clock() / (CLOCKS_PER_SEC / 50);
+		t1 = clock() / (CLOCKS_PER_SEC / speed);
 		if (t1 > t2)
 		{
-			t2 = clock() / (CLOCKS_PER_SEC / 50);
+			t2 = clock() / (CLOCKS_PER_SEC / speed);
 			c = getch();
 			if (c == 113)
 				break ;
 			clear();
 			printw("Press 'Q' to exit");
-			printw("\n\n%d", getmaxy(stdscr));
-			printw("\n\n\n%d", c);
 			std::stringstream out;
 			out << (int)(((float)(50 - speed) / 50) * 100);
 			std::string s = "Speed: " + out.str();
@@ -131,10 +129,10 @@ int main()
 			refreshShotsBack(&e_shots, *ship);
 			checkCollision(&shots, &drops, *ship);
 			refresh();
-			if (speed > 20)
+			if (speed < 60)
 			{
 				if (i % 100 == 0)
-					speed--;
+					speed++;
 			}
 			if (timeout)
 				--timeout;
