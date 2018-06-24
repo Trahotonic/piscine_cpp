@@ -13,20 +13,21 @@ typedef struct s_shots t_shots;
 class Ship : public Base
 {
 private:
-	unsigned int	_hitPoints;
-	unsigned int	_score;
+	int	_hitPoints;
+	int	_score;
 public:
 	Ship(void);
 	Ship(Ship const & src);
+	Ship(int y);
 
 	Ship	&operator=(Ship const & src);
 
 	~Ship(void);
 
-	unsigned int get_score() const;
-	unsigned int get_hitPoints() const;
-	void	set_score(unsigned int score);
-	void	set_health(unsigned int health);
+	int get_score() const;
+	int get_hitPoints() const;
+	void	set_score(int score);
+	void	set_health(int health);
 
 	std::string get_str_hit_points() const;
 	std::string	get_str_score() const;

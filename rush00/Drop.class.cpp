@@ -70,7 +70,7 @@ void Drop::setCoolDown(int n)
 	_coolDown = n;
 }
 
-void    decrementX(t_drops ** drops, t_shots ** shots, Ship & ship)
+void    decrementX(t_drops ** drops, t_shots ** shots, Ship & ship, Ship * ship2)
 {
     for (t_drops *ptr = *drops; ptr ; ptr = ptr->next)
 	{
@@ -81,32 +81,66 @@ void    decrementX(t_drops ** drops, t_shots ** shots, Ship & ship)
 		}
 		ptr->drop->setCoolDown(ptr->drop->getCoolDown() - 1);
 		ptr->drop->setX(ptr->drop->getX() - 1);
-		if ((ptr->drop->getX() <= ship.getX() + 3
-			&& ptr->drop->getY() == ship.getY()) ||
+		if (ship.get_hitPoints())
+		{
+			if ((ptr->drop->getX() <= ship.getX() + 3
+				 && ptr->drop->getY() == ship.getY()) ||
 				(ptr->drop->getX() <= ship.getX() + 2
 				 && ptr->drop->getY() == ship.getY() - 1) ||
 				(ptr->drop->getX() <= ship.getX() + 2
 				 && ptr->drop->getY() == ship.getY() + 1))
-		{
-			ship.set_health(ship.get_hitPoints() - 1);
-			if (ptr == *drops)
 			{
-				t_drops *tmp = ptr;
-				*drops = ptr->next;
-				delete tmp->drop;
-				delete tmp;
-			}
-			else
-			{
-				for (t_drops *ptr2 = *drops; ptr2->next != ptr; ptr = ptr->next)
+				ship.set_health(ship.get_hitPoints() - 1);
+				if (ptr == *drops)
 				{
-					t_drops *del = ptr2->next;
-					ptr2->next = ptr2->next->next;
-					delete del->drop;
-					delete del;
+					t_drops *tmp = ptr;
+					*drops = ptr->next;
+					delete tmp->drop;
+					delete tmp;
 				}
+				else
+				{
+					for (t_drops *ptr2 = *drops; ptr2->next != ptr; ptr = ptr->next)
+					{
+						t_drops *del = ptr2->next;
+						ptr2->next = ptr2->next->next;
+						delete del->drop;
+						delete del;
+					}
+				}
+				if (!ship2)
+					continue;
 			}
-			continue;
+		}
+		if (ship2)
+		{
+			if ((ptr->drop->getX() <= ship2->getX() + 3
+				 && ptr->drop->getY() == ship2->getY()) ||
+				(ptr->drop->getX() <= ship2->getX() + 2
+				 && ptr->drop->getY() == ship2->getY() - 1) ||
+				(ptr->drop->getX() <= ship2->getX() + 2
+				 && ptr->drop->getY() == ship2->getY() + 1))
+			{
+				ship2->set_health(ship2->get_hitPoints() - 1);
+				if (ptr == *drops)
+				{
+					t_drops *tmp = ptr;
+					*drops = ptr->next;
+					delete tmp->drop;
+					delete tmp;
+				}
+				else
+				{
+					for (t_drops *ptr2 = *drops; ptr2->next != ptr; ptr = ptr->next)
+					{
+						t_drops *del = ptr2->next;
+						ptr2->next = ptr2->next->next;
+						delete del->drop;
+						delete del;
+					}
+				}
+				continue;
+			}
 		}
 	}
 }

@@ -17,6 +17,12 @@ Ship::Ship(Ship const &src)
 	*this = src;
 }
 
+Ship::Ship(int y) : _hitPoints(25), _score(0)
+{
+	_y = y;
+	_x = 0;
+}
+
 Ship& Ship::operator=(Ship const &src)
 {
 	_hitPoints = src._hitPoints;
@@ -69,11 +75,11 @@ void Ship::shoot(t_shots **shots)
 	}
 }
 
-unsigned int Ship::get_score() const {
+int Ship::get_score() const {
 	return this->_score;
 }
 
-void Ship::set_score(unsigned int score) {
+void Ship::set_score(int score) {
 	this->_score = score;
 }
 
@@ -84,7 +90,7 @@ std::string Ship::get_str_score() const {
 	return s;
 }
 
-unsigned int Ship::get_hitPoints() const {
+int Ship::get_hitPoints() const {
 	return this->_hitPoints;
 }
 
@@ -94,6 +100,6 @@ std::string Ship::get_str_hit_points() const {
 	std::string s = "Remaining health: " + out.str();
 	return s;
 }
-void Ship::set_health(unsigned int health) {
+void Ship::set_health(int health) {
 	this->_hitPoints = health;
 }
