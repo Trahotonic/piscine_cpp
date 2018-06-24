@@ -86,7 +86,7 @@ void	refreshShotsBack(t_shots **shots, Ship & ship)
 		ptr->shot->setX(ptr->shot->getX() - 2);
 	for (t_shots *ptr = *shots; ptr; ptr = ptr->next)
 	{
-		if (ptr->shot->getX() == getmaxx(stdscr))
+		if (ptr->shot->getX() == 0)
 		{
 			if (ptr == *shots)
 			{
@@ -112,7 +112,7 @@ void	refreshShotsBack(t_shots **shots, Ship & ship)
 			}
 		}
 		if (ptr->shot->getY() == ship.getY() &&
-			(ptr->shot->getX() == ship.getX() || ptr->shot->getX() + 1 == ship.getX()))
+			(ptr->shot->getX() <= ship.getX() + 2))
 		{
 			ship.set_health(ship.get_hitPoints() - 1);
 		}
