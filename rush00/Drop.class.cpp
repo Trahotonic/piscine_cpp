@@ -82,7 +82,11 @@ void    decrementX(t_drops ** drops, t_shots ** shots, Ship & ship)
 		ptr->drop->setCoolDown(ptr->drop->getCoolDown() - 1);
 		ptr->drop->setX(ptr->drop->getX() - 1);
 		if ((ptr->drop->getX() <= ship.getX() + 3
-			&& ptr->drop->getY() == ship.getY()))
+			&& ptr->drop->getY() == ship.getY()) ||
+				(ptr->drop->getX() <= ship.getX() + 2
+				 && ptr->drop->getY() == ship.getY() - 1) ||
+				(ptr->drop->getX() <= ship.getX() + 2
+				 && ptr->drop->getY() == ship.getY() + 1))
 		{
 			ship.set_health(ship.get_hitPoints() - 1);
 			if (ptr == *drops)
