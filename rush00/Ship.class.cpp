@@ -6,8 +6,11 @@
 #include "Ship.class.hpp"
 #include "Shot.class.hpp"
 
-Ship::Ship() : _hitPoints(25), _score(0), _x(0), _y(getmaxy(stdscr) / 2)
-{}
+Ship::Ship() : _hitPoints(25), _score(0)
+{
+	_x = 0;
+	_y = getmaxy(stdscr) / 2;
+}
 
 Ship::Ship(Ship const &src)
 {
@@ -24,27 +27,6 @@ Ship& Ship::operator=(Ship const &src)
 
 Ship::~Ship()
 {}
-
-
-int Ship::getX(void) const
-{
-	return _x;
-}
-
-int Ship::getY(void) const
-{
-	return _y;
-}
-
-void Ship::setX(int newX)
-{
-	_x = newX;
-}
-
-void Ship::setY(int newY)
-{
-	_y = newY;
-}
 
 Ship Ship::operator++()
 {

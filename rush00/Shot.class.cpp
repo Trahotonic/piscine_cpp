@@ -6,8 +6,10 @@
 #include "Ship.class.hpp"
 #include "Drop.class.hpp"
 
-Shot::Shot(void) : _x(1), _y(getmaxy(stdscr))
+Shot::Shot(void)
 {
+	_x = 1;
+	_y = getmaxy(stdscr);
 }
 
 Shot::Shot(Shot const &src)
@@ -15,12 +17,16 @@ Shot::Shot(Shot const &src)
 	*this = src;
 }
 
-Shot::Shot(Ship const &src) : _x(5), _y(src.getY())
+Shot::Shot(Ship const &src)
 {
+	_x = 5;
+	_y = src.getY();
 }
 
-Shot::Shot(Drop const &src) : _x(src.getX() - 1), _y(src.getY())
+Shot::Shot(Drop const &src)
 {
+	_x = src.getX() - 1;
+	_y = src.getY();
 }
 
 Shot& Shot::operator=(Shot const &src)
@@ -32,26 +38,6 @@ Shot& Shot::operator=(Shot const &src)
 
 Shot::~Shot()
 {
-}
-
-int Shot::getX()
-{
-	return _x;
-}
-
-int Shot::getY()
-{
-	return _y;
-}
-
-void Shot::setX(int newX)
-{
-	_x = newX;
-}
-
-void Shot::setY(int newY)
-{
-	_y = newY;
 }
 
 void	refreshShots(t_shots **shots)

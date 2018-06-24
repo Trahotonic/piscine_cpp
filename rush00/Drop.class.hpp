@@ -8,6 +8,7 @@
 #include <time.h>
 #include <iostream>
 #include <random>
+#include "Base.class.hpp"
 #include "Ship.class.hpp"
 
 
@@ -22,11 +23,9 @@ typedef struct      s_drops
     struct s_drops  *next;
 }                   t_drops;
 
-class Drop
+class Drop : public Base
 {
 private:
-    int _y;
-    int _x;
     int _color;
     static int _totalDrops;
 	int _coolDown;
@@ -39,14 +38,10 @@ public:
 
     ~Drop(void);
 
-    int     getX(void) const ;
-    int     getY(void) const ;
     int     getColor(void) const;
     int     getTotalDrops(void) const;
 	int 	getCoolDown(void);
-    void    setX(int);
-    void    setY(int);
-    void    setColor(int);
+	void    setColor(int);
 	void	setCoolDown(int n);
 	void	shoot(t_shots ** shots);
 };

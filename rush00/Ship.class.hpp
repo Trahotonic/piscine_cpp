@@ -10,13 +10,11 @@
 
 typedef struct s_shots t_shots;
 
-class Ship
+class Ship : public Base
 {
 private:
 	unsigned int	_hitPoints;
 	unsigned int	_score;
-	int				_x;
-	int				_y;
 public:
 	Ship(void);
 	Ship(Ship const & src);
@@ -24,11 +22,6 @@ public:
 	Ship	&operator=(Ship const & src);
 
 	~Ship(void);
-
-	int 	getX(void) const;
-	int 	getY(void) const;
-	void	setX(int);
-	void	setY(int);
 
 	unsigned int get_score() const;
 	unsigned int get_hitPoints() const;

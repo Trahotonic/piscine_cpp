@@ -9,7 +9,7 @@ C_NONE = \033[0m
 
 NAME = ft_retro
 
-SRC = Drop.class.cpp Shot.class.cpp Ship.class.cpp main.cpp
+SRC = Base.class.cpp Drop.class.cpp Shot.class.cpp Ship.class.cpp main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

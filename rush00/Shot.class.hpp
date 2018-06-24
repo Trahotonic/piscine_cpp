@@ -18,11 +18,8 @@ typedef struct	s_shots
 	struct s_shots	*next;
 }				t_shots;
 typedef struct	s_drops t_drops;
-class Shot
+class Shot : public Base
 {
-private:
-	int _x;
-	int _y;
 public:
 	Shot(void);
 	Shot(Shot const & src);
@@ -34,11 +31,6 @@ public:
 	Shot	&operator=(Shot const & src);
 
 	~Shot(void);
-
-	int 	getX(void);
-	int 	getY(void);
-	void	setX(int);
-	void	setY(int);
 };
 
 void	refreshShots(t_shots **shots);

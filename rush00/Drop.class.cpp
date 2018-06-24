@@ -8,8 +8,10 @@
 #include "Ship.class.hpp"
 #include "Shot.class.hpp"
 
-Drop::Drop() : _y(0), _x(0), _color(0), _coolDown(23)
+Drop::Drop() : _color(0), _coolDown(23)
 {
+	_x = 0;
+	_y = 0;
     Drop::_totalDrops++;
 }
 
@@ -48,16 +50,6 @@ int Drop::getColor() const
     return _color;
 }
 
-int Drop::getY() const
-{
-    return this->_y;
-}
-
-int Drop::getX() const
-{
-    return this->_x;
-}
-
 int Drop::getTotalDrops() const
 {
     return _totalDrops;
@@ -66,16 +58,6 @@ int Drop::getTotalDrops() const
 int Drop::getCoolDown()
 {
 	return _coolDown;
-}
-
-void Drop::setY(int y)
-{
-    this->_y = y;
-}
-
-void Drop::setX(int x)
-{
-    this->_x = x;
 }
 
 void Drop::setColor(int color)
