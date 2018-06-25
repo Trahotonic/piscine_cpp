@@ -141,4 +141,4 @@ add_executable(git_cpp
         d04/ex04/MiningBarge.hpp
         d04/ex04/StripMiner.cpp
         d04/ex04/StripMiner.hpp
-        rush00 rush00/Ship.class.cpp rush00/Ship.class.hpp rush00/Shot.class.cpp rush00/Shot.class.hpp rush00/Base.class.cpp rush00/Base.class.hpp)
+        rush00 rush00/Ship.class.cpp rush00/Ship.class.hpp rush00/Shot.class.cpp rush00/Shot.class.hpp rush00/Base.class.cpp rush00/Base.class.hpp d05/ex00/Bureaucrat.cpp d05/ex00/Bureaucrat.hpp d05/ex00/main.cpp d05/ex01 d05/ex01/Form.cpp d05/ex01/Form.hpp)
