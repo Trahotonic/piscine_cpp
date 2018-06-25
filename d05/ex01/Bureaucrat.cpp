@@ -59,6 +59,17 @@ std::string Bureaucrat::getName() const
 	return _name;
 }
 
+void Bureaucrat::signForm(Form &src) {
+	if (src.getStatus())
+	{
+		std::cout << _name << " could not sign form because it's already signed\n";
+		return ;
+	}
+	if (src.getSignGrade() < (int)_grade)
+		throw GradeTooLowException();
+	src.beSigned(*this);
+}
+
 Bureaucrat Bureaucrat::operator++(int)
 {
 	setGrade(getGrade() - 1);

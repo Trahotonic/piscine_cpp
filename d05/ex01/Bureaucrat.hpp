@@ -2,10 +2,13 @@
 // Created by Roman KYSLYY on 6/25/18.
 //
 
-#ifndef GIT_CPP_BUREAUCRAT_HPP
-#define GIT_CPP_BUREAUCRAT_HPP
+#ifndef BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 
 # include <iostream>
+# include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -20,6 +23,8 @@ public:
 	Bureaucrat	&operator=(Bureaucrat const & src);
 
 	~Bureaucrat(void);
+
+	void 		signForm(Form & src);
 
 	std::string	getName(void) const;
 	int			getGrade(void) const;

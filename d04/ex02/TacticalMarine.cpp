@@ -9,6 +9,12 @@ TacticalMarine::TacticalMarine(void)
 	std::cout << "Tactical Marine ready for battle\n";
 }
 
+TacticalMarine::TacticalMarine(int n)
+{
+	if (n % 2 == 0)
+		throw("Error");
+}
+
 TacticalMarine::~TacticalMarine(void)
 {
 	std::cout << "Aaargh\n";

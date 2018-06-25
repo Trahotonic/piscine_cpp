@@ -17,6 +17,8 @@ FragTrap::FragTrap(void)
 
 FragTrap::FragTrap(std::string name)
 {
+	if (name == "John")
+        throw "John is bad";
 	_hitPoints = 100;
 	_maxHitPoints = 100;
 	_energyPoints = 100;

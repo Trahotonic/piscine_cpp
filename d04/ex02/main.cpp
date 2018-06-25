@@ -8,30 +8,18 @@
 
 int main(void)
 {
-	ISpaceMarine *bob = new TacticalMarine;
-	ISpaceMarine *jim = new AssauntTerminator;
-
 	ISquad *vlc = new Squad;
-
-	vlc->push(bob);
-	vlc->push(jim);
-
-	std::cout << std::endl;
-
-	bob->battleCry();
-	jim->battleCry();
-
-	std::cout << std::endl;
-
-	for (int i = 0; i < vlc->getCount(); ++i)
+	for (int i = 0; i < 10; i++)
 	{
-		ISpaceMarine *cur = vlc->getUnit(i);
-		cur->battleCry();
-		cur->rangedAttack();
-		cur->meleeAttack();
-		std::cout << std::endl;
+		if (i % 2)
+		{
+			TacticalMarine *bob = new TacticalMarine(i);
+			vlc->push(bob);
+		}
+		else
+		{
+			std::cout << "Couldn't add new marine\n";
+		}
 	}
-	delete vlc;
-
 	return (0);
 }

@@ -2,10 +2,14 @@
 // Created by Roman KYSLYY on 6/25/18.
 //
 
-#ifndef GIT_CPP_FORM_HPP
-#define GIT_CPP_FORM_HPP
+#ifndef FORM_HPP
+#define FORM_HPP
 
+#include <exception>
 #include <iostream>
+#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
@@ -17,10 +21,18 @@ private:
 public:
 	Form(void);
 	Form(Form const & src);
+	Form(std::string name, int gradeToSign, int gradeToExecute);
 
 	Form	&operator=(Form const & src);
 
 	~Form(void);
+
+	void	beSigned(Bureaucrat & src);
+
+	int 	getSignGrade(void) const;
+	int 	getExecuteGrade(void) const;
+	bool	getStatus(void) const;
+	std::string	getName(void) const;
 
 	class GradeTooHighException : public virtual std::exception
 	{
