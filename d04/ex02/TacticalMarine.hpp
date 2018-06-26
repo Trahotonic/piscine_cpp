@@ -10,7 +10,7 @@
 class TacticalMarine : public ISpaceMarine
 {
 private:
-	int _age;
+//	int _age;
 public:
 	TacticalMarine(void);
 	TacticalMarine(int n);

@@ -1,6 +1,14 @@
-//
-// Created by Roman KYSLYY on 6/25/18.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rkyslyy <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/26 18:27:40 by rkyslyy           #+#    #+#             */
+/*   Updated: 2018/06/26 18:27:40 by rkyslyy          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Form.hpp"
 
@@ -51,7 +59,20 @@ bool Form::getStatus() const {
 void Form::beSigned(Bureaucrat &src) {
     if (src.getGrade() > _gradeToSign)
         throw GradeTooLowException();
+	if (_signed)
+		throw FormAlreadySigned();
     _signed = true;
+}
+
+void Form::execute(Bureaucrat const &executor) const
+{
+	if (executor.getGrade() > this->getExecuteGrade())
+		throw (GradeTooLowException());
+	this->beExecuted();
+}
+
+void Form::beExecuted() const
+{
 }
 
 Form::GradeTooHighException::GradeTooHighException()
@@ -118,15 +139,4 @@ Form::FormAlreadySigned::~FormAlreadySigned() throw()
 const char* Form::FormAlreadySigned::what() const throw()
 {
 	return "Form is already signed";
-}
-
-
-std::ostream	&operator<<(std::ostream & o, Form const & src)
-{
-    o << "Form" << src.getName() << " is ";
-    if (src.getStatus())
-        std::cout << " signed";
-	else
-		std::cout << " unsigned";
-	return o;
 }

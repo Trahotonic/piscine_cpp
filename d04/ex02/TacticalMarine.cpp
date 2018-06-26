@@ -11,8 +11,8 @@ TacticalMarine::TacticalMarine(void)
 
 TacticalMarine::TacticalMarine(int n)
 {
-	if (n % 2 == 0)
-		throw("Error");
+	(void)n;
+	std::cout << "Tactical Marine ready for battle\n";
 }
 
 TacticalMarine::~TacticalMarine(void)

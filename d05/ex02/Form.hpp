@@ -1,6 +1,14 @@
-//
-// Created by Roman KYSLYY on 6/25/18.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rkyslyy <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/26 18:27:37 by rkyslyy           #+#    #+#             */
+/*   Updated: 2018/06/26 18:27:37 by rkyslyy          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef FORM_HPP
 #define FORM_HPP
@@ -33,6 +41,11 @@ public:
 	int 	getExecuteGrade(void) const;
 	bool	getStatus(void) const;
 	std::string	getName(void) const;
+	void	execute(Bureaucrat const & executor) const;
+	virtual void	beExecuted(void) const;
+
+
+	/* ****************   Exception classes   ***************** */
 
 	class GradeTooHighException : public virtual std::exception
 	{
@@ -74,6 +87,5 @@ public:
 	};
 };
 
-std::ostream	&operator<<(std::ostream & o, Form const & src);
 
-#endif //GIT_CPP_FORM_HPP
+#endif

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkyslyy <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/26 18:26:36 by rkyslyy           #+#    #+#             */
-/*   Updated: 2018/06/26 18:26:37 by rkyslyy          ###   ########.fr       */
+/*   Created: 2018/06/26 18:27:32 by rkyslyy           #+#    #+#             */
+/*   Updated: 2018/06/26 18:27:33 by rkyslyy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #define BUREAUCRAT_HPP
 
 # include <iostream>
+# include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -28,6 +31,10 @@ public:
 	Bureaucrat	&operator=(Bureaucrat const & src);
 
 	~Bureaucrat(void);
+
+	void 		signForm(Form & src);
+	void		execute(Form const & src);
+
 
 	std::string	getName(void) const;
 	int			getGrade(void) const;
@@ -61,6 +68,19 @@ public:
 		GradeTooLowException	&operator=(GradeTooLowException const & src);
 
 		~GradeTooLowException(void) throw();
+
+		virtual const char* what() const throw();
+	};
+
+	class FormNotSigned : public virtual std::exception
+	{
+	public:
+		FormNotSigned(void);
+		FormNotSigned(FormNotSigned const & src);
+
+		FormNotSigned	&operator=(FormNotSigned const & src);
+
+		~FormNotSigned(void) throw();
 
 		virtual const char* what() const throw();
 	};

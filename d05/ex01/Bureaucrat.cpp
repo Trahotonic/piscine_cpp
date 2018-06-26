@@ -62,12 +62,14 @@ std::string Bureaucrat::getName() const
 void Bureaucrat::signForm(Form &src) {
 	if (src.getStatus())
 	{
-		std::cout << _name << " could not sign form because it's already signed\n";
+		std::cout << _name << " could not sign form " << src.getName() << " because it's already signed\n";
 		return ;
 	}
 	if (src.getSignGrade() < (int)_grade)
-		throw GradeTooLowException();
+		throw Form::GradeTooHighException();
 	src.beSigned(*this);
+	std::cout << "Form " << src.getName() << " is signed by bureaucrat " << _name
+			  << std::endl;
 }
 
 Bureaucrat Bureaucrat::operator++(int)
@@ -127,7 +129,7 @@ Bureaucrat::GradeTooHighException::~GradeTooHighException() throw()
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return "New grade is too high\nGrade set to 1";
+	return "Grade is too high";
 }
 
 Bureaucrat::GradeTooLowException::GradeTooLowException()
@@ -149,7 +151,7 @@ Bureaucrat::GradeTooLowException::~GradeTooLowException() throw()
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return "New grade is too low\nGrade set to 150";
+	return "Grade is too low";
 }
 
 void Bureaucrat::setGrade(int grade)
