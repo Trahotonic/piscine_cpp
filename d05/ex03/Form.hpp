@@ -89,5 +89,4 @@ public:
 
 std::ostream	&operator<<(std::ostream & o, Form const & src);
 
-
 #endif

@@ -10,27 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PresidentalPardonForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
-PresidentalPardonForm::PresidentalPardonForm() : Form("President", 25, 5), _target("Default")
+PresidentialPardonForm::PresidentialPardonForm() : Form("President", 25, 5), _target("Default")
 {
 }
 
-PresidentalPardonForm::PresidentalPardonForm(std::string target) : Form("President", 25, 5), _target(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : Form("President", 25, 5), _target(target)
 {}
 
-PresidentalPardonForm::PresidentalPardonForm(PresidentalPardonForm const &src)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src)
 {
 	*this = src;
 }
 
-PresidentalPardonForm& PresidentalPardonForm::operator=(PresidentalPardonForm const &src)
+PresidentialPardonForm& PresidentialPardonForm::operator=(PresidentialPardonForm const &src)
 {
 	(void)src;
 	return *this;
 }
 
-void PresidentalPardonForm::beExecuted() const
+void PresidentialPardonForm::beExecuted() const
 {
 	std::cout << _target << " has been pardoned by Zaphod Beeblebrox\n";
 }

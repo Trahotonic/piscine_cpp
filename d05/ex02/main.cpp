@@ -13,14 +13,14 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequest.hpp"
-#include "PresidentalPardonForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main(void)
 {
 	Bureaucrat b("Roman", 25);
 	Form &s = *new ShrubberyCreationForm("file");
 	Form &r = *new RobotomyRequest("Dude");
-	Form &p = *new PresidentalPardonForm("COD");
+	Form &p = *new PresidentialPardonForm("COD");
 
 	try
 	{

@@ -15,18 +15,18 @@
 
 # include "Form.hpp"
 
-class PresidentalPardonForm : public Form
+class PresidentialPardonForm : public Form
 {
 private:
 	std::string _target;
 public:
-	PresidentalPardonForm(void);
-	PresidentalPardonForm(std::string target);
-	PresidentalPardonForm(PresidentalPardonForm const & src);
+	PresidentialPardonForm(void);
+	PresidentialPardonForm(std::string target);
+	PresidentialPardonForm(PresidentialPardonForm const & src);
 
-	PresidentalPardonForm	&operator=(PresidentalPardonForm const & src);
+	PresidentialPardonForm	&operator=(PresidentialPardonForm const & src);
 
-	~PresidentalPardonForm(void);
+	~PresidentialPardonForm(void);
 
 	void	beExecuted(void) const;
 };

@@ -148,8 +148,4 @@ add_executable(git_cpp
         rush00/Shot.class.hpp
         rush00/Base.class.cpp
         rush00/Base.class.hpp
-        d05/ex00/main.cpp
-        d05/ex01
-        d05/ex01/Form.cpp
-        d05/ex01/Form.hpp
-        d05/ex02 d05/ex02/ShrubberyCreationForm.cpp d05/ex02/ShrubberyCreationForm.hpp d05/ex02/RobotomyRequest.cpp d05/ex02/RobotomyRequest.hpp d05/ex02/PresidentalPardonForm.cpp d05/ex02/PresidentalPardonForm.hpp)
+        d05 d05/ex03/Intern.cpp d05/ex03/Intern.hpp d05/ex04/OfficeBlock.cpp d05/ex04/OfficeBlock.hpp d06/ex00/main.cpp d06/ex00/Convert.cpp d06/ex00/Convert.hpp d06/ex01/main.cpp d06/ex02/main.cpp d06/ex02/Base.cpp d06/ex02/Base.hpp d06/ex02/A.cpp d06/ex02/A.hpp d06/ex02/B.cpp d06/ex02/B.hpp d06/ex02/C.cpp d06/ex02/C.hpp)
