@@ -21,6 +21,11 @@ int	main(int argc, char **argv)
 		return 1;
 	}
 	std::ifstream   i(argv[1]);
+	if (!i)
+	{
+		std::cout << "Input file does not exist\n";
+		return 1;
+	}
 	std::vector	<AInstruction*>	queue;
 	std::string	total = "";
 	std::string tmp;
@@ -29,6 +34,7 @@ int	main(int argc, char **argv)
 		std::getline(i, tmp);
 		total += tmp;
 	}
+	i.close();
 	int n = 0;
 	while (n < static_cast<int>(total.length()))
 	{
