@@ -148,4 +148,4 @@ add_executable(git_cpp
         rush00/Shot.class.hpp
         rush00/Base.class.cpp
         rush00/Base.class.hpp
-        d05 d05/ex03/Intern.cpp d05/ex03/Intern.hpp d05/ex04/OfficeBlock.cpp d05/ex04/OfficeBlock.hpp d06/ex00/main.cpp d06/ex00/Convert.cpp d06/ex00/Convert.hpp d06/ex01/main.cpp d06/ex02/main.cpp d06/ex02/Base.cpp d06/ex02/Base.hpp d06/ex02/A.cpp d06/ex02/A.hpp d06/ex02/B.cpp d06/ex02/B.hpp d06/ex02/C.cpp d06/ex02/C.hpp)
+        d05 d05/ex03/Intern.cpp d05/ex03/Intern.hpp d05/ex04/OfficeBlock.cpp d05/ex04/OfficeBlock.hpp d06/ex00/main.cpp d06/ex00/Convert.cpp d06/ex00/Convert.hpp d06/ex01/main.cpp d06/ex02/main.cpp d06/ex02/Base.cpp d06/ex02/Base.hpp d06/ex02/A.cpp d06/ex02/A.hpp d06/ex02/B.cpp d06/ex02/B.hpp d06/ex02/C.cpp d06/ex02/C.hpp d07/ex00/main.cpp d07/ex01/main.cpp d07/ex02/Array.hpp d07/ex02/main.cpp d08/ex00/main.cpp d08/ex00/easyfind.hpp d08/ex01/span.cpp d08/ex01/span.hpp d08/ex01/main.cpp)
