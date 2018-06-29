@@ -21,7 +21,9 @@ Print& Print::operator=(Print const &src)
 Print::~Print()
 {}
 
-void Print::execute(int array[], int & index)
+void Print::execute(int array[], int & index, int & comIndex, std::vector<AInstruction*> vec)
 {
+	(void)vec;
 	std::cout << static_cast<char>(array[index]);
+	comIndex++;
 }

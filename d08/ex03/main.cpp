@@ -21,31 +21,42 @@ int	main(int argc, char **argv)
 		return 1;
 	}
 	std::ifstream   i(argv[1]);
-	std::list<AInstruction*>	queue;
-	char 			tmp;
+	std::vector	<AInstruction*>	queue;
+	std::string	total = "";
+	std::string tmp;
 	while (!i.eof())
 	{
-		i >> tmp;
-		std::cout << tmp;
-		if (tmp == '>')
+		std::getline(i, tmp);
+		total += tmp;
+	}
+	int n = 0;
+	while (n < static_cast<int>(total.length()))
+	{
+		if (total[n] == '>')
 			queue.push_back(new NextBox);
-		else if (tmp == '<')
+		else if (total[n] == '<')
 			queue.push_back(new PrevBox);
-		else if (tmp == '+')
+		else if (total[n] == '+')
 			queue.push_back(new Increment);
-		else if (tmp == '-')
+		else if (total[n] == '-')
 			queue.push_back(new Decrement);
-		else if (tmp == '[')
+		else if (total[n] == '[')
 			queue.push_back(new GoFront);
-		else if (tmp == ']')
+		else if (total[n] == ']')
 			queue.push_back(new GoBack);
-		else if (tmp == '.')
+		else if (total[n] == '.')
 			queue.push_back(new Print);
+		else if (isblank(total[n]) || total[n] == '\n')
+		{
+			n++;
+			continue ;
+		}
 		else
 		{
 			std::cout << "Error reading file\n";
 			return 1;
 		}
+		n++;
 	}
 	Mashine	machine(queue);
 	machine.run();

@@ -5,7 +5,9 @@
 #include "PrevBox.hpp"
 
 PrevBox::PrevBox()
-{}
+{
+	_pair = 0;
+}
 
 PrevBox::PrevBox(PrevBox const &src)
 {
@@ -21,8 +23,10 @@ PrevBox& PrevBox::operator=(PrevBox const &src)
 PrevBox::~PrevBox()
 {}
 
-void PrevBox::execute(int array[], int & index)
+void PrevBox::execute(int array[], int & index, int & comIndex, std::vector<AInstruction*> vec)
 {
 	(void)array;
+	(void)vec;
 	index--;
+	comIndex++;
 }

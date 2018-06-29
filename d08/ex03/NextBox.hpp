@@ -17,7 +17,7 @@ public:
 
 	~NextBox(void);
 
-	void	execute(int [], int&);
+	void	execute(int [], int&, int&, std::vector<AInstruction*>);
 };
 
 #endif //GIT_CPP_NEXTBOX_HPP

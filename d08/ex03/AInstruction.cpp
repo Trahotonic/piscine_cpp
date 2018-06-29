@@ -21,5 +21,10 @@ AInstruction& AInstruction::operator=(AInstruction const &src)
 AInstruction::~AInstruction()
 {}
 
-void AInstruction::execute(int [], int &)
+void AInstruction::execute(int [], int &, int&, std::vector<AInstruction*>)
 {}
+
+int AInstruction::getPair()
+{
+	return _pair;
+}

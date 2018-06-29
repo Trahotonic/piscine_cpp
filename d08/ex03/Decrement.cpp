@@ -5,7 +5,9 @@
 #include "Decrement.hpp"
 
 Decrement::Decrement()
-{}
+{
+	_pair = 0;
+}
 
 Decrement::Decrement(Decrement const &src)
 {
@@ -21,7 +23,9 @@ Decrement& Decrement::operator=(Decrement const &src)
 Decrement::~Decrement()
 {}
 
-void Decrement::execute(int array[], int & index)
+void Decrement::execute(int array[], int & index, int & comIndex, std::vector<AInstruction*> vec)
 {
-	array[index]++;
+	(void)vec;
+	array[index] -= 1;
+	comIndex++;
 }

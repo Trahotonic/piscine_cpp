@@ -5,7 +5,9 @@
 #include "Increment.hpp"
 
 Increment::Increment()
-{}
+{
+	_pair = 0;
+}
 
 Increment::Increment(Increment const &src)
 {
@@ -21,7 +23,9 @@ Increment& Increment::operator=(Increment const &src)
 Increment::~Increment()
 {}
 
-void Increment::execute(int array[], int & index)
+void Increment::execute(int array[], int & index, int & comIndex, std::vector<AInstruction*> vec)
 {
-	array[index]++;
+	(void)vec;
+	array[index] += 1;
+	comIndex++;
 }

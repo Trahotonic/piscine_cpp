@@ -5,7 +5,9 @@
 #include "GoFront.hpp"
 
 GoFront::GoFront()
-{}
+{
+	_pair = 2;
+}
 
 GoFront::GoFront(GoFront const &src)
 {
@@ -21,22 +23,23 @@ GoFront& GoFront::operator=(GoFront const &src)
 GoFront::~GoFront()
 {}
 
-void GoFront::execute(int array[], int & index)
+void GoFront::execute(int array[], int & index, int & comIndex, std::vector<AInstruction*> vec)
 {
-	if (!array[index])
+	if (array[index] == 0)
 	{
 		int balance = 0;
-		while (index < 30000)
+		while (comIndex < 30000)
 		{
-			if (array[index] == '[')
+			if (vec[comIndex]->getPair() == 2)
 				balance++;
-			if (array[index] == ']')
+			if (vec[comIndex]->getPair() == 1)
 				balance--;
-			if (array[index] == ']' && !balance)
+			if (vec[comIndex]->getPair() == 1 && !balance)
 				break ;
-			index++;
+			comIndex++;
 		}
-		if (index == 30000)
-			index--;
+		if (comIndex == 30000)
+			comIndex--;
 	}
+	comIndex++;
 }

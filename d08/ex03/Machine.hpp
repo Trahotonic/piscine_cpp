@@ -5,7 +5,7 @@
 #ifndef GIT_CPP_IMACHINE_HPP
 #define GIT_CPP_IMACHINE_HPP
 
-# include <list>
+# include <vector>
 # include "AInstruction.hpp"
 
 class Mashine
@@ -13,11 +13,12 @@ class Mashine
 private:
 	int 	_array[30000];
 	int 	_index;
-	std::list<AInstruction*>	_queue;
+	int 	_comIndex;
+	std::vector<AInstruction*>	_queue;
 public:
 	Mashine(void);
 	Mashine(Mashine const & src);
-	Mashine(std::list<AInstruction*>);
+	Mashine(std::vector<AInstruction*>);
 
 	Mashine	&operator=(Mashine const & src);
 

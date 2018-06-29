@@ -5,7 +5,9 @@
 #include "NextBox.hpp"
 
 NextBox::NextBox()
-{}
+{
+	_pair = 0;
+}
 
 NextBox::NextBox(NextBox const &src)
 {
@@ -21,8 +23,10 @@ NextBox& NextBox::operator=(NextBox const &src)
 NextBox::~NextBox()
 {}
 
-void NextBox::execute(int array[], int & index)
+void NextBox::execute(int array[], int & index, int & comIndex, std::vector<AInstruction*> vec)
 {
 	(void)array;
+	(void)vec;
 	index++;
+	comIndex++;
 }

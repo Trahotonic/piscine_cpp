@@ -5,10 +5,12 @@
 #ifndef AINSTRUCTION_HPP
 #define AINSTRUCTION_HPP
 
-# include <list>
+# include <vector>
 
 class AInstruction
 {
+protected:
+	int _pair;
 public:
 	AInstruction(void);
 	AInstruction(AInstruction const & src);
@@ -17,7 +19,8 @@ public:
 
 	~AInstruction(void);
 
-	virtual void	execute(int [], int&);
+	virtual void	execute(int [], int&, int&, std::vector<AInstruction*>);
+	int 	getPair(void);
 };
 
 #endif //GIT_CPP_AINSTRUCTION_HPP
