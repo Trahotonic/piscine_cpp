@@ -20,6 +20,7 @@ public:
 	~Span(void);
 
 	void	addNumber(int n);
+	void	addNumber(std::vector<int>::iterator it, std::vector<int>::iterator ite);
 	int		longestSpan(void);
 	int 	shortestSpan(void);
 

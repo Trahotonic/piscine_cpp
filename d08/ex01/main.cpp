@@ -6,18 +6,33 @@
 
 int main(void)
 {
-	Span	span(10);
+	Span	span(5000);
 
-//	try
-//	{
-//		span.addNumber(1);
-//		span.addNumber(2);
-//		span.addNumber(7);
-//	}
-//	catch (std::exception &e)
-//	{
-//		std::cout << e.what() << std::endl;
-//	}
+	try
+	{
+		span.addNumber(1);
+		span.addNumber(2);
+		span.addNumber(3);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+
+	std::vector<int> vector;
+
+	for (int i = 5; i < 100; ++i)
+		vector.push_back(i);
+
+	try
+	{
+		span.addNumber(vector.begin(), vector.end());
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 
 	try
 	{

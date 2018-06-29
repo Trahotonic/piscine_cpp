@@ -41,6 +41,20 @@ void Span::addNumber(int n)
 		throw ContainerIsFull();
 }
 
+void Span::addNumber(std::vector<int>::iterator it, std::vector<int>::iterator ite)
+{
+	if (static_cast<size_t>(std::distance(it, ite)) > _size - _vecN.size())
+		throw ContainerIsFull();
+	else
+	{
+		while (it != ite)
+		{
+			_vecN.push_back(*it);
+			it++;
+		}
+	}
+}
+
 int Span::longestSpan(void)
 {
 	if (_vecN.size() == 0 || _vecN.size() == 1)
