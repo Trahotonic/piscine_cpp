@@ -44,6 +44,7 @@ int main(int argc, char **argv)
 	char c;
 	while (1)
 	{
+		usleep(1);
 		clear();
 		controller->update();
 		controller->print();

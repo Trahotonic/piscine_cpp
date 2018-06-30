@@ -91,6 +91,7 @@ void Controller::print()
 	_shellUI->displayCpu(_cpuModule);
 	_shellUI->displayNet(_netModule);
 	_shellUI->displayRam(_ramModule);
+	_shellUI->displayField(_hostModule, _cpuModule, _ramModule, _netModule);
 }
 
 

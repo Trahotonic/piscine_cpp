@@ -25,13 +25,9 @@ class IMonitorDisplay
 public:
 	//Display module??
 	virtual void displayHost(HostModule *hostModule) = 0;
-
 	virtual void displayCpu(CpuModule *cpuModule) = 0;
-
 	virtual void displayRam(RamModule *ramModule) = 0;
-
 	virtual void displayNet(NetModule *netModule) = 0;
-
 	virtual ~IMonitorDisplay()
 	{}
 };

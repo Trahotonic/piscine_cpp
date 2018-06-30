@@ -25,7 +25,7 @@ CpuModule::CpuModule()
 		total += "\n";
 	}
 	_model = total.substr(0, getNameLen(total));
-	_clockspeed = total.substr(getNameLen(total) + 3, total.length());
+	_clockspeed = total.substr(getNameLen(total) + 2, total.length());
 	system("top -l 1 -n 0 | grep CPU > CPUInfo");
 	std::ifstream i2("CPUInfo");
 	total = "";
@@ -35,7 +35,6 @@ CpuModule::CpuModule()
 		total += tmp;
 		total += "\n";
 	}
-//	std::cout << "*\n*\n*\n";
 	std::string user = total.substr(11, total.length());
 	_userUsage = atof(user.c_str());
 	user = user.substr(goToComma(user), user.length());

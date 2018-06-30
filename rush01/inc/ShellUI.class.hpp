@@ -26,6 +26,8 @@ public:
 	void displayCpu(CpuModule *cpuModule);
 	void displayRam(RamModule *ramModule);
 	void displayNet(NetModule *netModule);
+	void displayField(HostModule *hostModule, CpuModule *cpuModule,
+						RamModule *ramModule, NetModule *netModule);
 };
 
 #endif
