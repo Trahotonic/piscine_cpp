@@ -50,6 +50,7 @@ HostModule::HostModule()
 
 	strftime(buffer,80,"%d-%m-%Y %I:%M:%S",timeinfo);
 	_time = buffer;
+	i.close();
 }
 
 HostModule::HostModule(const HostModule& hostModule) {
@@ -139,6 +140,7 @@ void HostModule::updateOsBuild()
 	}
 	std::size_t pos = total.find("dVersion:");
 	_osBuild = total.substr(pos + 10, getLen(pos + 9, total));
+	i.close();
 }
 
 void HostModule::updateOsName()
@@ -154,6 +156,7 @@ void HostModule::updateOsName()
 	}
 	std::size_t pos = total.find("Name:");
 	_osName = total.substr(pos + 6, 8);
+	i.close();
 }
 
 void HostModule::updateOsVersion()
@@ -169,6 +172,7 @@ void HostModule::updateOsVersion()
 	}
 	std::size_t pos = total.find("tVersion:");
 	_osVersion = total.substr(pos + 10, getLen(pos + 9, total));
+	i.close();
 }
 
 void HostModule::updateTime()

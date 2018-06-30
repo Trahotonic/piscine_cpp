@@ -46,6 +46,7 @@ NetModule::NetModule()
 		n++;
 	total = total.substr(n + 1, total.length());
 	_maxRecPackages = atoi(total.c_str()) * 1000000;
+	i.close();
 }
 
 NetModule::NetModule(const NetModule& netModule) {
@@ -114,4 +115,5 @@ void NetModule::updateCurrentPackages()
 		n++;
 	total = total.substr(n + 1, total.length());
 	_maxRecPackages = atoi(total.c_str()) * 1000000;
+	i.close();
 }

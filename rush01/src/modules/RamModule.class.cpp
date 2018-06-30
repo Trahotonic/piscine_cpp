@@ -24,7 +24,6 @@ RamModule::RamModule()
 		total += tmp;
 		total += "\n";
 	}
-	std::cout << total << std::endl;
 	int n = 0;
 	while (!isdigit(total[n]))
 		n++;
@@ -40,10 +39,7 @@ RamModule::RamModule()
 		n++;
 	total = total.substr(n + 1, total.length());
 	_unused = atol(total.c_str()) * 1000000;
-//	std::cout << _used << std::endl;
-//	std::cout << _wired << std::endl;
-//	std::cout << _unused << std::endl;
-//	exit(1);
+	i.close();
 }
 
 RamModule::RamModule(const RamModule& ramModule) {
@@ -101,4 +97,5 @@ void RamModule::update()
 		n++;
 	total = total.substr(n + 1, total.length());
 	_unused = atol(total.c_str()) * 1000000;
+	i.close();
 }

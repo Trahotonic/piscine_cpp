@@ -13,9 +13,29 @@
 # include <ncurses.h>
 # include "../inc/Controller.class.hpp"
 
-int main(void)
+void	throwUsage(void)
 {
-	Controller	controller;
+	std::cout << "Invalid arguments\n"
+			"Possible flags: \n-a\n-u\n-c\n-r\n-n\n";
+}
+
+int main(int argc, char **argv)
+{
+	if (argc == 1)
+	{
+		throwUsage();
+		return 1;
+	}
+	Controller	*controller;
+	try
+	{
+		controller = new Controller(argc, argv);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+		return 1;
+	}
 	initscr();
 	curs_set(0);
 	nodelay(stdscr, true);
@@ -31,8 +51,8 @@ int main(void)
 			continue;
 		t2 = clock() / (CLOCKS_PER_SEC / 60);
 		clear();
-		controller.update();
-		controller.print();
+		controller->update();
+		controller->print();
 		c = getch();
 		if (c == 113)
 			break ;
@@ -40,7 +60,7 @@ int main(void)
 	}
 
 	endwin();
-	system ("rm OSInfo CPUInfo NetInfo");
+	system ("rm -f OSInfo CPUInfo NetInfo RAMInfo");
 
 	return 0;
 }

@@ -46,6 +46,9 @@ CpuModule::CpuModule()
 	std::ifstream i3("CPUInfo");
 	i3 >> tmp;
 	_cores = atoi(tmp.c_str());
+	i.close();
+	i2.close();
+	i3.close();
 }
 
 CpuModule::CpuModule(const CpuModule& cpuModule) {
@@ -89,6 +92,7 @@ void CpuModule::updateModel()
 		total += "\n";
 	}
 	_model = total.substr(0, getNameLen(total));
+	i.close();
 }
 
 void CpuModule::updateClockSpeed()
@@ -103,6 +107,7 @@ void CpuModule::updateClockSpeed()
 		total += "\n";
 	}
 	_clockspeed = total.substr(getNameLen(total) + 3, total.length());
+	i.close();
 }
 
 void CpuModule::updateUsage()
@@ -123,6 +128,7 @@ void CpuModule::updateUsage()
 	_systemUsage = atof(user.c_str());
 	user = user.substr(goToComma(user), user.length());
 	_idleUsage = atof(user.c_str());
+	i.close();
 }
 
 void CpuModule::update()

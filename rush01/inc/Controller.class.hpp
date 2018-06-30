@@ -24,11 +24,25 @@ class Controller {
 public:
 	Controller();
 	Controller(const Controller& controller);
+	Controller(int, char **);
 	~Controller();
 	Controller&	operator=(const Controller& controller);
 
 	void	update();
 	void	print();
+
+	class InvalidArguments : public virtual std::exception
+	{
+	public:
+		InvalidArguments(void);
+		InvalidArguments(InvalidArguments const & src);
+
+		InvalidArguments &operator=(InvalidArguments const & src);
+
+		~InvalidArguments(void) throw();
+
+		virtual const char* what() const throw();
+	};
 private:
 	HostModule	*_hostModule;
 	CpuModule	*_cpuModule;
