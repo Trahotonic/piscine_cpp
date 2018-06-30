@@ -16,7 +16,7 @@
 void	throwUsage(void)
 {
 	std::cout << "Invalid arguments\n"
-			"Possible flags: \n-a\n-u\n-c\n-r\n-n\n";
+			"Possible flags: \n-a\n-u\n-c\n-r\n-n\n-g\n-s\n";
 }
 
 int main(int argc, char **argv)
@@ -42,14 +42,8 @@ int main(int argc, char **argv)
 	keypad(stdscr, true);
 
 	char c;
-	clock_t t1, t2;
-	t2 = 0;
 	while (1)
 	{
-		t1 = clock() / (CLOCKS_PER_SEC / 60);
-		if (t1 <= t2)
-			continue;
-		t2 = clock() / (CLOCKS_PER_SEC / 60);
 		clear();
 		controller->update();
 		controller->print();

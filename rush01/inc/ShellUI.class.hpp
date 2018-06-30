@@ -15,13 +15,17 @@
 
 #include "IMonitorDisplay.class.hpp"
 
-class ShellUI : public IMonitorDisplay {
+class ShellUI : public virtual IMonitorDisplay {
 public:
 	ShellUI();
 	ShellUI(const ShellUI& shellUI);
 	~ShellUI();
 	ShellUI&	operator=(const ShellUI& shellUI);
-private:
+
+	void displayHost(HostModule *hostModule);
+	void displayCpu(CpuModule *cpuModule);
+	void displayRam(RamModule *ramModule);
+	void displayNet(NetModule *netModule);
 };
 
 #endif

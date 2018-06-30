@@ -13,16 +13,27 @@
 #ifndef IMONITORDISPLAY_CLASS_HPP
 # define IMONITORDISPLAY_CLASS_HPP
 
+#include <ncurses.h>
 
+#include "HostModule.class.hpp"
+#include "CpuModule.class.hpp"
+#include "RamModule.class.hpp"
+#include "NetModule.class.hpp"
 
-class IMonitorDisplay {
+class IMonitorDisplay
+{
 public:
 	//Display module??
-	virtual void	displayHost(HostModule* hostModule);
-	virtual void	displayCpu(CpuModule* cpuModule);
-	virtual void	displayRam(RamModule* ramModule);
-	virtual void	displayNet(NetModule* netModule);
-	virtual ~IMonitorDisplay() = 0;
+	virtual void displayHost(HostModule *hostModule) = 0;
+
+	virtual void displayCpu(CpuModule *cpuModule) = 0;
+
+	virtual void displayRam(RamModule *ramModule) = 0;
+
+	virtual void displayNet(NetModule *netModule) = 0;
+
+	virtual ~IMonitorDisplay()
+	{}
 };
 
 #endif

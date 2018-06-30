@@ -19,6 +19,7 @@
 #include "CpuModule.class.hpp"
 #include "NetModule.class.hpp"
 #include "RamModule.class.hpp"
+#include "ShellUI.class.hpp"
 
 class Controller {
 public:
@@ -44,6 +45,8 @@ public:
 		virtual const char* what() const throw();
 	};
 private:
+	ShellUI		*_shellUI;
+
 	HostModule	*_hostModule;
 	CpuModule	*_cpuModule;
 	NetModule	*_netModule;
