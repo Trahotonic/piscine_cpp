@@ -18,6 +18,7 @@
 #include "HostModule.class.hpp"
 #include "CpuModule.class.hpp"
 #include "NetModule.class.hpp"
+#include "RamModule.class.hpp"
 
 class Controller {
 public:
@@ -32,6 +33,7 @@ private:
 	HostModule	*_hostModule;
 	CpuModule	*_cpuModule;
 	NetModule	*_netModule;
+	RamModule	*_ramModule;
 };
 
 #endif

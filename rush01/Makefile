@@ -21,6 +21,7 @@ SRC :=  main.cpp\
         CpuModule.class.cpp\
         Controller.class.cpp\
         NetModule.class.cpp\
+        RamModule.class.cpp\
 
 
 OBJ = $(addprefix $(OBJ_DIR), $(notdir $(SRC:.cpp=.o)))

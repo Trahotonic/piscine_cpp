@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #include "../inc/Controller.class.hpp"
-#include "../inc/HostModule.class.hpp"
 
-Controller::Controller() : _hostModule(new HostModule), _cpuModule(new CpuModule), _netModule(new NetModule)
+Controller::Controller() : _hostModule(new HostModule), _cpuModule(new CpuModule),
+						   _netModule(new NetModule), _ramModule(new RamModule)
 {}
 
 Controller::Controller(const Controller& controller) {
@@ -33,6 +33,7 @@ void Controller::update()
 	_hostModule->update();
 	_cpuModule->update();
 	_netModule->updateCurrentPackages();
+	_ramModule->update();
 }
 
 void Controller::print()
@@ -75,4 +76,16 @@ void Controller::print()
 	tmpL = _netModule->getCurRecPackages();
 	tmpS = std::to_string(tmpL) + "/" + std::to_string(_netModule->getMaxRecPackages() / 1000000) + "M";
 	mvwprintw(stdscr, 15, 0, tmpS.c_str());
+
+	tmpL = _ramModule->getUsed() / 1000000;
+	tmpS = std::to_string(tmpL) + "M";
+	mvwprintw(stdscr, 17, 0, tmpS.c_str());
+
+	tmpL = _ramModule->getWired() / 1000000;
+	tmpS = std::to_string(tmpL) + "M";
+	mvwprintw(stdscr, 18, 0, tmpS.c_str());
+
+	tmpL = _ramModule->getUnused() / 1000000;
+	tmpS = std::to_string(tmpL) + "M";
+	mvwprintw(stdscr, 19, 0, tmpS.c_str());
 }

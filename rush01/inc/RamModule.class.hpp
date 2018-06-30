@@ -13,15 +13,26 @@
 #ifndef RAMMODULE_CLASS_HPP
 # define RAMMODULE_CLASS_HPP
 
+# include <iostream>
+# include <fstream>
+
 class RamModule {
 public:
 	RamModule();
 	RamModule(const RamModule& ramModule);
 	~RamModule();
 	RamModule&	operator=(const RamModule& ramModule);
+
+	long 	getUsed();
+	long 	getWired();
+	long 	getUnused();
+
+	void	update();
+
 private:
-	long _used;
-	long _wired;
+	long 	_used;
+	long 	_wired;
+	long 	_unused;
 };
 
 #endif

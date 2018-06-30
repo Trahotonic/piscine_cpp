@@ -22,8 +22,14 @@ int main(void)
 	keypad(stdscr, true);
 
 	char c;
+	clock_t t1, t2;
+	t2 = 0;
 	while (1)
 	{
+		t1 = clock() / (CLOCKS_PER_SEC / 60);
+		if (t1 <= t2)
+			continue;
+		t2 = clock() / (CLOCKS_PER_SEC / 60);
 		clear();
 		controller.update();
 		controller.print();
@@ -31,7 +37,6 @@ int main(void)
 		if (c == 113)
 			break ;
 		refresh();
-		usleep(1);
 	}
 
 	endwin();
