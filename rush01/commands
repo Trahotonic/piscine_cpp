@@ -1,0 +1,46 @@
+
+
+RAM
+******************************
+
+hwmemsize=$(sysctl -n hw.memsize)
+# 1024**3 = GB
+ramsize=$(expr $hwmemsize / $((1024**3)))
+echo "System Memory: ${ramsize} GB"
+
+******************************
+
+
+CPU
+******************************
+
+sysctl -n machdep.cpu.brand_string
+
+******************************
+
+
+OS Info
+******************************
+
+sw_vers
+
+******************************
+
+char hostname[1024];
+	hostname[1023] = '\0';
+	gethostname(hostname, 1023);
+}
+
+const char* Hostname::getUsername( void ) {
+
+	char username[1024];
+	username[1023] = '\0';
+	getlogin_r(username, 1023);
+
+	time_t rawtime;
+        struct tm * timeinfo;
+
+        time (&rawtime);
+        timeinfo = localtime(&rawtime);
+
+        strftime(_buffer,80,"%d-%m-%Y %I:%M:%S",timeinfo);

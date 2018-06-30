@@ -19,7 +19,6 @@ int main(void)
 		std::cout << e.what() << std::endl;
 	}
 
-
 	std::vector<int> vector;
 
 	for (int i = 5; i < 100; ++i)
@@ -36,8 +35,8 @@ int main(void)
 
 	try
 	{
-		std::cout << span.longestSpan() << std::endl;
-		std::cout << span.shortestSpan() << std::endl;
+		std::cout << "Longest: " << span.longestSpan() << std::endl;
+		std::cout << "Shortest: " << span.shortestSpan() << std::endl;
 	}
 	catch (std::exception &e)
 	{
