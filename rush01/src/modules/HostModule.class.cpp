@@ -108,73 +108,6 @@ std::string HostModule::getHostName()
 	return _hostName;
 }
 
-void HostModule::updateHostName()
-{
-	char buffer[1024];
-	for (int i = 0; i < 1024; i++)
-		buffer[i] = '\0';
-	gethostname(buffer, 1023);
-	_hostName = buffer;
-}
-
-void HostModule::updateUserName()
-{
-	char buffer[1024];
-	for (int i = 0; i < 1024; i++)
-		buffer[i] = '\0';
-	getlogin_r(buffer, 1023);
-	_userName = buffer;
-}
-
-void HostModule::updateOsBuild()
-{
-	system("sw_vers > OSinfo");
-	std::ifstream i("OSinfo");
-	std::string tmp;
-	std::string total = "";
-	while (!i.eof())
-	{
-		std::getline(i, tmp);
-		total += tmp;
-		total += "\n";
-	}
-	std::size_t pos = total.find("dVersion:");
-	_osBuild = total.substr(pos + 10, getLen(pos + 9, total));
-	i.close();
-}
-
-void HostModule::updateOsName()
-{
-	std::ifstream i("OSinfo");
-	std::string tmp;
-	std::string total = "";
-	while (!i.eof())
-	{
-		std::getline(i, tmp);
-		total += tmp;
-		total += "\n";
-	}
-	std::size_t pos = total.find("Name:");
-	_osName = total.substr(pos + 6, 8);
-	i.close();
-}
-
-void HostModule::updateOsVersion()
-{
-	std::ifstream i("OSinfo");
-	std::string tmp;
-	std::string total = "";
-	while (!i.eof())
-	{
-		std::getline(i, tmp);
-		total += tmp;
-		total += "\n";
-	}
-	std::size_t pos = total.find("tVersion:");
-	_osVersion = total.substr(pos + 10, getLen(pos + 9, total));
-	i.close();
-}
-
 void HostModule::updateTime()
 {
 	time_t rawtime;
@@ -186,16 +119,11 @@ void HostModule::updateTime()
 	time (&rawtime);
 	timeinfo = localtime(&rawtime);
 
-	strftime(buffer,80,"%d-%m-%Y %I:%M:%S",timeinfo);
+	strftime(buffer,80,"%d-%m-%Y %H:%M:%S",timeinfo);
 	_time = buffer;
 }
 
 void HostModule::update()
 {
-//	updateOsVersion();
-//	updateOsName();
-//	updateOsBuild();
-//	updateUserName();
-//	updateHostName();
 	updateTime();
 }

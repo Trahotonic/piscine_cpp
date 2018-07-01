@@ -23,10 +23,10 @@
 
 class ShellUI : public virtual IMonitorDisplay {
 private:
-	bool	_host;
-	bool	_cpu;
-	bool 	_net;
-	bool	_ram;
+	int	_host;
+	int	_cpu;
+	int	_net;
+	int	_ram;
 public:
 	ShellUI();
 	ShellUI(const ShellUI& shellUI);

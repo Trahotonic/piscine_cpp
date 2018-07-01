@@ -56,7 +56,7 @@ Controller::Controller(int argc, char ** argv) : _shellUI(NULL), _hostModule(NUL
 		else
 			throw InvalidArguments();
 	}
-	if (!shell)
+	if (!shell || (!host && !cpu && !ram && !net))
 		throw InvalidArguments();
 	if (host)
 		_hostModule = new HostModule;
@@ -87,16 +87,13 @@ void Controller::run()
 	char c;
 	while (1)
 	{
-//		clear();
-//		usleep(1000000);
 		update();
-		print();
+		printShell();
 		c = getch();
 		if (c == 113)
 			break ;
 		refresh();
 	}
-
 	endwin();
 	system ("rm -f OSInfo CPUInfo NetInfo RAMInfo");
 }
@@ -113,7 +110,7 @@ void Controller::update()
 		_ramModule->update();
 }
 
-void Controller::print()
+void Controller::printShell()
 {
 	_shellUI->displayField(_hostModule, _cpuModule, _ramModule, _netModule);
 	_shellUI->displayHost(_hostModule);

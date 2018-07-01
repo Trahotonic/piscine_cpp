@@ -31,11 +31,6 @@ public:
 	std::string	getOsBuild();
 	std::string	getTime();
 
-	void	updateHostName();
-	void	updateUserName();
-	void	updateOsName();
-	void	updateOsVersion();
-	void	updateOsBuild();
 	void	updateTime();
 
 	void	update();

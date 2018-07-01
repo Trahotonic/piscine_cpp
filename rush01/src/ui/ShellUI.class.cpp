@@ -4,7 +4,7 @@
 
 #include "../../inc/ShellUI.class.hpp"
 
-ShellUI::ShellUI() : _host(false), _cpu(false), _net(false), _ram(false)
+ShellUI::ShellUI() : _host(0), _cpu(0), _net(0), _ram(0)
 {
 }
 
@@ -30,22 +30,22 @@ void ShellUI::displayField(HostModule *hostModule, CpuModule *cpuModule,
 	if (hostModule)
 	{
 		n += 13;
-		_host = true;
+		_host = 13;
 	}
 	if (cpuModule)
 	{
 		n += 13;
-		_cpu = true;
+		_cpu = 13;
 	}
 	if (ramModule)
 	{
 		n += 7;
-		_ram = true;
+		_ram = 6;
 	}
 	if (netModule)
 	{
 		n += 5;
-		_net = true;
+		_net = 5;
 	}
 	for (int i = 1; i < n + 1; i++)
 	{
@@ -88,9 +88,7 @@ void ShellUI::displayCpu(CpuModule *cpuModule)
 {
 	if (cpuModule)
 	{
-		int n = 0;
-		if (_host)
-			n += HOST;
+		int n = _host;
 		attron(COLOR_PAIR(1));
 		mvwprintw(stdscr, 1 + n, 1, "CPU:");
 		mvwprintw(stdscr, 3 + n, 1, "Clock speed:");
@@ -121,11 +119,7 @@ void ShellUI::displayNet(NetModule *netModule)
 
 	if (netModule)
 	{
-		int n = 0;
-		if (_host)
-			n += HOST;
-		if (_cpu)
-			n += CPU;
+		int n = _host + _cpu;
 		attron(COLOR_PAIR(5));
 		mvwprintw(stdscr, 1 + n, 1, "Packages sent:");
 		mvwprintw(stdscr, 3 + n, 1, "Packages received:");
@@ -149,13 +143,7 @@ void ShellUI::displayRam(RamModule *ramModule)
 
 	if (ramModule)
 	{
-		int n = 0;
-		if (_host)
-			n += HOST;
-		if (_cpu)
-			n += CPU;
-		if (_net)
-			n += NET;
+		int n = _host + _cpu + _net;
 		attron(COLOR_PAIR(3));
 		mvwprintw(stdscr, 1 + n, 1, "Used memory:");
 		mvwprintw(stdscr, 3 + n, 1, "Wired memory:");
@@ -163,14 +151,17 @@ void ShellUI::displayRam(RamModule *ramModule)
 		attroff(COLOR_PAIR(3));
 		tmpL = ramModule->getUsed() / 1000000;
 		tmpS = std::to_string(tmpL) + "M";
+		mvwprintw(stdscr, 2 + n, 1, "                    ");
 		mvwprintw(stdscr, 2 + n, 1, tmpS.c_str());
 
 		tmpL = ramModule->getWired() / 1000000;
 		tmpS = std::to_string(tmpL) + "M";
+		mvwprintw(stdscr, 4 + n, 1, "                    ");
 		mvwprintw(stdscr, 4 + n, 1, tmpS.c_str());
 
 		tmpL = ramModule->getUnused() / 1000000;
 		tmpS = std::to_string(tmpL) + "M";
+		mvwprintw(stdscr, 6 + n, 1, "                    ");
 		mvwprintw(stdscr, 6 + n, 1, tmpS.c_str());
 		mvwprintw(stdscr, 7 + n, 1, "___________________________________");
 	}

@@ -26,19 +26,17 @@ public:
 
 	std::string getModel();
 	std::string getClockSpeed();
-	int			 getCores();
+	int			getCores();
 	float 		getUserUsage();
 	float 		getSystemUsage();
 	float 		getIdleUsage();
 
-	void		updateModel();
-	void		updateClockSpeed();
 	void		updateUsage();
 
 	void		update();
 
-	int 	getNameLen(std::string total);
-	int 	goToComma(std::string total);
+	int 		getNameLen(std::string total);
+	int 		goToComma(std::string total);
 
 private:
 	std::string _model;

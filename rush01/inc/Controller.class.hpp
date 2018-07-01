@@ -34,7 +34,7 @@ public:
 
 	void	run();
 	void	update();
-	void	print();
+	void	printShell();
 
 	class InvalidArguments : public virtual std::exception
 	{

@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <ncurses.h>
 # include "../inc/Controller.class.hpp"
 
 int main(int argc, char **argv)

@@ -78,37 +78,6 @@ int CpuModule::goToComma(std::string total)
 	return n + 2;
 }
 
-void CpuModule::updateModel()
-{
-	system("sysctl -n machdep.cpu.brand_string > CPUInfo");
-	std::ifstream i("CPUInfo");
-	std::string tmp;
-	std::string total = "";
-	while (!i.eof())
-	{
-		std::getline(i, tmp);
-		total += tmp;
-		total += "\n";
-	}
-	_model = total.substr(0, getNameLen(total));
-	i.close();
-}
-
-void CpuModule::updateClockSpeed()
-{
-	std::ifstream i("CPUInfo");
-	std::string tmp;
-	std::string total = "";
-	while (!i.eof())
-	{
-		std::getline(i, tmp);
-		total += tmp;
-		total += "\n";
-	}
-	_clockspeed = total.substr(getNameLen(total) + 3, total.length());
-	i.close();
-}
-
 void CpuModule::updateUsage()
 {
 	system("top -l 1 -n 0 | grep CPU > CPUInfo");
@@ -134,8 +103,6 @@ void CpuModule::updateUsage()
 
 void CpuModule::update()
 {
-//	updateModel();
-//	updateClockSpeed();
 	updateUsage();
 }
 
