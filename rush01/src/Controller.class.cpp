@@ -6,14 +6,18 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/30 12:14:31 by snikitin          #+#    #+#             */
-/*   Updated: 2018/06/30 12:14:31 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/07/01 10:45:11 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Controller.class.hpp"
+#include "GraphicalUI.class.hpp"
 
-Controller::Controller() : _shellUI(NULL), _hostModule(NULL), _cpuModule(NULL),
-						   _netModule(NULL), _ramModule(NULL)
+Controller::Controller() : _shellUI(NULL),
+ 							_hostModule(NULL),
+ 							_cpuModule(NULL),
+							_netModule(NULL),
+ 							_ramModule(NULL)
 {}
 
 Controller::Controller(const Controller& controller) {
@@ -28,7 +32,8 @@ Controller::Controller(int argc, char ** argv) : _shellUI(NULL), _hostModule(NUL
 	bool ram = false;
 	bool net = false;
 	bool shell = false;
-
+	
+	_graphicalUI = new GraphicalUI(*this, argc, argv);
 	for (int i = 1; i < argc; i++)
 	{
 		if (!strcmp(argv[i],"-a"))
@@ -87,13 +92,12 @@ void Controller::update()
 
 void Controller::print()
 {
+	_shellUI->displayField(_hostModule, _cpuModule, _ramModule, _netModule);
 	_shellUI->displayHost(_hostModule);
 	_shellUI->displayCpu(_cpuModule);
 	_shellUI->displayNet(_netModule);
 	_shellUI->displayRam(_ramModule);
-	_shellUI->displayField(_hostModule, _cpuModule, _ramModule, _netModule);
 }
-
 
 Controller::InvalidArguments::InvalidArguments()
 {}

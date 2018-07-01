@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/30 12:14:31 by snikitin          #+#    #+#             */
-/*   Updated: 2018/06/30 12:14:31 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/06/30 21:16:04 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 #include "NetModule.class.hpp"
 #include "RamModule.class.hpp"
 #include "ShellUI.class.hpp"
+#include "GraphicalUI.class.hpp"
+
+class GraphicalUI;
 
 class Controller {
 public:
@@ -46,6 +49,7 @@ public:
 	};
 private:
 	ShellUI		*_shellUI;
+	GraphicalUI *_graphicalUI;
 
 	HostModule	*_hostModule;
 	CpuModule	*_cpuModule;

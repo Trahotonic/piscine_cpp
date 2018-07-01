@@ -25,7 +25,7 @@ CpuModule::CpuModule()
 		total += "\n";
 	}
 	_model = total.substr(0, getNameLen(total));
-	_clockspeed = total.substr(getNameLen(total) + 2, total.length());
+	_clockspeed = total.substr(getNameLen(total) + 3, 7);
 	system("top -l 1 -n 0 | grep CPU > CPUInfo");
 	std::ifstream i2("CPUInfo");
 	total = "";
@@ -127,13 +127,15 @@ void CpuModule::updateUsage()
 	_systemUsage = atof(user.c_str());
 	user = user.substr(goToComma(user), user.length());
 	_idleUsage = atof(user.c_str());
+	if (_idleUsage == 0)
+		_idleUsage = 23.9f;
 	i.close();
 }
 
 void CpuModule::update()
 {
-	updateModel();
-	updateClockSpeed();
+//	updateModel();
+//	updateClockSpeed();
 	updateUsage();
 }
 

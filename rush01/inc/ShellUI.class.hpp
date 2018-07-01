@@ -13,9 +13,20 @@
 #ifndef SHELLUI_CLASS_HPP
 # define SHELLUI_CLASS_HPP
 
+# define HOST	13
+# define CPU	13
+# define NET	5
+# define RAM	6
+
+
 #include "IMonitorDisplay.class.hpp"
 
 class ShellUI : public virtual IMonitorDisplay {
+private:
+	bool	_host;
+	bool	_cpu;
+	bool 	_net;
+	bool	_ram;
 public:
 	ShellUI();
 	ShellUI(const ShellUI& shellUI);

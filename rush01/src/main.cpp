@@ -6,7 +6,7 @@
 /*   By: snikitin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/30 10:39:19 by snikitin          #+#    #+#             */
-/*   Updated: 2018/06/30 11:06:47 by snikitin         ###   ########.fr       */
+/*   Updated: 2018/06/30 21:14:32 by snikitin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int main(int argc, char **argv)
 	char c;
 	while (1)
 	{
-		usleep(1);
-		clear();
+//		clear();
+//		usleep(1000000);
 		controller->update();
 		controller->print();
 		c = getch();

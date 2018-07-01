@@ -192,10 +192,10 @@ void HostModule::updateTime()
 
 void HostModule::update()
 {
-	updateOsVersion();
-	updateOsName();
-	updateOsBuild();
-	updateUserName();
-	updateHostName();
+//	updateOsVersion();
+//	updateOsName();
+//	updateOsBuild();
+//	updateUserName();
+//	updateHostName();
 	updateTime();
 }

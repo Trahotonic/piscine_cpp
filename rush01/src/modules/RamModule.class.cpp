@@ -81,7 +81,6 @@ void RamModule::update()
 		total += tmp;
 		total += "\n";
 	}
-	std::cout << total << std::endl;
 	int n = 0;
 	while (!isdigit(total[n]))
 		n++;
