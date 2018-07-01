@@ -13,22 +13,13 @@
 # include <ncurses.h>
 # include "../inc/Controller.class.hpp"
 
-void	throwUsage(void)
-{
-	std::cout << "Invalid arguments\n"
-			"Possible flags: \n-a\n-u\n-c\n-r\n-n\n-g\n-s\n";
-}
-
 int main(int argc, char **argv)
 {
-	if (argc == 1)
-	{
-		throwUsage();
-		return 1;
-	}
 	Controller	*controller;
 	try
 	{
+		if (argc == 1)
+			throw Controller::InvalidArguments();
 		controller = new Controller(argc, argv);
 	}
 	catch (std::exception &e)
@@ -36,27 +27,6 @@ int main(int argc, char **argv)
 		std::cout << e.what() << std::endl;
 		return 1;
 	}
-//	controller->run();
-	initscr();
-	curs_set(0);
-	nodelay(stdscr, true);
-	keypad(stdscr, true);
-
-	char c;
-	while (1)
-	{
-//		clear();
-//		usleep(1000000);
-		controller->update();
-		controller->print();
-		c = getch();
-		if (c == 113)
-			break ;
-		refresh();
-	}
-
-	endwin();
-	system ("rm -f OSInfo CPUInfo NetInfo RAMInfo");
-
+	controller->run();
 	return 0;
 }

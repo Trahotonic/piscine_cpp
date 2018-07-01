@@ -27,10 +27,6 @@ Controller::Controller(const Controller& controller) {
 Controller::Controller(int argc, char ** argv) : _shellUI(NULL), _hostModule(NULL), _cpuModule(NULL),
 												 _netModule(NULL), _ramModule(NULL)
 {
-	initscr();
-	curs_set(0);
-	nodelay(stdscr, true);
-	keypad(stdscr, true);
 	bool host = false;
 	bool cpu = false;
 	bool ram = false;
@@ -72,6 +68,10 @@ Controller::Controller(int argc, char ** argv) : _shellUI(NULL), _hostModule(NUL
 		_netModule = new NetModule;
 	if (shell)
 		_shellUI = new ShellUI;
+	initscr();
+	curs_set(0);
+	nodelay(stdscr, true);
+	keypad(stdscr, true);
 }
 
 Controller::~Controller() {}
@@ -141,5 +141,15 @@ Controller::InvalidArguments::~InvalidArguments() throw()
 
 const char* Controller::InvalidArguments::what() const throw()
 {
-	return "Invalid arguments";
+	return "Invalid arguments\n"
+			"Possible flags: \n-a (display all information)\n"
+			"-u (display user and host information)\n"
+			"-c (display CPU informaiton)\n"
+			"-r (display RAM information)\n"
+			"-n (display Network information)\n"
+			"________________________________\n"
+			"Display modes (one is mandatory)\n"
+			"________________________________\n"
+			"-g (open program in graphical mode)\n"
+			"-s (open program in shell mode)\n";
 }
