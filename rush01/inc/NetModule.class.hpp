@@ -16,8 +16,9 @@
 # include <iostream>
 # include <fstream>
 # include <string>
+# include "../inc/IMonitorModule.hpp"
 
-class NetModule {
+class NetModule : public virtual IMonitorModule {
 public:
 	NetModule();
 	NetModule(const NetModule& netModule);
@@ -29,7 +30,7 @@ public:
 	long 	getCurRecPackages();
 	long 	getMaxRecPackages();
 
-	void 	updateCurrentPackages();
+	void 	update();
 
 private:
 	long	_curSentPackages;

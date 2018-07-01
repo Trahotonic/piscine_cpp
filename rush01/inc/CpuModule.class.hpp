@@ -16,8 +16,9 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include "../inc/IMonitorModule.hpp"
 
-class CpuModule {
+class CpuModule : public virtual IMonitorModule{
 public:
 	CpuModule();
 	CpuModule(const CpuModule& cpuModule);

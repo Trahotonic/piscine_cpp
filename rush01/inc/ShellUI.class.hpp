@@ -27,6 +27,7 @@ private:
 	int	_cpu;
 	int	_net;
 	int	_ram;
+	static int _cat;
 public:
 	ShellUI();
 	ShellUI(const ShellUI& shellUI);
@@ -39,6 +40,7 @@ public:
 	void displayNet(NetModule *netModule);
 	void displayField(HostModule *hostModule, CpuModule *cpuModule,
 						RamModule *ramModule, NetModule *netModule);
+	void displayCat(void);
 };
 
 #endif

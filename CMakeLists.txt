@@ -149,4 +149,4 @@ add_executable(git_cpp
         rush00/Base.class.cpp
         rush00/Base.class.hpp
         d05 d05/ex03/Intern.cpp d05/ex03/Intern.hpp d05/ex04/OfficeBlock.cpp d05/ex04/OfficeBlock.hpp d06/ex00/main.cpp d06/ex00/Convert.cpp d06/ex00/Convert.hpp d06/ex01/main.cpp d06/ex02/main.cpp d06/ex02/Base.cpp d06/ex02/Base.hpp d06/ex02/A.cpp d06/ex02/A.hpp d06/ex02/B.cpp d06/ex02/B.hpp d06/ex02/C.cpp d06/ex02/C.hpp d07/ex00/main.cpp d07/ex01/main.cpp d07/ex02/Array.hpp d07/ex02/main.cpp d08/ex00/main.cpp d08/ex00/easyfind.hpp d08/ex01/span.cpp d08/ex01/span.hpp d08/ex01/main.cpp d08/ex02/mutantstack.cpp d08/ex02/mutantstack.hpp d08/ex02/main.cpp d08/ex03/main.cpp d08/ex03/Machine.hpp d08/ex03/AInstruction.cpp d08/ex03/AInstruction.hpp d08/ex03/Machine.cpp d08/ex03/NextBox.cpp d08/ex03/NextBox.hpp d08/ex03/PrevBox.cpp d08/ex03/PrevBox.hpp d08/ex03/Increment.cpp d08/ex03/Increment.hpp d08/ex03/Decrement.cpp d08/ex03/Decrement.hpp d08/ex03/Print.cpp d08/ex03/Print.hpp d08/ex03/GoFront.cpp d08/ex03/GoFront.hpp d08/ex03/GoBack.cpp d08/ex03/GoBack.hpp
-        rush01)
+        rush01 rush01/inc/IMonitorModule.hpp rush01/src/ui/IMonitorModule.cpp)

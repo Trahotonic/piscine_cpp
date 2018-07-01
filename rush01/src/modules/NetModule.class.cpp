@@ -81,7 +81,7 @@ long NetModule::getMaxRecPackages()
 	return _maxRecPackages;
 }
 
-void NetModule::updateCurrentPackages()
+void NetModule::update()
 {
 	system("top -l 1 -n 0 | grep Networks > NetInfo");
 	std::ifstream i("NetInfo");

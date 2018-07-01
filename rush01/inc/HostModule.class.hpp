@@ -16,8 +16,9 @@
 # include <iostream>
 # include <unistd.h>
 # include <fstream>
+# include "../inc/IMonitorModule.hpp"
 
-class HostModule {
+class HostModule : public virtual IMonitorModule {
 public:
 	HostModule();
 	HostModule(const HostModule& hostModule);

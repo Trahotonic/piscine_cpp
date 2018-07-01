@@ -15,8 +15,9 @@
 
 # include <iostream>
 # include <fstream>
+# include "../inc/IMonitorModule.hpp"
 
-class RamModule {
+class RamModule : public virtual IMonitorModule {
 public:
 	RamModule();
 	RamModule(const RamModule& ramModule);

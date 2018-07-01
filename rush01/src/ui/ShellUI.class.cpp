@@ -57,6 +57,10 @@ void ShellUI::displayField(HostModule *hostModule, CpuModule *cpuModule,
 
 void ShellUI::displayHost(HostModule *hostModule)
 {
+	initscr();
+	curs_set(0);
+	nodelay(stdscr, true);
+	keypad(stdscr, true);
 	use_default_colors();
 	start_color();
 	init_pair(1, COLOR_RED, -1);
@@ -166,3 +170,36 @@ void ShellUI::displayRam(RamModule *ramModule)
 		mvwprintw(stdscr, 7 + n, 1, "___________________________________");
 	}
 }
+
+void ShellUI::displayCat()
+{
+	int n = _host + _cpu + _net + _ram + 3;
+	if (_cat % 3 == 0)
+		mvwprintw(stdscr, 1 + n, 1, "  |\\_._/|               |\\_._/|\n"
+									"   | o o |               | o o |\n"
+									"   (  T  )               (  T  )\n"
+									"  .^`-^-'^.              ^`-^-'^.\n"
+									"  `.  ;  .'             `.  ;  .'\n"
+									"  | | | | |             | | | | |\n"
+									" ((_((|))_))           ((_((|))_))");
+	else if (_cat % 3 == 1)
+		mvwprintw(stdscr, 1 + n, 1, "  |,\\__/|               |\\__/,|\n"
+									"   |  o o|               |o o  |\n"
+									"   (   T )               ( T   )\n"
+									"  .^`--^'^.             .^`^--'^.\n"
+									"  `.  ;  .'             `.  ;  .'\n"
+									"  | | | | |             | | | | |\n"
+									" ((_((|))_))           ((_((|))_))");
+	else
+		mvwprintw(stdscr, 1 + n, 1, "  |\\__/,|               |,\\__/|\n"
+									"   |o o  |               |  o o|\n"
+									"   ( T   )               (   T )\n"
+									"  .^`^--'^.             .^`^--'^.\n"
+									"  `.  ;  .'             `.  ;  .'\n"
+									"  | | | | |             | | | | | \n"
+									" ((_((|))_))           ((_((|))_))");
+	mvwprintw(stdscr, 1 + n + 7, 1, "-----------           -----------");
+	_cat++;
+}
+
+int ShellUI::_cat = 0;

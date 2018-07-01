@@ -68,10 +68,6 @@ Controller::Controller(int argc, char ** argv) : _shellUI(NULL), _hostModule(NUL
 		_netModule = new NetModule;
 	if (shell)
 		_shellUI = new ShellUI;
-	initscr();
-	curs_set(0);
-	nodelay(stdscr, true);
-	keypad(stdscr, true);
 }
 
 Controller::~Controller() {}
@@ -105,7 +101,7 @@ void Controller::update()
 	if (_cpuModule)
 		_cpuModule->update();
 	if (_netModule)
-		_netModule->updateCurrentPackages();
+		_netModule->update();
 	if (_ramModule)
 		_ramModule->update();
 }
@@ -117,6 +113,7 @@ void Controller::printShell()
 	_shellUI->displayCpu(_cpuModule);
 	_shellUI->displayNet(_netModule);
 	_shellUI->displayRam(_ramModule);
+	_shellUI->displayCat();
 }
 
 Controller::InvalidArguments::InvalidArguments()
