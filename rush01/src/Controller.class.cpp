@@ -27,6 +27,10 @@ Controller::Controller(const Controller& controller) {
 Controller::Controller(int argc, char ** argv) : _shellUI(NULL), _hostModule(NULL), _cpuModule(NULL),
 												 _netModule(NULL), _ramModule(NULL)
 {
+	initscr();
+	curs_set(0);
+	nodelay(stdscr, true);
+	keypad(stdscr, true);
 	bool host = false;
 	bool cpu = false;
 	bool ram = false;
@@ -76,6 +80,25 @@ Controller&	Controller::operator=(const Controller& controller) {
 	if (this == &controller)
 		return (*this);
 	return (*this);
+}
+
+void Controller::run()
+{
+	char c;
+	while (1)
+	{
+//		clear();
+//		usleep(1000000);
+		update();
+		print();
+		c = getch();
+		if (c == 113)
+			break ;
+		refresh();
+	}
+
+	endwin();
+	system ("rm -f OSInfo CPUInfo NetInfo RAMInfo");
 }
 
 void Controller::update()

@@ -36,6 +36,7 @@ int main(int argc, char **argv)
 		std::cout << e.what() << std::endl;
 		return 1;
 	}
+//	controller->run();
 	initscr();
 	curs_set(0);
 	nodelay(stdscr, true);

@@ -32,6 +32,7 @@ public:
 	~Controller();
 	Controller&	operator=(const Controller& controller);
 
+	void	run();
 	void	update();
 	void	print();
 

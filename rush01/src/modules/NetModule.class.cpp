@@ -33,19 +33,19 @@ NetModule::NetModule()
 	while (total[n] != '/')
 		n++;
 	total = total.substr(n + 1, total.length());
-	_maxSentPackages = atoi(total.c_str()) * 1000000;
+	_maxSentPackages = atol(total.c_str()) * 1000000;
 	n = 0;
 	while (total[n] != ',')
 		n++;
 	while (!isdigit(total[n]))
 		n++;
 	total = total.substr(n, total.length());
-	_cutRecPackages = atoi(total.c_str());
+	_cutRecPackages = atol(total.c_str());
 	n = 0;
 	while (total[n] != '/')
 		n++;
 	total = total.substr(n + 1, total.length());
-	_maxRecPackages = atoi(total.c_str()) * 1000000;
+	_maxRecPackages = atol(total.c_str()) * 1000000;
 	i.close();
 }
 
@@ -102,18 +102,18 @@ void NetModule::updateCurrentPackages()
 	while (total[n] != '/')
 		n++;
 	total = total.substr(n + 1, total.length());
-	_maxSentPackages = atoi(total.c_str()) * 1000000;
+	_maxSentPackages = atol(total.c_str()) * 1000000;
 	n = 0;
 	while (total[n] != ',')
 		n++;
 	while (!isdigit(total[n]))
 		n++;
 	total = total.substr(n, total.length());
-	_cutRecPackages = atoi(total.c_str());
+	_cutRecPackages = atol(total.c_str());
 	n = 0;
 	while (total[n] != '/')
 		n++;
 	total = total.substr(n + 1, total.length());
-	_maxRecPackages = atoi(total.c_str()) * 1000000;
+	_maxRecPackages = atol(total.c_str()) * 1000000;
 	i.close();
 }

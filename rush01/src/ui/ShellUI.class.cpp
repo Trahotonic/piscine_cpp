@@ -127,8 +127,8 @@ void ShellUI::displayNet(NetModule *netModule)
 		if (_cpu)
 			n += CPU;
 		attron(COLOR_PAIR(5));
-		mvwprintw(stdscr, 1 + n, 1, "Packages received:");
-		mvwprintw(stdscr, 3 + n, 1, "Packages sent:");
+		mvwprintw(stdscr, 1 + n, 1, "Packages sent:");
+		mvwprintw(stdscr, 3 + n, 1, "Packages received:");
 		attroff(COLOR_PAIR(5));
 
 		tmpL = netModule->getCurRecPackages();
