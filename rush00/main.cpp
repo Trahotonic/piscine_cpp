@@ -73,7 +73,7 @@ int main()
 	};
 	clock_t t1, t2;
 	t2 = 0;
-	system("afplay ./sounds/star-wars-cantina-song.mp3 &");
+	system("afplay -v 0.3 ./sounds/sound.wav &");
 	while (true)
 	{
 		t1 = clock() / (CLOCKS_PER_SEC / speed);

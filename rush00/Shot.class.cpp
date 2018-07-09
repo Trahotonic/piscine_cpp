@@ -163,7 +163,7 @@ void	checkCollision(t_shots** shots, t_drops** drops, Ship & ship)
 			if (sptr->shot->getX() >= dptr->drop->getX() &&
 					sptr->shot->getY() == dptr->drop->getY())
 			{
-				system("afplay -v 1.0 ./sounds/death_of_enemy_sound.mp3 &");
+				system("afplay -v 1.0 ./sounds/sfx_exp_short_hard2.wav &");
 				ship.set_score(ship.get_score() + 1);
 				if (sptr == *shots)
 				{

@@ -234,7 +234,7 @@ void Drop::shoot(t_shots **shots)
 		buff->next->shot = new Shot(*this);
 		buff->next->next = NULL;
 	}
-	system("afplay -v 0.5 ./sounds/shoot_sound.mp3 &");
+	system("afplay -v 0.5 ./sounds/sfx_wpn_laser6.wav &");
 }
 
 int Drop::_totalDrops = 0;
